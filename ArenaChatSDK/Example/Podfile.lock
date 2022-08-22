@@ -1,0 +1,16 @@
+PODS:
+  - ArenaChatSDK (0.1.0)
+
+DEPENDENCIES:
+  - ArenaChatSDK (from `../`)
+
+EXTERNAL SOURCES:
+  ArenaChatSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ArenaChatSDK: e43ed5887c35bb38cf585fb48dedecdd796d023c
+
+PODFILE CHECKSUM: 566dacbd10626c7498ff91c4d319f30ee1d039fa
+
+COCOAPODS: 1.11.3

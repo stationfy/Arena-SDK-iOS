@@ -1,0 +1,6 @@
+framework module ArenaChatSDK {
+  umbrella header "ArenaChatSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
