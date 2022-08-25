@@ -23,7 +23,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://arena.im'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'vicenteerick' => 'vicente.eriick@gmail.com' }
+  s.author           = { 'vicenteerick' => 'vicente.erick@gmail.com' }
   s.source           = { :git => 'https://github.com/stationfy/Arena-SDK-iOS', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
