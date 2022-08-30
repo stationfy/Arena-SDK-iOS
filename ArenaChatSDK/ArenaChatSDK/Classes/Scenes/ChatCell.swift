@@ -9,7 +9,6 @@ public final class ChatCell: UITableViewCell {
     
     private let repliedMessageContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = Color.lightGray
         view.layer.cornerRadius = 8
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
         view.clipsToBounds = true
@@ -19,7 +18,6 @@ public final class ChatCell: UITableViewCell {
     
     private let messageContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = Color.lightGray
         view.layer.cornerRadius = 8
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
         view.clipsToBounds = true
@@ -45,6 +43,7 @@ public final class ChatCell: UITableViewCell {
         let label = UILabel()
         label.textColor = Color.gray
         label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 12)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -63,6 +62,7 @@ public final class ChatCell: UITableViewCell {
         let label = UILabel()
         label.textColor = Color.gray
         label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -70,17 +70,19 @@ public final class ChatCell: UITableViewCell {
     private lazy var topStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [nameLabel, roundViewContainerView, timeLabel])
         stackView.spacing = 4
+        stackView.backgroundColor = .white
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     private let repliedMessageLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .left
         label.backgroundColor = Color.lightGray
         label.textColor = Color.purple
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -90,17 +92,33 @@ public final class ChatCell: UITableViewCell {
         label.textAlignment = .left
         label.backgroundColor = Color.lightGray
         label.textColor = Color.darkGray
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var messageStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [topStackView, repliedMessageContainerView, messageContainerView])
-        stackView.spacing = 4
+    private lazy var textStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [repliedMessageContainerView, messageContainerView])
         stackView.axis = .vertical
-        stackView.backgroundColor = Color.lightGray
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+
+    private lazy var messageStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [topStackView, messageStackContainerView])
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private lazy var messageStackContainerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        view.clipsToBounds = true
+        view.backgroundColor = Color.lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private let profileImageView: UIImageView = {
@@ -138,6 +156,7 @@ extension ChatCell {
         repliedMessageContainerView.addSubview(repliedMessageLabel)
         repliedMessageContainerView.addSubview(separatorView)
         profileImageContainerView.addSubview(profileImageView)
+        messageStackContainerView.addSubview(textStackView)
         contentView.addSubview(contentStackView)
     }
     
@@ -163,6 +182,11 @@ extension ChatCell {
             separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8),
             separatorView.leadingAnchor.constraint(equalTo: repliedMessageContainerView.leadingAnchor, constant: 8),
             separatorView.trailingAnchor.constraint(equalTo: repliedMessageLabel.leadingAnchor, constant: -8),
+
+            textStackView.leadingAnchor.constraint(equalTo: messageStackContainerView.leadingAnchor),
+            textStackView.trailingAnchor.constraint(equalTo: messageStackContainerView.trailingAnchor),
+            textStackView.topAnchor.constraint(equalTo: messageStackContainerView.topAnchor),
+            textStackView.bottomAnchor.constraint(equalTo: messageStackContainerView.bottomAnchor),
             
             profileImageView.heightAnchor.constraint(equalToConstant: 32),
             profileImageView.widthAnchor.constraint(equalToConstant: 32),
@@ -185,5 +209,6 @@ public extension ChatCell {
         repliedMessageLabel.text = "Olá bebes voces vao no samba na sexta?"
         messageLabel.text = "BORAAAA"
         profileImageView.backgroundColor = .purple
+        repliedMessageContainerView.isHidden = true
     }
 }
