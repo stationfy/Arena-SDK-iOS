@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "12.0"
   },
-  "source_files": "ArenaChatSDK/Classes/**/*"
+  "source_files": "ArenaChatSDK/Classes/**/*",
+  "dependencies": {
+    "FirebaseFirestore": [
+
+    ]
+  }
 }
