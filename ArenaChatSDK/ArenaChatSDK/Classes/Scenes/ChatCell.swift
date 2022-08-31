@@ -63,6 +63,7 @@ public final class ChatCell: UITableViewCell {
     // MARK: - MessageView
     private let messageContainerView: UIView = {
         let view = UIView()
+        view.backgroundColor = Color.lightGray
         view.layer.cornerRadius = 8
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
         view.clipsToBounds = true
@@ -77,7 +78,6 @@ public final class ChatCell: UITableViewCell {
         label.backgroundColor = Color.lightGray
         label.textColor = Color.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
-        label.setContentHuggingPriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -90,13 +90,13 @@ public final class ChatCell: UITableViewCell {
         label.backgroundColor = Color.lightGray
         label.textColor = Color.purple
         label.font = UIFont.systemFont(ofSize: 14)
-        label.setContentHuggingPriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private let repliedMessageContainerView: UIView = {
         let view = UIView()
+        view.backgroundColor = Color.lightGray
         view.layer.cornerRadius = 8
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
         view.clipsToBounds = true
@@ -129,7 +129,10 @@ extension ChatCell {
     func buildViewHierarchy() {
         roundViewContainerView.addSubview(roundView)
         profileImageContainerView.addSubview(profileImageView)
+        messageContainerView.addSubview(repliedMessageContainerView)
         messageContainerView.addSubview(messageLabel)
+        repliedMessageContainerView.addSubview(separatorView)
+        repliedMessageContainerView.addSubview(repliedMessageLabel)
         contentView.addSubview(topStackView)
         contentView.addSubview(profileImageContainerView)
         contentView.addSubview(messageContainerView)
@@ -143,9 +146,9 @@ extension ChatCell {
             profileImageView.trailingAnchor.constraint(equalTo: profileImageContainerView.trailingAnchor),
             profileImageView.bottomAnchor.constraint(equalTo: profileImageContainerView.bottomAnchor),
 
-            profileImageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            profileImageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             profileImageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            profileImageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            profileImageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 
             roundView.heightAnchor.constraint(equalToConstant: 8),
             roundView.widthAnchor.constraint(equalToConstant: 8),
@@ -153,27 +156,48 @@ extension ChatCell {
             roundView.trailingAnchor.constraint(equalTo: roundViewContainerView.trailingAnchor),
             roundView.centerYAnchor.constraint(equalTo: roundViewContainerView.centerYAnchor),
 
-            topStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            topStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            topStackView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor),
+
+            separatorView.widthAnchor.constraint(equalToConstant: 2),
+            separatorView.leadingAnchor.constraint(equalTo: repliedMessageContainerView.leadingAnchor, constant: 8),
+            separatorView.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor),
+
+            repliedMessageLabel.leadingAnchor.constraint(equalTo: separatorView.trailingAnchor, constant: 6),
+            repliedMessageLabel.trailingAnchor.constraint(equalTo: repliedMessageContainerView.trailingAnchor, constant: -8),
+
+            repliedMessageContainerView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor),
+            repliedMessageContainerView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor),
+            repliedMessageContainerView.topAnchor.constraint(equalTo: messageContainerView.topAnchor),
+            repliedMessageContainerView.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -8),
 
             messageLabel.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 8),
             messageLabel.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -8),
             messageLabel.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -8),
-            messageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: 8),
 
             messageContainerView.leadingAnchor.constraint(equalTo: profileImageContainerView.trailingAnchor, constant: 8),
-            messageContainerView.topAnchor.constraint(equalTo: topStackView.bottomAnchor, constant: 8)
-
+            messageContainerView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -72),
+            messageContainerView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
+            messageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
+    }
+
+    func updateConstraints(repliedMessageIsHidden: Bool) {
+        repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0).isActive = repliedMessageIsHidden
+        repliedMessageLabel.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !repliedMessageIsHidden
+        repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor, constant: -8).isActive = !repliedMessageIsHidden
+        separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !repliedMessageIsHidden
     }
 }
 
 public extension ChatCell {
     func setup() {
+        let isHidden = false
         nameLabel.text = "Clau Maria"
         timeLabel.text = "09:13"
-        repliedMessageLabel.text = "Olá bebes voces vao no samba na sexta?"
-        messageLabel.text = "BORAAAA"
+        repliedMessageLabel.text = "ola cara tudo bem com vc"
+        messageLabel.text = "BORAAAA BORAAAA BORAAAA BORAAAA BORAAAA BORAAAABORAAAABORAAAABORAAAABORAAAABORAAAA"
         profileImageView.backgroundColor = .purple
-        repliedMessageContainerView.isHidden = true
+        updateConstraints(repliedMessageIsHidden: isHidden)
     }
 }
