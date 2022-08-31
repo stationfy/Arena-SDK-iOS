@@ -4,7 +4,7 @@ import ArenaChatSDK
 class ViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(ChatCell.self, forCellReuseIdentifier: "ChatCell")
+        tableView.register(OwnMessageCell.self, forCellReuseIdentifier: "OwnMessageCell")
         tableView.showsVerticalScrollIndicator = false
         //tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -37,7 +37,7 @@ extension ViewController: UITableViewDataSource {
         2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OwnMessageCell", for: indexPath) as! OwnMessageCell
         return cell
     }
 }
