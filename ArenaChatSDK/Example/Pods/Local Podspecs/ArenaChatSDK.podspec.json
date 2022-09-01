@@ -22,6 +22,9 @@
   "dependencies": {
     "FirebaseFirestore": [
 
+    ],
+    "KeychainSwift": [
+      "~> 20.0"
     ]
   }
 }
