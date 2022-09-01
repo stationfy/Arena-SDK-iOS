@@ -13,22 +13,25 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+
+    let chatView = ChatView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
-        view.addSubview(tableView)
+       // view.addSubview(tableView)
+        view.addSubview(chatView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            chatView.topAnchor.constraint(equalTo: view.topAnchor),
+            chatView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chatView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+           // chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        tableView.reloadData()
+       // tableView.reloadData()
     }
 }
 
