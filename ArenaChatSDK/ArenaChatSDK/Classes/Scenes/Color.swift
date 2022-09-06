@@ -6,4 +6,5 @@ enum Color {
     static let darkGray: UIColor = #colorLiteral(red: 0.262745098, green: 0.3333333333, blue: 0.3960784314, alpha: 1)
     static let purple: UIColor = #colorLiteral(red: 0.3137254902, green: 0.1294117647, blue: 0.6509803922, alpha: 1)
     static let mediumPurple: UIColor = #colorLiteral(red: 0.4666666667, green: 0.2235294118, blue: 0.9215686275, alpha: 1)
+    static let blue: UIColor = #colorLiteral(red: 0.1529411765, green: 0.5098039216, blue: 0.8941176471, alpha: 1)
 }

@@ -11,10 +11,14 @@ public final class ChatView: UIView {
         return label
     }()
 
+    private let iconContainerView = UIView()
     private let onlineUsersIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.3.fill")
+        let configuration = UIImage.SymbolConfiguration(pointSize: 12)
+        imageView.image = UIImage(systemName: Assets.persons.rawValue, withConfiguration: configuration)
         imageView.tintColor = Color.mediumPurple
+        imageView.contentMode = .scaleAspectFit
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -30,16 +34,70 @@ public final class ChatView: UIView {
 
     private let menuButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "three-dots-menu"), for: .normal)
+        button.setImage(Assets.threeDotsMenu.image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private lazy var topStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [liveLabel, onlineUsersIcon, onlineUsersLabel, menuButton])
+        let stackView = UIStackView(arrangedSubviews: [liveLabel, iconContainerView, onlineUsersLabel, menuButton])
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+
+    private lazy var topContainerView: UIView = {
+        let view = UIView()
+        view.layer.shadowColor = Color.gray.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var textView: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Message"
+        textField.textColor = Color.darkGray
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private lazy var emojiButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: Assets.smilingFace.rawValue)?.withTintColor(Color.darkGray, renderingMode: .alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var sendButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: Assets.arrowUp.rawValue)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var bottomStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [textView, emojiButton, sendButton])
+        stackView.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private lazy var bottomContainerView: UIView = {
+        let view = UIView()
+        view.layer.shadowColor = Color.gray.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: -1)
+        view.layer.shadowRadius = 1
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     override init(frame: CGRect) {
@@ -60,15 +118,37 @@ extension ChatView {
     }
 
     func buildViewHierarchy() {
-        addSubview(topStackView)
+        iconContainerView.addSubview(onlineUsersIcon)
+        topContainerView.addSubview(topStackView)
+        bottomContainerView.addSubview(bottomStackView)
+        addSubview(topContainerView)
+        addSubview(bottomContainerView)
     }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            topStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            topStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            topStackView.heightAnchor.constraint(equalToConstant: 48)
+            onlineUsersIcon.leadingAnchor.constraint(equalTo: iconContainerView.leadingAnchor),
+            onlineUsersIcon.trailingAnchor.constraint(equalTo: iconContainerView.trailingAnchor),
+            onlineUsersIcon.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
+
+            topContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            topContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            topContainerView.topAnchor.constraint(equalTo: self.topAnchor),
+            topContainerView.heightAnchor.constraint(equalToConstant: 48),
+
+            topStackView.leadingAnchor.constraint(equalTo: topContainerView.leadingAnchor, constant: 16),
+            topStackView.trailingAnchor.constraint(equalTo: topContainerView.trailingAnchor, constant: -24),
+            topStackView.topAnchor.constraint(equalTo: topContainerView.topAnchor),
+            topStackView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor),
+
+            bottomStackView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
+            bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
+            bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
+            bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
+
+            bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }

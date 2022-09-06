@@ -31,9 +31,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'ArenaChatSDK/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'ArenaChatSDK' => ['ArenaChatSDK/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'ArenaChatSDK' => ['ArenaChatSDK/Images/*.png', 'ArenaChatSDK/Images/*.pdf']
+   }
+
+   s.resources = 'ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
