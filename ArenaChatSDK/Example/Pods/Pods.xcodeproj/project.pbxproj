@@ -16,7 +16,7 @@
 		8949DEC898AB63CD4B627B99044C240E /* Pods-ArenaChatSDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B127D3D7451B47BBB3CB621DEF8648 /* Pods-ArenaChatSDK_Tests-dummy.m */; };
 		A04C6FBE0F0575887283A64E05FE6BDB /* ArenaChatSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 382095B52465A07508B9F4C4F91DA7A5 /* ArenaChatSDK-dummy.m */; };
 		A5B10D1D1F244B2D45E8E29C1833AA2A /* OwnMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D544DA2D74EF86F5B8FA312EF868D42 /* OwnMessageCell.swift */; };
-		AA233B496AF3831B74D286E74FA0ABE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10556B5D3B2C345E932BD632F771DE95 /* Images.xcassets */; };
+		AA233B496AF3831B74D286E74FA0ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */; };
 		AACD548D5207A9C70B7B0BBC8C92A6C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		B2035996919D2CD4ED83D1793650C7A4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */; };
 		C51BDDA8395FB48233478C95F35A9036 /* ArenaChatSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53CDAE1FDCFD64FF15DD5D80C36E3D1F /* ArenaChatSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,7 +55,7 @@
 		065317EA376173110CA37CCC9DE138BE /* Pods-ArenaChatSDK_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ArenaChatSDK_Tests"; path = Pods_ArenaChatSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D46F4CB812349FEC548A09478EFE212 /* Pods-ArenaChatSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArenaChatSDK_Tests.modulemap"; sourceTree = "<group>"; };
 		0DE20BA421F4023156F231BCCB911E91 /* ChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
-		10556B5D3B2C345E932BD632F771DE95 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ArenaChatSDK; path = ArenaChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0A413D9AB2B13D5B0E8186FE464A2D /* Pods-ArenaChatSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArenaChatSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2406FBA5BF70255659CEA90D6E126EE0 /* Pods-ArenaChatSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,12 +190,12 @@
 		B644395428C8103500A56CCD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */,
 				7F919D094B16D6E298992AE9998A5A43 /* Assets.swift */,
 				0DE20BA421F4023156F231BCCB911E91 /* ChatCell.swift */,
 				93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */,
 				DBD9DFD5FE1512BB260455128A9F3257 /* Color.swift */,
 				9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */,
-				10556B5D3B2C345E932BD632F771DE95 /* Images.xcassets */,
 				8D544DA2D74EF86F5B8FA312EF868D42 /* OwnMessageCell.swift */,
 			);
 			name = Scenes;
@@ -409,7 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FF44DFD088707872AFA94BCF506C5A /* ArenaChatSDK-ArenaChatSDK in Resources */,
-				AA233B496AF3831B74D286E74FA0ABE1 /* Images.xcassets in Resources */,
+				AA233B496AF3831B74D286E74FA0ABE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

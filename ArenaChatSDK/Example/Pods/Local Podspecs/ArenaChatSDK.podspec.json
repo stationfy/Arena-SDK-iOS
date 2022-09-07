@@ -18,12 +18,6 @@
   "platforms": {
     "ios": "13.0"
   },
-  "source_files": "ArenaChatSDK/**/*.{swift, plist}",
-  "resource_bundles": {
-    "ArenaChatSDK": [
-      "ArenaChatSDK/Images/*.png",
-      "ArenaChatSDK/Images/*.pdf"
-    ]
-  },
+  "source_files": "ArenaChatSDK/Classes/**/*",
   "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}"
 }
