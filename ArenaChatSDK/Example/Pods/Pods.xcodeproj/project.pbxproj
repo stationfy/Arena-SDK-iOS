@@ -20,7 +20,7 @@
 		AACD548D5207A9C70B7B0BBC8C92A6C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		B2035996919D2CD4ED83D1793650C7A4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */; };
 		C51BDDA8395FB48233478C95F35A9036 /* ArenaChatSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53CDAE1FDCFD64FF15DD5D80C36E3D1F /* ArenaChatSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD9DF8183DE3D93A47E12F48A4615D70 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE20BA421F4023156F231BCCB911E91 /* ChatCell.swift */; };
+		DD9DF8183DE3D93A47E12F48A4615D70 /* ReplyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */; };
 		E4FF44DFD088707872AFA94BCF506C5A /* ArenaChatSDK-ArenaChatSDK in Resources */ = {isa = PBXBuildFile; fileRef = 3E379891E98F9B4EDF666B953A207F4E /* ArenaChatSDK-ArenaChatSDK */; };
 		F90031B20264B1139BB7D0BD2FE2E62E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		FDC3F19EC0E66005AFC045EFE8B4BCA1 /* ImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */; };
@@ -54,7 +54,7 @@
 		054585DE285F66F53486C40CBBEAD998 /* Pods-ArenaChatSDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ArenaChatSDK_Tests-umbrella.h"; sourceTree = "<group>"; };
 		065317EA376173110CA37CCC9DE138BE /* Pods-ArenaChatSDK_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ArenaChatSDK_Tests"; path = Pods_ArenaChatSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D46F4CB812349FEC548A09478EFE212 /* Pods-ArenaChatSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArenaChatSDK_Tests.modulemap"; sourceTree = "<group>"; };
-		0DE20BA421F4023156F231BCCB911E91 /* ChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplyChatCell.swift; sourceTree = "<group>"; };
 		10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ArenaChatSDK; path = ArenaChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0A413D9AB2B13D5B0E8186FE464A2D /* Pods-ArenaChatSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArenaChatSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			children = (
 				10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */,
 				7F919D094B16D6E298992AE9998A5A43 /* Assets.swift */,
-				0DE20BA421F4023156F231BCCB911E91 /* ChatCell.swift */,
+				0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */,
 				93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */,
 				DBD9DFD5FE1512BB260455128A9F3257 /* Color.swift */,
 				9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */,
@@ -466,7 +466,7 @@
 			files = (
 				A04C6FBE0F0575887283A64E05FE6BDB /* ArenaChatSDK-dummy.m in Sources */,
 				41225940F93ADCCD0F2054DDE10C3D1C /* Assets.swift in Sources */,
-				DD9DF8183DE3D93A47E12F48A4615D70 /* ChatCell.swift in Sources */,
+				DD9DF8183DE3D93A47E12F48A4615D70 /* ReplyChatCell.swift in Sources */,
 				B2035996919D2CD4ED83D1793650C7A4 /* ChatView.swift in Sources */,
 				6EB2B85E7D544D9E33EA093370A23FE4 /* Color.swift in Sources */,
 				FDC3F19EC0E66005AFC045EFE8B4BCA1 /* ImageRepresentable.swift in Sources */,

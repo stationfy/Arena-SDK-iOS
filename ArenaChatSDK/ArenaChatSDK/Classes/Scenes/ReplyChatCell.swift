@@ -1,6 +1,6 @@
 import UIKit
 
-public final class ChatCell: UITableViewCell {
+public final class ReplyChatCell: UITableViewCell {
     // MARK: - TopView
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -125,7 +125,7 @@ public final class ChatCell: UITableViewCell {
     }
 }
 
-extension ChatCell {
+extension ReplyChatCell {
     func buildViewHierarchy() {
         roundViewContainerView.addSubview(roundView)
         profileImageContainerView.addSubview(profileImageView)
@@ -190,7 +190,7 @@ extension ChatCell {
     }
 }
 
-public extension ChatCell {
+public extension ReplyChatCell {
     func setup() {
         let isHidden = false
         nameLabel.text = "Clau Maria"

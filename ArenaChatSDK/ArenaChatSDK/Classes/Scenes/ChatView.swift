@@ -35,6 +35,7 @@ public final class ChatView: UIView {
     private let menuButton: UIButton = {
         let button = UIButton()
         button.setImage(Assets.threeDotsMenu.image, for: .normal)
+        button.setContentHuggingPriority(.required, for: .horizontal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -55,6 +56,20 @@ public final class ChatView: UIView {
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(OwnMessageCell.self, forCellReuseIdentifier: "OwnMessageCell")
+        tableView.register(ReplyChatCell.self, forCellReuseIdentifier: "ReplyChatCell")
+        tableView.showsVerticalScrollIndicator = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = .none
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
 
     private lazy var textView: UITextField = {
@@ -122,6 +137,7 @@ extension ChatView {
         topContainerView.addSubview(topStackView)
         bottomContainerView.addSubview(bottomStackView)
         addSubview(topContainerView)
+        addSubview(tableView)
         addSubview(bottomContainerView)
     }
 
@@ -141,6 +157,11 @@ extension ChatView {
             topStackView.topAnchor.constraint(equalTo: topContainerView.topAnchor),
             topStackView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor),
 
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 2),
+            tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
+
             bottomStackView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
             bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
             bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
@@ -152,3 +173,16 @@ extension ChatView {
         ])
     }
 }
+
+extension ChatView: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyChatCell", for: indexPath) as! ReplyChatCell
+        return cell
+    }
+}
+
+extension ChatView: UITableViewDelegate { }
