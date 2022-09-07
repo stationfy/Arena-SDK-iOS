@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		0006B145FDC6F9A8505B9E51663B92DA /* aws_request_signer.h in Copy src/core/lib/security/credentials/external Private Headers */ = {isa = PBXBuildFile; fileRef = ECEAAE67CEA276C0D482EDC826F1B052 /* aws_request_signer.h */; };
 		0011E797F8DBFE93563D25A72640BE12 /* sockaddr_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = A688FEA8CF25FD0C8CB0AD3491DD901E /* sockaddr_utils.h */; };
 		001F3C72A067D3181925071A5D336B05 /* sdk_server_authz_filter.h in Copy src/core/lib/security/authorization Private Headers */ = {isa = PBXBuildFile; fileRef = C856525EE33C68EC54E5F30D92BBB445 /* sdk_server_authz_filter.h */; };
@@ -781,6 +782,7 @@
 		24949503C4FBC4CB7E45349793CE1908 /* ssl_session.h in Headers */ = {isa = PBXBuildFile; fileRef = DA786C57E2580962AB524C00408334C6 /* ssl_session.h */; };
 		2494C60D4D23E74FB83903470E588523 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 45BC1CFB834FC8BAE9D26268C92735CB /* md5.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
 		249A88C41F417E63014995BEFF0F5370 /* eval.upbdefs.h in Copy src/core/ext/upbdefs-generated/google/api/expr/v1alpha1 Private Headers */ = {isa = PBXBuildFile; fileRef = 2AC908B34F2F5CEA398C9676D230A4EC /* eval.upbdefs.h */; };
+		249BBB1E7337BD5A33DCA3C943CE6289 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F6062E720E9F9FBD42AE630371FA /* ChatCell.swift */; };
 		249C1A21E9082D07080BD4FF320DBD81 /* socket_utils.h in Copy src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = B052751EAA85CDE413E602B17E48257E /* socket_utils.h */; };
 		24AFD52906843A5CB98609AC8C4E0574 /* internal.h in Copy crypto/bytestring Private Headers */ = {isa = PBXBuildFile; fileRef = 5CE488A0AF902770F596487D8D20A826 /* internal.h */; };
 		24C432867299BC88CF09793C92C495EF /* path_transformation.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = E1E76A26EEF6ED02E2D7509AF573E0F2 /* path_transformation.upb.h */; };
@@ -2514,12 +2516,6 @@
 		748CF1819D9F14D9F113AD864C76CB37 /* lb_policy_factory.h in Copy src/core/ext/filters/client_channel Private Headers */ = {isa = PBXBuildFile; fileRef = 347F040FC30C87A78C4779E74663AC3B /* lb_policy_factory.h */; };
 		748EF9F0C3857104AF1D26660B771DE6 /* server.h in Headers */ = {isa = PBXBuildFile; fileRef = 789EB9821030649769CA926E4AC3BAB0 /* server.h */; };
 		749FE893AD9255090C9D5691C4CEDB3F /* GDTCORMetricsMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = AC769942755E1080226E57B9F303076E /* GDTCORMetricsMetadata.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		74C2912628C91F41006584D8 /* OwnMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2912028C91F3F006584D8 /* OwnMessageCell.swift */; };
-		74C2912728C91F41006584D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C2912128C91F40006584D8 /* Assets.xcassets */; };
-		74C2912828C91F41006584D8 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2912228C91F40006584D8 /* Assets.swift */; };
-		74C2912928C91F41006584D8 /* ReplyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2912328C91F40006584D8 /* ReplyChatCell.swift */; };
-		74C2912A28C91F41006584D8 /* ImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2912428C91F40006584D8 /* ImageRepresentable.swift */; };
-		74C2912B28C91F41006584D8 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2912528C91F41006584D8 /* ChatView.swift */; };
 		74CB9164ACDF5EA544FBCDBA6A8C840F /* windows_logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 96F9CB1F18F66EBA3A7C0085DE4F7AF7 /* windows_logger.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		74CC972E2A6484F7FC9584EFED8FC4BC /* cordz_functions.h in Copy strings/internal Public Headers */ = {isa = PBXBuildFile; fileRef = 98FD010C6AECB36DF5739308B57431BD /* cordz_functions.h */; };
 		74D1C7AB8260245D98CC9FBE29A9971F /* config_selector.h in Headers */ = {isa = PBXBuildFile; fileRef = E3338DDC82735E2C2BBE4B72BF6CDA40 /* config_selector.h */; };
@@ -2715,6 +2711,13 @@
 		7DB8EBA91E1E7B063A700696D9AB1F3D /* uri_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C98FF343283B911606BD180E762BF23 /* uri_parser.h */; };
 		7DBBB034BCC5ED99522DF79ABF9F3987 /* create_default_thread_pool.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2E001248AFDB4465EB93B922956B6F5D /* create_default_thread_pool.cc */; settings = {COMPILER_FLAGS = "-Wno-comma -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		7DD705B7B91CC97C96E7C548CA105792 /* intercepted_channel.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = A4977EE9983AF377B83FEF00848C0528 /* intercepted_channel.h */; };
+=======
+		0F7C0B9D847F21C329ED4CF369403903 /* Pods-ArenaChatSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB7C624DE0E38B35BEE704E9A1CD46D /* Pods-ArenaChatSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		154D14E63CE582FA6076F8D23A97A3D8 /* Pods-ArenaChatSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2312001344F4169C674FC3C430CDBF /* Pods-ArenaChatSDK_Example-dummy.m */; };
+		41225940F93ADCCD0F2054DDE10C3D1C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F919D094B16D6E298992AE9998A5A43 /* Assets.swift */; };
+		4A6B07AA909C5D661D9C527A25BC276A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6EB2B85E7D544D9E33EA093370A23FE4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9DFD5FE1512BB260455128A9F3257 /* Color.swift */; };
+>>>>>>> feature/create-chat-screen
 		7DE43A6A2EB3383E04AC2EA46B7A978A /* Pods-ArenaChatSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 054585DE285F66F53486C40CBBEAD998 /* Pods-ArenaChatSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DF4455427AFA6A3015CE38809671FC3 /* status.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 0396E9FE8F5301815720F994EE2B2620 /* status.upb.h */; };
 		7DFF83407E2EDE85C30498956DA33FCF /* http_connect_handshaker.h in Headers */ = {isa = PBXBuildFile; fileRef = A478448B509525E78396685198A106F0 /* http_connect_handshaker.h */; };
@@ -2978,6 +2981,7 @@
 		893ADE4FFADF28FE433ADEE063F4272C /* backoff.upbdefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 81B574E3EBE767A3E3D435307D227004 /* backoff.upbdefs.c */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		893D5208916043CBE4653446F4BF0CC9 /* security_handshaker.h in Copy src/core/lib/security/transport Private Headers */ = {isa = PBXBuildFile; fileRef = 0374FAAB9914C7E98A8893E7F9629DB4 /* security_handshaker.h */; };
 		8949DEC898AB63CD4B627B99044C240E /* Pods-ArenaChatSDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B127D3D7451B47BBB3CB621DEF8648 /* Pods-ArenaChatSDK_Tests-dummy.m */; };
+<<<<<<< HEAD
 		89647EE7E5C1387FBB0BB1BB43F3BAD8 /* rbac.upb.h in Copy src/core/ext/upb-generated/envoy/config/rbac/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 08FE3EC62800B93F35565201D3E00800 /* rbac.upb.h */; };
 		8999BBC3E0C2B29480A87EDB9019F975 /* frame_settings.cc in Sources */ = {isa = PBXBuildFile; fileRef = DE44BFDDA18AD1375D63285C56B8A1CB /* frame_settings.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		89C6369F88C9DAD84A8A2952FD82B797 /* connectivity_state.h in Copy src/core/lib/transport Private Headers */ = {isa = PBXBuildFile; fileRef = 3FAA5C046454F6A431C40A9AA8906EB2 /* connectivity_state.h */; };
@@ -5758,12 +5762,29 @@
 			remoteInfo = KeychainSwift;
 		};
 		76E7DBDEAE0F463F3A524B2570442414 /* PBXContainerItemProxy */ = {
+=======
+		A04C6FBE0F0575887283A64E05FE6BDB /* ArenaChatSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 382095B52465A07508B9F4C4F91DA7A5 /* ArenaChatSDK-dummy.m */; };
+		A5B10D1D1F244B2D45E8E29C1833AA2A /* OwnMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D544DA2D74EF86F5B8FA312EF868D42 /* OwnMessageCell.swift */; };
+		AA233B496AF3831B74D286E74FA0ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */; };
+		AACD548D5207A9C70B7B0BBC8C92A6C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		B2035996919D2CD4ED83D1793650C7A4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */; };
+		C51BDDA8395FB48233478C95F35A9036 /* ArenaChatSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53CDAE1FDCFD64FF15DD5D80C36E3D1F /* ArenaChatSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD9DF8183DE3D93A47E12F48A4615D70 /* ReplyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */; };
+		E4FF44DFD088707872AFA94BCF506C5A /* ArenaChatSDK-ArenaChatSDK in Resources */ = {isa = PBXBuildFile; fileRef = 3E379891E98F9B4EDF666B953A207F4E /* ArenaChatSDK-ArenaChatSDK */; };
+		F90031B20264B1139BB7D0BD2FE2E62E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		FDC3F19EC0E66005AFC045EFE8B4BCA1 /* ImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		701FB990CB2C9FEB9E3E273C7FBF4CC9 /* PBXContainerItemProxy */ = {
+>>>>>>> feature/create-chat-screen
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 735D791E2421CEFF653F76ABF8DF8B84;
 			remoteInfo = ArenaChatSDK;
 		};
+<<<<<<< HEAD
 		78E72E67EF4E7A11BC1F56182C8E494C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -5772,6 +5793,16 @@
 			remoteInfo = "BoringSSL-GRPC";
 		};
 		7A89B25B7EED1BA886FE05D82C268AF9 /* PBXContainerItemProxy */ = {
+=======
+		8C6ACB568A2B0A294AC5E60731A3DF2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55B757EA0A7E46D3F56D5EB457AF2546;
+			remoteInfo = "ArenaChatSDK-ArenaChatSDK";
+		};
+		F424F99ADC3527853397AD4983AAB32C /* PBXContainerItemProxy */ = {
+>>>>>>> feature/create-chat-screen
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -5892,9 +5923,59 @@
 		};
 /* End PBXContainerItemProxy section */
 
+<<<<<<< HEAD
 /* Begin PBXCopyFilesBuildPhase section */
 		004B21DEF69F2C1A076A5E0CA7B29603 /* Copy crypto/trust_token Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+/* Begin PBXFileReference section */
+		054585DE285F66F53486C40CBBEAD998 /* Pods-ArenaChatSDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ArenaChatSDK_Tests-umbrella.h"; sourceTree = "<group>"; };
+		065317EA376173110CA37CCC9DE138BE /* Pods-ArenaChatSDK_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ArenaChatSDK_Tests"; path = Pods_ArenaChatSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D46F4CB812349FEC548A09478EFE212 /* Pods-ArenaChatSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArenaChatSDK_Tests.modulemap"; sourceTree = "<group>"; };
+		0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplyChatCell.swift; sourceTree = "<group>"; };
+		10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ArenaChatSDK; path = ArenaChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0A413D9AB2B13D5B0E8186FE464A2D /* Pods-ArenaChatSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArenaChatSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2406FBA5BF70255659CEA90D6E126EE0 /* Pods-ArenaChatSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		27E62A8443472A14FA4A29E304DE4719 /* ArenaChatSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = ArenaChatSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		382095B52465A07508B9F4C4F91DA7A5 /* ArenaChatSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ArenaChatSDK-dummy.m"; sourceTree = "<group>"; };
+		3D67F9BB019BFB5ADF5513B08991EAB6 /* ArenaChatSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ArenaChatSDK.modulemap; sourceTree = "<group>"; };
+		3E379891E98F9B4EDF666B953A207F4E /* ArenaChatSDK-ArenaChatSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "ArenaChatSDK-ArenaChatSDK"; path = ArenaChatSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4446D59F5DA3EC56A3A5A96F50D74919 /* Pods-ArenaChatSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C051C451BD028B614B5337489300FDA /* Pods-ArenaChatSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArenaChatSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		53CDAE1FDCFD64FF15DD5D80C36E3D1F /* ArenaChatSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ArenaChatSDK-umbrella.h"; sourceTree = "<group>"; };
+		53F02635C1A2D4EEA35E6DE174A16B9A /* ArenaChatSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ArenaChatSDK.debug.xcconfig; sourceTree = "<group>"; };
+		5C2312001344F4169C674FC3C430CDBF /* Pods-ArenaChatSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArenaChatSDK_Example-dummy.m"; sourceTree = "<group>"; };
+		62C327C3B6845C52F75E2FE73409487D /* Pods-ArenaChatSDK_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArenaChatSDK_Example-Info.plist"; sourceTree = "<group>"; };
+		62D6B84DB2C97FD1593FD76819129328 /* Pods-ArenaChatSDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArenaChatSDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		644569028FAC3AE73AF3186880E8058E /* Pods-ArenaChatSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		78D8BAE7B7DE184DF06BB9B519796300 /* ArenaChatSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ArenaChatSDK-Info.plist"; sourceTree = "<group>"; };
+		7A01DDDB547C88CA8C065267B2C7BF97 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		7F919D094B16D6E298992AE9998A5A43 /* Assets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		81BE467B76B53FFBA587F7FA512B55A9 /* ResourceBundle-ArenaChatSDK-ArenaChatSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ArenaChatSDK-ArenaChatSDK-Info.plist"; sourceTree = "<group>"; };
+		8AB7C624DE0E38B35BEE704E9A1CD46D /* Pods-ArenaChatSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ArenaChatSDK_Example-umbrella.h"; sourceTree = "<group>"; };
+		8B6B6FC01806D387B0449CB39494104F /* Pods-ArenaChatSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArenaChatSDK_Example.modulemap"; sourceTree = "<group>"; };
+		8D544DA2D74EF86F5B8FA312EF868D42 /* OwnMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OwnMessageCell.swift; sourceTree = "<group>"; };
+		93597F188C4CB379B5BB2390B0E73D9D /* Pods-ArenaChatSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArenaChatSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		98F180C893F0A0D0952954E7539FAB58 /* Pods-ArenaChatSDK_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ArenaChatSDK_Example"; path = Pods_ArenaChatSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageRepresentable.swift; sourceTree = "<group>"; };
+		C635010A70D8A14B10EDD7AC9C882E65 /* ArenaChatSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ArenaChatSDK.release.xcconfig; sourceTree = "<group>"; };
+		C75CAC66DCE67E3C059D72C4D2179C9A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D2FAA4FD8CD05DC0B74127F14E63CD87 /* Pods-ArenaChatSDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArenaChatSDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		D4536799BC94DBC46FF449C7B0E67090 /* Pods-ArenaChatSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		D4B127D3D7451B47BBB3CB621DEF8648 /* Pods-ArenaChatSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArenaChatSDK_Tests-dummy.m"; sourceTree = "<group>"; };
+		DBD9DFD5FE1512BB260455128A9F3257 /* Color.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F444E1D826AD7972F61CBE2BCE29FEA9 /* ArenaChatSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ArenaChatSDK-prefix.pch"; sourceTree = "<group>"; };
+		FAB0CFDEDAE74361D85C26C0CB5BB38F /* Pods-ArenaChatSDK_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArenaChatSDK_Tests-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DF8B9ABDD5BC4BBB34CFDEB6F55EFBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/crypto/trust_token";
 			dstSubfolderSpec = 16;
@@ -5904,28 +5985,54 @@
 			name = "Copy crypto/trust_token Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		008361053D75AD7D52FDDE80885E2E6F /* Copy src/cpp/server/health Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		5A0CED027DB02AF1C986BBB59167CCE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/cpp/server/health";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				310186CF65AB437FE76E531F0DEAA6ED /* default_health_check_service.h in Copy src/cpp/server/health Private Headers */,
+=======
+				4A6B07AA909C5D661D9C527A25BC276A /* Foundation.framework in Frameworks */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/cpp/server/health Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		00C3788D1BDA12A0EF5866074079C385 /* Copy src/core/ext/transport/chttp2/alpn Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		C8C8A0146CE07164960D3340554A2F78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACD548D5207A9C70B7B0BBC8C92A6C0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE9A4490E83492E2D504D5B92A834C5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/ext/transport/chttp2/alpn";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				6FFD95E87D23A8220A0C4ED667927189 /* alpn.h in Copy src/core/ext/transport/chttp2/alpn Private Headers */,
+=======
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/transport/chttp2/alpn Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		01AE99A2E7D3EE9089A0E86B225A7CA3 /* Copy src/core/ext/upbdefs-generated/envoy/config/trace/v3 Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5947,6 +6054,18 @@
 			);
 			name = "Copy crypto/bytestring Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
+=======
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0588CFDF45939289F027C3D4DCC49D16 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E00C33CD2DB861306E6D84B06BAA2B5A /* ArenaChatSDK */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+>>>>>>> feature/create-chat-screen
 		};
 		020CF60A7AF5B137F265CEDC32AE227E /* Copy impl/codegen Public Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -5981,6 +6100,7 @@
 			name = "Copy impl/codegen Public Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		02E99C4E07FCA16944879C8FCCA69299 /* Copy src/core/ext/upbdefs-generated/xds/core/v3 Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6005,10 +6125,17 @@
 			files = (
 				A45E05EAB8495FDB2113C7C303991EE5 /* channel_filter.h in Copy src/cpp/common Private Headers */,
 				A55BF675DA2512055AFFCE52852A6D06 /* secure_auth_context.h in Copy src/cpp/common Private Headers */,
+=======
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/cpp/common Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		02FFAD37A29DF3BC92E1972C7E3CFCEE /* Copy src/core/ext/filters/http/client Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6027,6 +6154,19 @@
 			dstSubfolderSpec = 16;
 			files = (
 				DE8BA682E011EE7D5D270EBFFF633E65 /* core_configuration.h in Copy src/core/lib/config Private Headers */,
+=======
+		8019FBF764446414D038D833439CAC78 /* Pods-ArenaChatSDK_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0D46F4CB812349FEC548A09478EFE212 /* Pods-ArenaChatSDK_Tests.modulemap */,
+				4C051C451BD028B614B5337489300FDA /* Pods-ArenaChatSDK_Tests-acknowledgements.markdown */,
+				D2FAA4FD8CD05DC0B74127F14E63CD87 /* Pods-ArenaChatSDK_Tests-acknowledgements.plist */,
+				D4B127D3D7451B47BBB3CB621DEF8648 /* Pods-ArenaChatSDK_Tests-dummy.m */,
+				FAB0CFDEDAE74361D85C26C0CB5BB38F /* Pods-ArenaChatSDK_Tests-Info.plist */,
+				054585DE285F66F53486C40CBBEAD998 /* Pods-ArenaChatSDK_Tests-umbrella.h */,
+				4446D59F5DA3EC56A3A5A96F50D74919 /* Pods-ArenaChatSDK_Tests.debug.xcconfig */,
+				2406FBA5BF70255659CEA90D6E126EE0 /* Pods-ArenaChatSDK_Tests.release.xcconfig */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/lib/config Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6044,6 +6184,7 @@
 			name = "Copy src/core/lib/security/credentials/alts Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		036E61A35C365BED6095E1EF27716166 /* Copy src/core/lib/security/credentials/jwt Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6068,10 +6209,36 @@
 				11A05DEBF992C55111BF8F71B11A2638 /* sensitive.upb.h in Copy src/core/ext/upb-generated/udpa/annotations Private Headers */,
 				9AE8F5E51E61E7020ADE78EFCCAA86E2 /* status.upb.h in Copy src/core/ext/upb-generated/udpa/annotations Private Headers */,
 				DE9E7693516189188B066E18032BF4B3 /* versioning.upb.h in Copy src/core/ext/upb-generated/udpa/annotations Private Headers */,
+=======
+		B644395428C8103500A56CCD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				10556B5D3B2C345E932BD632F771DE95 /* Assets.xcassets */,
+				7F919D094B16D6E298992AE9998A5A43 /* Assets.swift */,
+				0DE20BA421F4023156F231BCCB911E91 /* ReplyChatCell.swift */,
+				93B930C4582DDC5B17E3040F70C56206 /* ChatView.swift */,
+				DBD9DFD5FE1512BB260455128A9F3257 /* Color.swift */,
+				9E9F5B8666A81FD357BD89ADA9A1E5AF /* ImageRepresentable.swift */,
+				8D544DA2D74EF86F5B8FA312EF868D42 /* OwnMessageCell.swift */,
+			);
+			name = Scenes;
+			path = ArenaChatSDK/Classes/Scenes;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				0588CFDF45939289F027C3D4DCC49D16 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				E919F5C5B7E6CF7E1FE84F4E3BBBEE29 /* Products */,
+				B02EB80C874DC50ED56CA2E384150127 /* Targets Support Files */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/upb-generated/udpa/annotations Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		040B3DFC01C5BA332004B15EFF500745 /* Copy src/core/lib/security/credentials/local Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6079,12 +6246,74 @@
 			dstSubfolderSpec = 16;
 			files = (
 				5E7CD1F753ADFDAED4F3CC219AAC8685 /* local_credentials.h in Copy src/core/lib/security/credentials/local Private Headers */,
+=======
+		CFBF7916C5D0294C326DBBEE9F8C2D67 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D67F9BB019BFB5ADF5513B08991EAB6 /* ArenaChatSDK.modulemap */,
+				382095B52465A07508B9F4C4F91DA7A5 /* ArenaChatSDK-dummy.m */,
+				78D8BAE7B7DE184DF06BB9B519796300 /* ArenaChatSDK-Info.plist */,
+				F444E1D826AD7972F61CBE2BCE29FEA9 /* ArenaChatSDK-prefix.pch */,
+				53CDAE1FDCFD64FF15DD5D80C36E3D1F /* ArenaChatSDK-umbrella.h */,
+				53F02635C1A2D4EEA35E6DE174A16B9A /* ArenaChatSDK.debug.xcconfig */,
+				C635010A70D8A14B10EDD7AC9C882E65 /* ArenaChatSDK.release.xcconfig */,
+				81BE467B76B53FFBA587F7FA512B55A9 /* ResourceBundle-ArenaChatSDK-ArenaChatSDK-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ArenaChatSDK";
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/lib/security/credentials/local Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0422F75D65ADEEE78ED59D29DBBCE378 /* Copy src/core/lib/security/context Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		E00C33CD2DB861306E6D84B06BAA2B5A /* ArenaChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				B644395428C8103500A56CCD /* Scenes */,
+				E332490E28CC0C4850FDF826DD1D5740 /* Pod */,
+				CFBF7916C5D0294C326DBBEE9F8C2D67 /* Support Files */,
+			);
+			name = ArenaChatSDK;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		E332490E28CC0C4850FDF826DD1D5740 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				27E62A8443472A14FA4A29E304DE4719 /* ArenaChatSDK.podspec */,
+				7A01DDDB547C88CA8C065267B2C7BF97 /* LICENSE */,
+				C75CAC66DCE67E3C059D72C4D2179C9A /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		E919F5C5B7E6CF7E1FE84F4E3BBBEE29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */,
+				3E379891E98F9B4EDF666B953A207F4E /* ArenaChatSDK-ArenaChatSDK */,
+				98F180C893F0A0D0952954E7539FAB58 /* Pods-ArenaChatSDK_Example */,
+				065317EA376173110CA37CCC9DE138BE /* Pods-ArenaChatSDK_Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1C5032F87D4D39AE9693CE2E4049B9BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/lib/security/context";
 			dstSubfolderSpec = 16;
@@ -6094,24 +6323,42 @@
 			name = "Copy src/core/lib/security/context Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0435866DEAD3D597ED32731756EDA851 /* Copy src/core/tsi/alts/crypt Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		4E6EDAF6F891C13526F9D3EE94EEF00B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/tsi/alts/crypt";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				16CF3259799EA4965245EF22D759F21C /* gsec.h in Copy src/core/tsi/alts/crypt Private Headers */,
+=======
+				C51BDDA8395FB48233478C95F35A9036 /* ArenaChatSDK-umbrella.h in Headers */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/tsi/alts/crypt Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		045BEAD5A808DD2B3BE1C0FBAC481840 /* Copy src/core/ext/filters/deadline Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		62AB201A7F2B0B7FFBA39174F67D4FC4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/ext/filters/deadline";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				83EF431B0874F6A0D31EAEBE6241DBFD /* deadline_filter.h in Copy src/core/ext/filters/deadline Private Headers */,
+=======
+				0F7C0B9D847F21C329ED4CF369403903 /* Pods-ArenaChatSDK_Example-umbrella.h in Headers */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/filters/deadline Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6145,6 +6392,7 @@
 				8D2D18C6EBC14129E58F6F4586EF55D8 /* rbac_policy.h in Copy src/core/lib/security/authorization Private Headers */,
 				001F3C72A067D3181925071A5D336B05 /* sdk_server_authz_filter.h in Copy src/core/lib/security/authorization Private Headers */,
 			);
+<<<<<<< HEAD
 			name = "Copy src/core/lib/security/authorization Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6155,10 +6403,15 @@
 			dstSubfolderSpec = 16;
 			files = (
 				067D9056B039957666E5C7D60B3DF4BF /* credentials.h in Copy src/core/lib/security/credentials Private Headers */,
+=======
+			dependencies = (
+				963D21B7DCEF658B3F96CADA08DDE6DB /* PBXTargetDependency */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/lib/security/credentials Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		05FA586B6E162B211C4A6632FD8EC684 /* Copy functional/internal Public Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6167,6 +6420,33 @@
 			files = (
 				68866A5340E04D3EE5026ACCC112839D /* front_binder.h in Copy functional/internal Public Headers */,
 				CC34564587311318B261272550AA117F /* function_ref.h in Copy functional/internal Public Headers */,
+=======
+		55B757EA0A7E46D3F56D5EB457AF2546 /* ArenaChatSDK-ArenaChatSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D71672C57DFD491E276BCB8DD3247C51 /* Build configuration list for PBXNativeTarget "ArenaChatSDK-ArenaChatSDK" */;
+			buildPhases = (
+				7E176765CBF7DAE80B6C654751B46D53 /* Sources */,
+				EE9A4490E83492E2D504D5B92A834C5A /* Frameworks */,
+				AFEE63872C77D6CBAC778B48B8F4E712 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ArenaChatSDK-ArenaChatSDK";
+			productName = ArenaChatSDK;
+			productReference = 3E379891E98F9B4EDF666B953A207F4E /* ArenaChatSDK-ArenaChatSDK */;
+			productType = "com.apple.product-type.bundle";
+		};
+		735D791E2421CEFF653F76ABF8DF8B84 /* ArenaChatSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAB2717373F75837DDD22602F465F0EE /* Build configuration list for PBXNativeTarget "ArenaChatSDK" */;
+			buildPhases = (
+				4E6EDAF6F891C13526F9D3EE94EEF00B /* Headers */,
+				9F48D730ED9C68BFBA6C7EBC2C8CCB05 /* Sources */,
+				C8C8A0146CE07164960D3340554A2F78 /* Frameworks */,
+				291253A56747B640327F36AF09F1B6FF /* Resources */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy functional/internal Public Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6183,6 +6463,7 @@
 				170BF65EEFFF2B65C28CD8C0EC26D4F1 /* syntax.upb.h in Copy src/core/ext/upb-generated/google/api/expr/v1alpha1 Private Headers */,
 				4DBA539FFE14FFC45A0336F5D0AF734B /* value.upb.h in Copy src/core/ext/upb-generated/google/api/expr/v1alpha1 Private Headers */,
 			);
+<<<<<<< HEAD
 			name = "Copy src/core/ext/upb-generated/google/api/expr/v1alpha1 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6193,6 +6474,10 @@
 			dstSubfolderSpec = 16;
 			files = (
 				01CB3E142389E3441C4842C6DE04E614 /* config_dump.upbdefs.h in Copy src/core/ext/upbdefs-generated/envoy/admin/v3 Private Headers */,
+=======
+			dependencies = (
+				D7679C231D7DC7592B9638A1D989BE6C /* PBXTargetDependency */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/upbdefs-generated/envoy/admin/v3 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6217,6 +6502,7 @@
 			files = (
 				40590FDC6BD40FD39A3F1F1157A18C23 /* lds.upb.h in Copy src/core/ext/upb-generated/envoy/service/listener/v3 Private Headers */,
 			);
+<<<<<<< HEAD
 			name = "Copy src/core/ext/upb-generated/envoy/service/listener/v3 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6227,10 +6513,15 @@
 			dstSubfolderSpec = 16;
 			files = (
 				2A7249780E1C867EFB011D412BC6EBE6 /* binder_server.h in Copy src/core/ext/transport/binder/server Private Headers */,
+=======
+			dependencies = (
+				C10842A2646B9165774651DF5EFD2A69 /* PBXTargetDependency */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/transport/binder/server Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0766E0C7AF4EDB86F69FC9E0D3DC37E0 /* Copy src/core/lib/json Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6251,21 +6542,62 @@
 			files = (
 				2F1CF14A31BF983BA0A36C44F3CDEC28 /* async_generic_service.h in Copy generic Public Headers */,
 				BEBE34B3940869C08F34AE616FE4CCC3 /* generic_stub.h in Copy generic Public Headers */,
+=======
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = E919F5C5B7E6CF7E1FE84F4E3BBBEE29 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				735D791E2421CEFF653F76ABF8DF8B84 /* ArenaChatSDK */,
+				55B757EA0A7E46D3F56D5EB457AF2546 /* ArenaChatSDK-ArenaChatSDK */,
+				DB3939B8980413C0995C6E6770F7198F /* Pods-ArenaChatSDK_Example */,
+				1A364914B122401FF419CDEA6E8329D9 /* Pods-ArenaChatSDK_Tests */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy generic Public Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		078BA61C2BD70EC24BF25C27C39A8828 /* Copy src/core/lib/promise/detail Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		291253A56747B640327F36AF09F1B6FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/lib/promise/detail";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				7D9EBC36D0A1FECA9D1D40071E425FB3 /* basic_seq.h in Copy src/core/lib/promise/detail Private Headers */,
 				94CC908AAD035DB07128E8F620A94A8B /* promise_factory.h in Copy src/core/lib/promise/detail Private Headers */,
 				D121B2CCFAD34068892A03CECE3519D4 /* promise_like.h in Copy src/core/lib/promise/detail Private Headers */,
 				0CB42B5D370D4985106E7CAB75861740 /* status.h in Copy src/core/lib/promise/detail Private Headers */,
 				BB7792C14B64FB0DD9AECAE9C37A3F6B /* switch.h in Copy src/core/lib/promise/detail Private Headers */,
+=======
+				E4FF44DFD088707872AFA94BCF506C5A /* ArenaChatSDK-ArenaChatSDK in Resources */,
+				AA233B496AF3831B74D286E74FA0ABE1 /* Assets.xcassets in Resources */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/lib/promise/detail Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6281,8 +6613,20 @@
 			name = "Copy src/core/ext/upb-generated/envoy/extensions/filters/common/fault/v3 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		09A189A853C919C66FBD8919E971C423 /* Copy src/core/ext/upbdefs-generated/envoy/service/cluster/v3 Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		AFEE63872C77D6CBAC778B48B8F4E712 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF9757825E4AE6EDD849A7470F73F026 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/ext/upbdefs-generated/envoy/service/cluster/v3";
 			dstSubfolderSpec = 16;
@@ -6303,31 +6647,63 @@
 			name = "Copy src/core/ext/upbdefs-generated/envoy/config/accesslog/v3 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0ACF3A53936C0798D560EEF5F6F90639 /* Copy src/core/lib/config Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		756CCB2A4B2D3C15F1DF0FDB24F027F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/lib/config";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				10DA1023A5A607ED3224C00D23568F0F /* core_configuration.h in Copy src/core/lib/config Private Headers */,
+=======
+				154D14E63CE582FA6076F8D23A97A3D8 /* Pods-ArenaChatSDK_Example-dummy.m in Sources */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/lib/config Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0B77FD38BFBB7A003BC86E72B690DC48 /* Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
+=======
+		7E176765CBF7DAE80B6C654751B46D53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+>>>>>>> feature/create-chat-screen
 			buildActionMask = 2147483647;
 			dstPath = "$(PRIVATE_HEADERS_FOLDER_PATH)/src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3";
 			dstSubfolderSpec = 16;
 			files = (
+<<<<<<< HEAD
 				AB7186DC48381440F933F8095CA5AF8B /* cert.upb.h in Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */,
 				BC4FD97D7AA5CA5BB01B424F6B2CED72 /* common.upb.h in Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */,
 				64B109A567D8939F7872585210F84B12 /* secret.upb.h in Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */,
 				FBE4C6B7A2C06FA6D1C5D575BC40C90D /* tls.upb.h in Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */,
+=======
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F48D730ED9C68BFBA6C7EBC2C8CCB05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04C6FBE0F0575887283A64E05FE6BDB /* ArenaChatSDK-dummy.m in Sources */,
+				41225940F93ADCCD0F2054DDE10C3D1C /* Assets.swift in Sources */,
+				DD9DF8183DE3D93A47E12F48A4615D70 /* ReplyChatCell.swift in Sources */,
+				B2035996919D2CD4ED83D1793650C7A4 /* ChatView.swift in Sources */,
+				6EB2B85E7D544D9E33EA093370A23FE4 /* Color.swift in Sources */,
+				FDC3F19EC0E66005AFC045EFE8B4BCA1 /* ImageRepresentable.swift in Sources */,
+				A5B10D1D1F244B2D45E8E29C1833AA2A /* OwnMessageCell.swift in Sources */,
+>>>>>>> feature/create-chat-screen
 			);
 			name = "Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		0BC6718978DD27C18D2C69A4033CDB93 /* Copy src/core/lib/security/transport Private Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -12259,6 +12635,7 @@
 		03A02BF9C8AE3A526BBD48AE01B7AB7C /* ads.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ads.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/service/discovery/v3/ads.upbdefs.h"; sourceTree = "<group>"; };
 		03CC22EF30786D3824314C7B83477DA4 /* trust_token.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = trust_token.h; path = src/include/openssl/trust_token.h; sourceTree = "<group>"; };
 		03F17730A70E101D205F7CF529045C98 /* tcp_custom.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tcp_custom.cc; path = src/core/lib/iomgr/tcp_custom.cc; sourceTree = "<group>"; };
+		03F2F6062E720E9F9FBD42AE630371FA /* ChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		041038DCA57273E25C417B4F6F7191CC /* sync_custom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sync_custom.h; path = include/grpc/support/sync_custom.h; sourceTree = "<group>"; };
 		0435BC81C9DA691795DF07EF40B18241 /* ev_epoll1_linux.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ev_epoll1_linux.h; path = src/core/lib/iomgr/ev_epoll1_linux.h; sourceTree = "<group>"; };
 		043F86298F3F4181D361EA190CC3E518 /* grpc_streaming_reader.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = grpc_streaming_reader.cc; path = Firestore/core/src/remote/grpc_streaming_reader.cc; sourceTree = "<group>"; };
@@ -12528,7 +12905,7 @@
 		1797A48DE8EB3A9ED6BCBDFBC02C8A03 /* gsec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gsec.h; path = src/core/tsi/alts/crypt/gsec.h; sourceTree = "<group>"; };
 		17C4CE57EF1E62229A362342C59F7D17 /* http.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = http.upbdefs.h; path = "src/core/ext/upbdefs-generated/google/api/http.upbdefs.h"; sourceTree = "<group>"; };
 		17D03F6E2E77639CCA2A9682840114A1 /* authority.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = authority.upbdefs.h; path = "src/core/ext/upbdefs-generated/xds/core/v3/authority.upbdefs.h"; sourceTree = "<group>"; };
-		17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ArenaChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ArenaChatSDK; path = ArenaChatSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EB64271158D4C22E86E49299FEB8E4 /* FIRDocumentChange.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FIRDocumentChange.mm; path = Firestore/Source/API/FIRDocumentChange.mm; sourceTree = "<group>"; };
 		17F7AECAE7ECC3E30639650B5291687B /* cfb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cfb.c; path = src/crypto/fipsmodule/modes/cfb.c; sourceTree = "<group>"; };
 		1845F12F19A65FCF15E3BB431906558C /* leveldb_bundle_cache.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = leveldb_bundle_cache.cc; path = Firestore/core/src/local/leveldb_bundle_cache.cc; sourceTree = "<group>"; };
@@ -13892,12 +14269,6 @@
 		74745A472C8164E429EA3AE94086AFB4 /* FIRConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRConfiguration.h; path = FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h; sourceTree = "<group>"; };
 		74919A598B89CDC734AF8CC9E7226B11 /* grpc_tls_certificate_verifier.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = grpc_tls_certificate_verifier.cc; path = src/core/lib/security/credentials/tls/grpc_tls_certificate_verifier.cc; sourceTree = "<group>"; };
 		74BFF2E56FF82EC7A92170B4E2E390A0 /* security_connector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = security_connector.h; path = src/core/lib/security/security_connector/security_connector.h; sourceTree = "<group>"; };
-		74C2912028C91F3F006584D8 /* OwnMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnMessageCell.swift; sourceTree = "<group>"; };
-		74C2912128C91F40006584D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		74C2912228C91F40006584D8 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		74C2912328C91F40006584D8 /* ReplyChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyChatCell.swift; sourceTree = "<group>"; };
-		74C2912428C91F40006584D8 /* ImageRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRepresentable.swift; sourceTree = "<group>"; };
-		74C2912528C91F41006584D8 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		74C333825D275B4A8F03E3047418EF50 /* slice_buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = slice_buffer.h; path = include/grpc/slice_buffer.h; sourceTree = "<group>"; };
 		74CE627CED2EEF741523E94DBCEE14DD /* call_tracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call_tracer.h; path = src/core/lib/channel/call_tracer.h; sourceTree = "<group>"; };
 		74E348BD28C63E8000F45A55 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
@@ -19695,7 +20066,7 @@
 			isa = PBXGroup;
 			children = (
 				BF96B57ADE05E8909F823BDF6868B3E3 /* abseil */,
-				17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK.framework */,
+				17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */,
 				514D7742C6CBB0BDBD9984AEE97DDFDE /* BoringSSL-GRPC */,
 				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore */,
 				8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics */,
@@ -21347,12 +21718,7 @@
 		E477826D8D6122FAAB21D5A2CF326D6B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				74C2912228C91F40006584D8 /* Assets.swift */,
-				74C2912128C91F40006584D8 /* Assets.xcassets */,
-				74C2912528C91F41006584D8 /* ChatView.swift */,
-				74C2912428C91F40006584D8 /* ImageRepresentable.swift */,
-				74C2912028C91F3F006584D8 /* OwnMessageCell.swift */,
-				74C2912328C91F40006584D8 /* ReplyChatCell.swift */,
+				03F2F6062E720E9F9FBD42AE630371FA /* ChatCell.swift */,
 				B9DFE7583DEF52B4EE597BDBA9E92277 /* Color.swift */,
 			);
 			name = Scenes;
@@ -24493,7 +24859,7 @@
 			);
 			name = ArenaChatSDK;
 			productName = ArenaChatSDK;
-			productReference = 17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK.framework */;
+			productReference = 17D2DDF3069394EB01B13D8FADD196F7 /* ArenaChatSDK */;
 			productType = "com.apple.product-type.framework";
 		};
 		73CDC3D182DB953135F62609681B443D /* abseil */ = {
@@ -24773,7 +25139,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74C2912728C91F41006584D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26604,6 +26969,7 @@
 				740749D428C02E270030FF69 /* Logger.swift in Sources */,
 				E13F649A80A8C38304C78602FA7FA0EF /* API+Constants.swift in Sources */,
 				F2CAEFF1D382057BBE71FCA8F7CC5B3E /* ArenaChatSDK-dummy.m in Sources */,
+				249BBB1E7337BD5A33DCA3C943CE6289 /* ChatCell.swift in Sources */,
 				5780758FCA4545DD22F9C4D837A292E6 /* ChatStreamData.swift in Sources */,
 				74E348D728C642D500F45A55 /* ChatInfo.swift in Sources */,
 				5237A213DA3F270D1DAB904C07218E1D /* ChatStreamDelegate.swift in Sources */,
@@ -26626,10 +26992,8 @@
 				740749D628C02E350030FF69 /* ArenaChat.swift in Sources */,
 				74E348BE28C63E8000F45A55 /* ChatPresenter.swift in Sources */,
 				74E348C128C63ED100F45A55 /* BatchUpdate.swift in Sources */,
-				74C2912928C91F41006584D8 /* ReplyChatCell.swift in Sources */,
 				AE137498A928CEE9336520E4B24586FA /* MessageContent.swift in Sources */,
 				916FBFAF6259D5C608BEAAD5B1227482 /* MessageContentMedia.swift in Sources */,
-				74C2912628C91F41006584D8 /* OwnMessageCell.swift in Sources */,
 				EF6E68C4A2D7DB00C49D9BD8EBAB46B3 /* MessageResponse.swift in Sources */,
 				BEA47779429D5D5E86D6FC899B1976C2 /* MessageSender.swift in Sources */,
 				56EACFC6510EC322FA9B6211975A2C97 /* ParameterEncoding.swift in Sources */,
@@ -26641,15 +27005,12 @@
 				92BF16430B72AE2B66040DF37D705F3E /* Stream.swift in Sources */,
 				74666ACA28C6943D00F10923 /* Card.swift in Sources */,
 				6D04CB1D94F678DC54BF9FEEF94595DB /* StreamDatable.swift in Sources */,
-				74C2912A28C91F41006584D8 /* ImageRepresentable.swift in Sources */,
-				74C2912B28C91F41006584D8 /* ChatView.swift in Sources */,
 				74E348D328C6425B00F45A55 /* PublisherFeatureflag.swift in Sources */,
 				DCF8CD0BE5AC5C0E38DFC397F3B072A3 /* StreamDelegate.swift in Sources */,
 				341F4FCF42A5BCF929177A624A9E7295 /* SuccessResponse.swift in Sources */,
 				293A4DA6167C88EC8724314B603DCA19 /* URL+Util.swift in Sources */,
 				74E348D928C65A9300F45A55 /* Settings.swift in Sources */,
 				74E348D528C642BC00F45A55 /* EventTag.swift in Sources */,
-				74C2912828C91F41006584D8 /* Assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27011,7 +27372,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ArenaChatSDK/ArenaChatSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK.modulemap";
 				PRODUCT_MODULE_NAME = ArenaChatSDK;
@@ -27327,7 +27688,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -27469,7 +27830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -27826,7 +28187,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ArenaChatSDK/ArenaChatSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK.modulemap";
 				PRODUCT_MODULE_NAME = ArenaChatSDK;
@@ -27874,6 +28235,33 @@
 			name = Debug;
 		};
 		A244FBA8293A846535B9A0C8EC566A59 /* Release */ = {
+=======
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		963D21B7DCEF658B3F96CADA08DDE6DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ArenaChatSDK_Example";
+			target = DB3939B8980413C0995C6E6770F7198F /* Pods-ArenaChatSDK_Example */;
+			targetProxy = F424F99ADC3527853397AD4983AAB32C /* PBXContainerItemProxy */;
+		};
+		C10842A2646B9165774651DF5EFD2A69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ArenaChatSDK;
+			target = 735D791E2421CEFF653F76ABF8DF8B84 /* ArenaChatSDK */;
+			targetProxy = 701FB990CB2C9FEB9E3E273C7FBF4CC9 /* PBXContainerItemProxy */;
+		};
+		D7679C231D7DC7592B9638A1D989BE6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ArenaChatSDK-ArenaChatSDK";
+			target = 55B757EA0A7E46D3F56D5EB457AF2546 /* ArenaChatSDK-ArenaChatSDK */;
+			targetProxy = 8C6ACB568A2B0A294AC5E60731A3DF2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4DFFFBC605D248230C0334E7C43B15A1 /* Release */ = {
+>>>>>>> feature/create-chat-screen
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2406FBA5BF70255659CEA90D6E126EE0 /* Pods-ArenaChatSDK_Tests.release.xcconfig */;
 			buildSettings = {
@@ -27890,7 +28278,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-ArenaChatSDK_Tests/Pods-ArenaChatSDK_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+>>>>>>> feature/create-chat-screen
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ArenaChatSDK_Tests/Pods-ArenaChatSDK_Tests.modulemap";
@@ -27908,6 +28300,7 @@
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
 		A67C14DCB531A4B55A6FB95156FDDECB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FCAAE0647B098DE38639879428EE5D67 /* nanopb.release.xcconfig */;
@@ -28005,6 +28398,27 @@
 		BAD90E354B8A8C9F62AC864EB314E1BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4536799BC94DBC46FF449C7B0E67090 /* Pods-ArenaChatSDK_Example.debug.xcconfig */;
+=======
+		4E145B66EC6982C3AD6A012B2F010962 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C635010A70D8A14B10EDD7AC9C882E65 /* ArenaChatSDK.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ArenaChatSDK";
+				IBSC_MODULE = ArenaChatSDK;
+				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ResourceBundle-ArenaChatSDK-ArenaChatSDK-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = ArenaChatSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		860ABA7569E3705C792C746C75EDEF14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4446D59F5DA3EC56A3A5A96F50D74919 /* Pods-ArenaChatSDK_Tests.debug.xcconfig */;
+>>>>>>> feature/create-chat-screen
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -28017,12 +28431,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+<<<<<<< HEAD
 				INFOPLIST_FILE = "Target Support Files/Pods-ArenaChatSDK_Example/Pods-ArenaChatSDK_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ArenaChatSDK_Example/Pods-ArenaChatSDK_Example.modulemap";
+=======
+				INFOPLIST_FILE = "Target Support Files/Pods-ArenaChatSDK_Tests/Pods-ArenaChatSDK_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ArenaChatSDK_Tests/Pods-ArenaChatSDK_Tests.modulemap";
+>>>>>>> feature/create-chat-screen
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -28036,6 +28459,7 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		C03DCFCEADA9A14E015ED3B48BFC0F12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA33FF70EC9037B751D56F6C3284AF5A /* GoogleUtilities.release.xcconfig */;
@@ -28064,9 +28488,75 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+=======
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+>>>>>>> feature/create-chat-screen
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
 		C8F7BA3F6E125EFB1F128780CF7FF304 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4446D59F5DA3EC56A3A5A96F50D74919 /* Pods-ArenaChatSDK_Tests.debug.xcconfig */;
@@ -28170,6 +28660,72 @@
 		E4088479C30B8CFF0D162FA3C6A4B0F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15B515FFF7B8B5FE24DA80CCEEB9B88F /* PromisesObjC.debug.xcconfig */;
+=======
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D71447333E290EFA307F4F1029CD501D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4536799BC94DBC46FF449C7B0E67090 /* Pods-ArenaChatSDK_Example.debug.xcconfig */;
+>>>>>>> feature/create-chat-screen
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -28179,6 +28735,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+<<<<<<< HEAD
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/PromisesObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -28186,6 +28743,19 @@
 				MODULEMAP_FILE = "Target Support Files/PromisesObjC/PromisesObjC.modulemap";
 				PRODUCT_MODULE_NAME = FBLPromises;
 				PRODUCT_NAME = FBLPromises;
+=======
+				INFOPLIST_FILE = "Target Support Files/Pods-ArenaChatSDK_Example/Pods-ArenaChatSDK_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ArenaChatSDK_Example/Pods-ArenaChatSDK_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+>>>>>>> feature/create-chat-screen
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -28196,9 +28766,15 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		F55F092E927A09A12BC097C306DD442E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A581266C81686AAD377215407D381103 /* abseil.debug.xcconfig */;
+=======
+		DF63BBDF34E5D4874350D4650E642F74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C635010A70D8A14B10EDD7AC9C882E65 /* ArenaChatSDK.release.xcconfig */;
+>>>>>>> feature/create-chat-screen
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -28209,6 +28785,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+<<<<<<< HEAD
 				GCC_PREFIX_HEADER = "Target Support Files/abseil/abseil-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/abseil/abseil-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -28217,17 +28794,48 @@
 				MODULEMAP_FILE = "Target Support Files/abseil/abseil.modulemap";
 				PRODUCT_MODULE_NAME = absl;
 				PRODUCT_NAME = absl;
+=======
+				GCC_PREFIX_HEADER = "Target Support Files/ArenaChatSDK/ArenaChatSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK.modulemap";
+				PRODUCT_MODULE_NAME = ArenaChatSDK;
+				PRODUCT_NAME = ArenaChatSDK;
+>>>>>>> feature/create-chat-screen
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
+			name = Release;
+		};
+		DF9FE01CE81B7B9D3247B53C0D32E31B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F02635C1A2D4EEA35E6DE174A16B9A /* ArenaChatSDK.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ArenaChatSDK";
+				IBSC_MODULE = ArenaChatSDK;
+				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ResourceBundle-ArenaChatSDK-ArenaChatSDK-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = ArenaChatSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		FAF25D3F8D70CA9B3E7A591C1BFA966C /* Debug */ = {
+=======
+		E12B103F5FC1A05882E5F1CA810F80AC /* Release */ = {
+>>>>>>> feature/create-chat-screen
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 629A32789EDF6A8496AB4AD64EFD41AC /* FirebaseFirestore.debug.xcconfig */;
 			buildSettings = {
@@ -28243,7 +28851,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+>>>>>>> feature/create-chat-screen
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore.modulemap";
 				PRODUCT_MODULE_NAME = FirebaseFirestore;
@@ -28252,6 +28864,38 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE42DF90A29BAE4AB034CEC5657C2D57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F02635C1A2D4EEA35E6DE174A16B9A /* ArenaChatSDK.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ArenaChatSDK/ArenaChatSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ArenaChatSDK/ArenaChatSDK.modulemap";
+				PRODUCT_MODULE_NAME = ArenaChatSDK;
+				PRODUCT_NAME = ArenaChatSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -28300,8 +28944,8 @@
 		26EC8C5C9D986E1475C31069DEBC24CF /* Build configuration list for PBXNativeTarget "Pods-ArenaChatSDK_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C8F7BA3F6E125EFB1F128780CF7FF304 /* Debug */,
-				A244FBA8293A846535B9A0C8EC566A59 /* Release */,
+				860ABA7569E3705C792C746C75EDEF14 /* Debug */,
+				4DFFFBC605D248230C0334E7C43B15A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -28327,8 +28971,13 @@
 		3F6CD11CAA41D8F46545985A2D2B3500 /* Build configuration list for PBXNativeTarget "gRPC-C++" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
+<<<<<<< HEAD
 				DDF88C647CA369A95D2DD2C3275B4B85 /* Debug */,
 				99FA4EF0A7E78452436849A533A4D8BE /* Release */,
+=======
+				D71447333E290EFA307F4F1029CD501D /* Debug */,
+				E12B103F5FC1A05882E5F1CA810F80AC /* Release */,
+>>>>>>> feature/create-chat-screen
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -28336,12 +28985,22 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2B9E26EAE2CD392AD762421F663075A1 /* Debug */,
-				63FAF33E1C55B71A5F5A8B3CC8749F99 /* Release */,
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D71672C57DFD491E276BCB8DD3247C51 /* Build configuration list for PBXNativeTarget "ArenaChatSDK-ArenaChatSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF9FE01CE81B7B9D3247B53C0D32E31B /* Debug */,
+				4E145B66EC6982C3AD6A012B2F010962 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+<<<<<<< HEAD
 		4D8A776200EB43DE7FAC049E521A3378 /* Build configuration list for PBXNativeTarget "KeychainSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -28437,6 +29096,13 @@
 			buildConfigurations = (
 				89B533AAF259EB6CA85CA912BB72381F /* Debug */,
 				796454F5615752629475BCD4A5089F39 /* Release */,
+=======
+		EAB2717373F75837DDD22602F465F0EE /* Build configuration list for PBXNativeTarget "ArenaChatSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE42DF90A29BAE4AB034CEC5657C2D57 /* Debug */,
+				DF63BBDF34E5D4874350D4650E642F74 /* Release */,
+>>>>>>> feature/create-chat-screen
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

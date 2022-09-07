@@ -15,10 +15,10 @@ public protocol ParameterEncoding {
     func encode(_ urlRequest: URLRequest, with parameters: Parameters?) throws -> URLRequest
 }
 
-struct URLEncoder: ParameterEncoding {
+struct URLParameterEncoder: ParameterEncoding {
 
     /// Returns a `URLEncoder` instance with default writing options.
-    static var `default`: URLEncoder { URLEncoder() }
+    static var `default`: URLParameterEncoder { URLParameterEncoder() }
 
     private init() { }
 
@@ -89,12 +89,12 @@ struct URLEncoder: ParameterEncoding {
 
 /// Uses `JSONSerialization` to create a JSON representation of the parameters object, which is set as the body of the
 /// request. The `Content-Type` HTTP header field of an encoded request is set to `application/json`.
-struct JSONEncoder: ParameterEncoding {
+struct JSONParameterEncoder: ParameterEncoding {
 
     // MARK: Properties
 
     /// Returns a `JSONEncoder` instance with default writing options.
-    static var `default`: JSONEncoder { JSONEncoder() }
+    static var `default`: JSONParameterEncoder { JSONParameterEncoder() }
 
     private init() { }
 

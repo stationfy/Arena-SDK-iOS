@@ -19,7 +19,7 @@
     "ios": "13.0"
   },
   "source_files": "ArenaChatSDK/Classes/**/*",
-  "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}",
+<<<<<<< HEAD
   "dependencies": {
     "FirebaseFirestore": [
 
@@ -28,4 +28,7 @@
       "~> 20.0"
     ]
   }
+=======
+  "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}"
+>>>>>>> feature/create-chat-screen
 }

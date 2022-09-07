@@ -53,9 +53,9 @@ extension URLRequest {
     private static func encoding(method: HTTPMethod) -> ParameterEncoding {
         switch method {
         case .get:
-            return URLEncoder.default
+            return URLParameterEncoder.default
         default:
-            return JSONEncoder.default
+            return JSONParameterEncoder.default
         }
     }
 

@@ -21,16 +21,16 @@ extension BatchUpdates {
         var foundValue = false
 
         var newValuesTuple = newValues
-            .filter { $0.type != .empty && $0.post.key != nil }
+            .filter { $0.chatMessage.key != nil }
             .enumerated()
-            .map { (id: $0.element.post.key,
+            .map { (id: $0.element.chatMessage.key,
                     offset: $0.offset,
                     alreadyFound: false) }
 
         let oldValuesTuple = oldValues
-            .filter { $0.type != .empty && $0.post.key != nil }
+            .filter { $0.chatMessage.key != nil }
             .enumerated()
-            .map { (id: $0.element.post.key ?? "",
+            .map { (id: $0.element.chatMessage.key ?? "",
                     offset: $0.offset) }
 
         for oldValue in oldValuesTuple {
