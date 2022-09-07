@@ -2506,6 +2506,7 @@
 		745410E04063C4FB2D5F23CD41A25F56 /* symbolize.h in Copy debugging/internal Public Headers */ = {isa = PBXBuildFile; fileRef = 6F554BE13CD97322B445952357A3C68F /* symbolize.h */; };
 		74555208A7B3B3ACF2AB3D9500410BA6 /* tls_certificate_provider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BDF8FAB32D918C3D10E08D1AD5497DB /* tls_certificate_provider.h */; };
 		74606801B09608DC47AD08326022F238 /* annotations.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = CFCB2B8394E676CD72139C37BD7F85E3 /* annotations.upb.h */; };
+		74666ACA28C6943D00F10923 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74666AC928C6943D00F10923 /* Card.swift */; };
 		7479240D4DEE55ABF9C8250FF035E03F /* ascii.h in Copy strings Public Headers */ = {isa = PBXBuildFile; fileRef = D6F6A7A813F9C6BD9F78A4DCEC1A6654 /* ascii.h */; };
 		7481D64DD957775D8C18FEE4F98BF703 /* route_components.upbdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = C5890E781AA32827680B099575B1A7C0 /* route_components.upbdefs.h */; };
 		7485F254F142F69C009222C9C5D10A04 /* bundle_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECC2D68F3D89654BAAD2C3373363CA38 /* bundle_loader.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder -Wno-comma -fno-objc-arc"; }; };
@@ -2519,6 +2520,18 @@
 		74D1C7AB8260245D98CC9FBE29A9971F /* config_selector.h in Headers */ = {isa = PBXBuildFile; fileRef = E3338DDC82735E2C2BBE4B72BF6CDA40 /* config_selector.h */; };
 		74D3048B830D46703C6557CD7B81C8F8 /* annotations.upbdefs.h in Copy src/core/ext/upbdefs-generated/google/api Private Headers */ = {isa = PBXBuildFile; fileRef = 426441BCD6E3C4E7F21C8A0ED7616D1F /* annotations.upbdefs.h */; };
 		74D80F20976BA59D8B47B9A6468937BE /* cluster.upb.h in Copy src/core/ext/upb-generated/envoy/config/cluster/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = CD73870560439C7525316E38BFA611A0 /* cluster.upb.h */; };
+		74E348BE28C63E8000F45A55 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348BD28C63E8000F45A55 /* ChatPresenter.swift */; };
+		74E348C128C63ED100F45A55 /* BatchUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348C028C63ED100F45A55 /* BatchUpdate.swift */; };
+		74E348C428C63F8800F45A55 /* CacheAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348C328C63F8800F45A55 /* CacheAPIService.swift */; };
+		74E348C628C6405500F45A55 /* CacheAPIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348C528C6405500F45A55 /* CacheAPIEndpoint.swift */; };
+		74E348CB28C6416A00F45A55 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348CA28C6416A00F45A55 /* Event.swift */; };
+		74E348CD28C6418F00F45A55 /* EventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348CC28C6418F00F45A55 /* EventInfo.swift */; };
+		74E348CF28C641D000F45A55 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348CE28C641D000F45A55 /* Publisher.swift */; };
+		74E348D128C6420100F45A55 /* PublisherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348D028C6420100F45A55 /* PublisherConfig.swift */; };
+		74E348D328C6425B00F45A55 /* PublisherFeatureflag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348D228C6425B00F45A55 /* PublisherFeatureflag.swift */; };
+		74E348D528C642BC00F45A55 /* EventTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348D428C642BC00F45A55 /* EventTag.swift */; };
+		74E348D728C642D500F45A55 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348D628C642D500F45A55 /* ChatInfo.swift */; };
+		74E348D928C65A9300F45A55 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E348D828C65A9300F45A55 /* Settings.swift */; };
 		74F08006AEDD65E32FDF0A7C620C7E22 /* insecure_security_connector.h in Copy src/core/lib/security/security_connector/insecure Private Headers */ = {isa = PBXBuildFile; fileRef = AF4439637CB3D07FDD9D2B1638E71397 /* insecure_security_connector.h */; };
 		74FA8C6D1CE5646BC18448333594A578 /* reflection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE15C6E60255B6FBC8E8D24E52A02AB /* reflection.h */; };
 		752BD594ED8119930E75241A10DC4976 /* a_d2i_fp.c in Sources */ = {isa = PBXBuildFile; fileRef = 09B468AC9158BC5CFD9EC5BEE2589E7D /* a_d2i_fp.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
@@ -13870,12 +13883,25 @@
 		740F3320BB3A7A3D65E431DF6D7A4AE5 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = src/crypto/x509/internal.h; sourceTree = "<group>"; };
 		741266D53174CE672535EB22DF371603 /* p224-64.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "p224-64.c"; path = "src/crypto/fipsmodule/ec/p224-64.c"; sourceTree = "<group>"; };
 		7461BB113295C07D5B6015700139DFDB /* parsed_metadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = parsed_metadata.h; path = src/core/lib/transport/parsed_metadata.h; sourceTree = "<group>"; };
+		74666AC928C6943D00F10923 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		746D00D47D9F0D4FD5DAFEA353911DA8 /* Libuv-gRPC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Libuv-gRPC-umbrella.h"; sourceTree = "<group>"; };
 		74745A472C8164E429EA3AE94086AFB4 /* FIRConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRConfiguration.h; path = FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h; sourceTree = "<group>"; };
 		74919A598B89CDC734AF8CC9E7226B11 /* grpc_tls_certificate_verifier.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = grpc_tls_certificate_verifier.cc; path = src/core/lib/security/credentials/tls/grpc_tls_certificate_verifier.cc; sourceTree = "<group>"; };
 		74BFF2E56FF82EC7A92170B4E2E390A0 /* security_connector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = security_connector.h; path = src/core/lib/security/security_connector/security_connector.h; sourceTree = "<group>"; };
 		74C333825D275B4A8F03E3047418EF50 /* slice_buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = slice_buffer.h; path = include/grpc/slice_buffer.h; sourceTree = "<group>"; };
 		74CE627CED2EEF741523E94DBCEE14DD /* call_tracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call_tracer.h; path = src/core/lib/channel/call_tracer.h; sourceTree = "<group>"; };
+		74E348BD28C63E8000F45A55 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		74E348C028C63ED100F45A55 /* BatchUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchUpdate.swift; sourceTree = "<group>"; };
+		74E348C328C63F8800F45A55 /* CacheAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAPIService.swift; sourceTree = "<group>"; };
+		74E348C528C6405500F45A55 /* CacheAPIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAPIEndpoint.swift; sourceTree = "<group>"; };
+		74E348CA28C6416A00F45A55 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		74E348CC28C6418F00F45A55 /* EventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfo.swift; sourceTree = "<group>"; };
+		74E348CE28C641D000F45A55 /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		74E348D028C6420100F45A55 /* PublisherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherConfig.swift; sourceTree = "<group>"; };
+		74E348D228C6425B00F45A55 /* PublisherFeatureflag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherFeatureflag.swift; sourceTree = "<group>"; };
+		74E348D428C642BC00F45A55 /* EventTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTag.swift; sourceTree = "<group>"; };
+		74E348D628C642D500F45A55 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
+		74E348D828C65A9300F45A55 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		74EB9E85AAC69C293C108B8888A902A0 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = src/include/openssl/ecdsa.h; sourceTree = "<group>"; };
 		74F074BBB757A50192DF4BA318B857CB /* ev_poll_posix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ev_poll_posix.h; path = src/core/lib/iomgr/ev_poll_posix.h; sourceTree = "<group>"; };
 		750D633B7E879BD77D000B37A58DB22A /* cordz_info.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cordz_info.h; path = absl/strings/internal/cordz_info.h; sourceTree = "<group>"; };
@@ -16402,6 +16428,7 @@
 		30FC66DFBD08AFF256CF84761ED2AAF6 /* ArenaChatSDK */ = {
 			isa = PBXGroup;
 			children = (
+				74E348BF28C63EBD00F45A55 /* Helper */,
 				740749D228C02E020030FF69 /* Commons */,
 				740749D128C02DDF0030FF69 /* Main */,
 				3F6DBB47D50080BA43F13E84713D3F8D /* Network */,
@@ -19245,7 +19272,9 @@
 		740749D128C02DDF0030FF69 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				74666AC828C6942800F10923 /* ViewModel */,
 				740749D528C02E340030FF69 /* ArenaChat.swift */,
+				74E348BD28C63E8000F45A55 /* ChatPresenter.swift */,
 			);
 			name = Main;
 			path = ArenaChatSDK/Classes/Main;
@@ -19258,6 +19287,31 @@
 			);
 			name = Commons;
 			path = ArenaChatSDK/Classes/Commons;
+			sourceTree = "<group>";
+		};
+		74666AC828C6942800F10923 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74666AC928C6943D00F10923 /* Card.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		74E348BF28C63EBD00F45A55 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				74E348C028C63ED100F45A55 /* BatchUpdate.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		74E348C228C63F4C00F45A55 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				74E348C328C63F8800F45A55 /* CacheAPIService.swift */,
+				74E348C528C6405500F45A55 /* CacheAPIEndpoint.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		7714240CD609C983A759F9A733BAC04B /* Support Files */ = {
@@ -21260,6 +21314,14 @@
 				DCEEA8580BF570AAEF7A04E44A0945D9 /* FailureResponse.swift */,
 				5A3C3D50D547EA53856881C500F19568 /* ServiceError.swift */,
 				6DFF855EFFBD250FE612633CFD3E03F0 /* SuccessResponse.swift */,
+				74E348CA28C6416A00F45A55 /* Event.swift */,
+				74E348CC28C6418F00F45A55 /* EventInfo.swift */,
+				74E348CE28C641D000F45A55 /* Publisher.swift */,
+				74E348D028C6420100F45A55 /* PublisherConfig.swift */,
+				74E348D228C6425B00F45A55 /* PublisherFeatureflag.swift */,
+				74E348D428C642BC00F45A55 /* EventTag.swift */,
+				74E348D628C642D500F45A55 /* ChatInfo.swift */,
+				74E348D828C65A9300F45A55 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -21304,6 +21366,7 @@
 		E9B0DA62260BEBFF85F5C04D1C2C56FC /* HTTPClient */ = {
 			isa = PBXGroup;
 			children = (
+				74E348C228C63F4C00F45A55 /* Service */,
 				37F60C270FEFD1302AEDAF182CD57197 /* Endpoint */,
 				657082D44DFFC1FF5C45E6C7D4267666 /* HTTP */,
 				E149F9115F77D5656F0F8E62F18882CE /* Model */,
@@ -26527,19 +26590,27 @@
 				F2CAEFF1D382057BBE71FCA8F7CC5B3E /* ArenaChatSDK-dummy.m in Sources */,
 				249BBB1E7337BD5A33DCA3C943CE6289 /* ChatCell.swift in Sources */,
 				5780758FCA4545DD22F9C4D837A292E6 /* ChatStreamData.swift in Sources */,
+				74E348D728C642D500F45A55 /* ChatInfo.swift in Sources */,
 				5237A213DA3F270D1DAB904C07218E1D /* ChatStreamDelegate.swift in Sources */,
+				74E348CF28C641D000F45A55 /* Publisher.swift in Sources */,
 				B0F14C5334E9FAB996C383A8AD814D7A /* ChatStreamProvider.swift in Sources */,
 				9E251CBC8FE29FF02FB3DE7CDE7F5BC6 /* Color.swift in Sources */,
+				74E348C628C6405500F45A55 /* CacheAPIEndpoint.swift in Sources */,
 				F6AE3F4ADAC1715D368697E4AEC915F5 /* Data+Decode.swift in Sources */,
 				4828E809686467D12D398869B92A9A94 /* Dictionary+Encoded.swift in Sources */,
+				74E348D128C6420100F45A55 /* PublisherConfig.swift in Sources */,
 				2E4C0D0D08C68F8ECCAB985D40024020 /* Endpoint+Setuping.swift in Sources */,
 				8E12312FBE05301BC6371896D481D0AF /* FailureResponse.swift in Sources */,
 				3B6EEED6774B4D3DAE37D5F21A011F7F /* HTTPClient.swift in Sources */,
+				74E348CD28C6418F00F45A55 /* EventInfo.swift in Sources */,
 				860E8F61D28E40F46B624507440127A9 /* HTTPHeader.swift in Sources */,
 				740749D028C02A8E0030FF69 /* AuthenticationData.swift in Sources */,
+				74E348CB28C6416A00F45A55 /* Event.swift in Sources */,
 				9C1744B9E792607604678108001366D5 /* HTTPMethod.swift in Sources */,
 				D06CABC6FFEAC07A3BD1C8490459F5D0 /* Message.swift in Sources */,
 				740749D628C02E350030FF69 /* ArenaChat.swift in Sources */,
+				74E348BE28C63E8000F45A55 /* ChatPresenter.swift in Sources */,
+				74E348C128C63ED100F45A55 /* BatchUpdate.swift in Sources */,
 				AE137498A928CEE9336520E4B24586FA /* MessageContent.swift in Sources */,
 				916FBFAF6259D5C608BEAAD5B1227482 /* MessageContentMedia.swift in Sources */,
 				EF6E68C4A2D7DB00C49D9BD8EBAB46B3 /* MessageResponse.swift in Sources */,
@@ -26547,13 +26618,18 @@
 				56EACFC6510EC322FA9B6211975A2C97 /* ParameterEncoding.swift in Sources */,
 				A046F548F7E49A4B9A27A5544FDEE7CA /* ProviderError.swift in Sources */,
 				1C512508EC62B5ADC821E93A58AE3382 /* ServiceError.swift in Sources */,
+				74E348C428C63F8800F45A55 /* CacheAPIService.swift in Sources */,
 				740749CD28C0155C0030FF69 /* KeychainManageable.swift in Sources */,
 				86C363E7EF1A1DEECA2008BF90778A01 /* SessionManager.swift in Sources */,
 				92BF16430B72AE2B66040DF37D705F3E /* Stream.swift in Sources */,
+				74666ACA28C6943D00F10923 /* Card.swift in Sources */,
 				6D04CB1D94F678DC54BF9FEEF94595DB /* StreamDatable.swift in Sources */,
+				74E348D328C6425B00F45A55 /* PublisherFeatureflag.swift in Sources */,
 				DCF8CD0BE5AC5C0E38DFC397F3B072A3 /* StreamDelegate.swift in Sources */,
 				341F4FCF42A5BCF929177A624A9E7295 /* SuccessResponse.swift in Sources */,
 				293A4DA6167C88EC8724314B603DCA19 /* URL+Util.swift in Sources */,
+				74E348D928C65A9300F45A55 /* Settings.swift in Sources */,
+				74E348D528C642BC00F45A55 /* EventTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

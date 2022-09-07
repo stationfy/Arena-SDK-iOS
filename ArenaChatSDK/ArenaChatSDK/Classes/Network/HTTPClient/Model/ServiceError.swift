@@ -30,9 +30,9 @@ public enum ServiceError: Error {
         case .alreadyExist: return "Already exist."
         case .parameterUrlEncodingNotFound: return "Enconded URL not found"
         case let .parameterJsonEncodingFailure(message): return "The received data is broken. Status code " + ": \(message)"
-        case let .brokenData(statusCode): return Text.brokenData.localized + "\(statusCode)"
+        case let .brokenData(statusCode): return "The received data is broken. Status code \(statusCode)"
         case let .notConnectedToInternet(message): return message
-        case let .requestFailure(response): return "Missing message" ?? Text.requestFailure.localized
+        case let .requestFailure(response): return response.message ?? "Request Failure: Missing message"
         case let .responseEncondingFailure(message): return "Can not enconde response data. " + message
         case let .unknown(message): return message
         }
