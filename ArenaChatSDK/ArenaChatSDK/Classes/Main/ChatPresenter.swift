@@ -12,10 +12,10 @@ protocol ChatPresenting: class {
 }
 
 public class ChatPresenter {
-    static let pollUpdatedNotification = Notification.Name("ArenaLiveblog.pollUpdatedNotification")
-    static let reactionUpdatedNotification = Notification.Name("ArenaLiveblog.reactionUpdatedNotification")
+    static let pollUpdatedNotification = Notification.Name("ArenaChat.pollUpdatedNotification")
+    static let reactionUpdatedNotification = Notification.Name("ArenaChat.reactionUpdatedNotification")
 
-    private let serialQueue = DispatchQueue(label: "im.arena.updatethread", qos: .utility)
+    private let serialQueue = DispatchQueue(label: "im.arena.chat.updatethread", qos: .utility)
     private let eventSlug: String
     private let service: CachedAPIServicing
     private var stream: ChatStreamProvider?
@@ -53,13 +53,13 @@ public class ChatPresenter {
         }
         service.fetchEvent(publisherSlug: publisherSlug,
                            eventSlug: eventSlug) { [weak self] result in
-                            switch result {
-                            case .success(let event):
-                                self?.createStream(fromEvent: event)
-                            case .failure:
-                                // TODO: Error handling
-                                break
-                            }
+            switch result {
+            case .success(let event):
+                self?.createStream(fromEvent: event)
+            case .failure:
+                // TODO: Error handling
+                break
+            }
         }
     }
 
@@ -70,8 +70,8 @@ public class ChatPresenter {
     private func createStream(fromEvent event: Event) {
 
         let streamData = ChatStreamData.channels(eventId: event.eventInfo.key,
-                                             pagination: 20,
-                                             descending: true)
+                                                 pagination: 20,
+                                                 descending: true)
         let chatStream = try! ChatStreamProvider(streamData: streamData)
 
         chatStream.delegate = self
@@ -121,16 +121,16 @@ extension ChatPresenter: ChatStreamDelegate {
                         reloadModuleIds.insert(self.cards[newIndex].chatMessage.key?.lowercased() ?? "")
                     } else {
                         // TODO
-//                        let oldCard = self.cards[newIndex]
-//                        if oldCard.chatMessage.key == card.chatMessage.key {
-//                            if card.type == .poll {
-//                                shouldReload = false
-//                                NotificationCenter.default.post(name: LiveblogDataStream.pollUpdatedNotification, object: card)
-//                            } else if card.reaction != oldCard.reaction {
-//                                shouldReload = false
-//                                NotificationCenter.default.post(name: LiveblogDataStream.reactionUpdatedNotification, object: card)
-//                            }
-//                        }
+                        //                        let oldCard = self.cards[newIndex]
+                        //                        if oldCard.chatMessage.key == card.chatMessage.key {
+                        //                            if card.type == .poll {
+                        //                                shouldReload = false
+                        //                                NotificationCenter.default.post(name: LiveblogDataStream.pollUpdatedNotification, object: card)
+                        //                            } else if card.reaction != oldCard.reaction {
+                        //                                shouldReload = false
+                        //                                NotificationCenter.default.post(name: LiveblogDataStream.reactionUpdatedNotification, object: card)
+                        //                            }
+                        //                        }
 
                     }
                     if shouldReload {
