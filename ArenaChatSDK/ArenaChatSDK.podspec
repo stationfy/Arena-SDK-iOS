@@ -36,4 +36,5 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'FirebaseFirestore'
   s.dependency 'KeychainSwift', '~> 20.0'
+  s.dependency 'Socket.IO-Client-Swift', '~> 15.2.0'
 end

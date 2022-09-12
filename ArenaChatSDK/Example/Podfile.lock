@@ -599,6 +599,7 @@ PODS:
   - ArenaChatSDK (0.0.1):
     - FirebaseFirestore
     - KeychainSwift (~> 20.0)
+    - Socket.IO-Client-Swift (~> 15.2.0)
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -704,6 +705,9 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
 
 DEPENDENCIES:
   - ArenaChatSDK (from `../`)
@@ -725,6 +729,8 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
+    - Socket.IO-Client-Swift
+    - Starscream
 
 EXTERNAL SOURCES:
   ArenaChatSDK:
@@ -732,7 +738,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
-  ArenaChatSDK: b630fa95df958134cb714136f73f350d89bb39cb
+  ArenaChatSDK: 56df8260fe331799bfc16b343a792c9163b3fb9a
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FirebaseCore: 25c0400b670fd1e2f2104349cd3b5dcce8d9418f
   FirebaseCoreDiagnostics: 17cbf4e72b1dbd64bfdc33d4b1f07bce4f16f1d8
@@ -747,6 +753,8 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
 PODFILE CHECKSUM: 09b0c6d5b5fb9f3db0713874013a824445fe1f76
 

@@ -1,8 +1,8 @@
 import Foundation
 
 protocol CachedAPIServicing {
-    func fetchEvent(publisherSlug: String,
-                    eventSlug: String,
+    func fetchEvent(writeKey: String,
+                    channel: String,
                     completion: @escaping (Result<Event, ServiceError>) -> Void)
 }
 
@@ -16,11 +16,11 @@ struct CachedAPIService {
 }
 
 extension CachedAPIService: CachedAPIServicing {
-    func fetchEvent(publisherSlug: String,
-                    eventSlug: String,
+    func fetchEvent(writeKey: String,
+                    channel: String,
                     completion: @escaping (Result<Event, ServiceError>) -> Void) {
-        let endpointSetup = CacheAPIEndpoint.requestEvent(eventSlug: eventSlug,
-                                                          publisherSlug: publisherSlug)
+        let endpointSetup = CacheAPIEndpoint.requestEvent(writeKey: writeKey,
+                                                          channel: channel)
         client.request(setup: endpointSetup, completion: completion)
     }
 }

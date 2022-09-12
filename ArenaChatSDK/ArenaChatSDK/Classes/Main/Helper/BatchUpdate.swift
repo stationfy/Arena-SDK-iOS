@@ -2,10 +2,10 @@
 
 import Foundation
 
-struct BatchUpdates {
-    let deleted: [IndexPath]
-    let inserted: [IndexPath]
-    let reloaded: [IndexPath]
+public struct BatchUpdates {
+    public let deleted: [IndexPath]
+    public let inserted: [IndexPath]
+    public let reloaded: [IndexPath]
 
     public var debugDescription: String {
         return "inserted: \(inserted), deleted \(deleted), reloaded \(reloaded)"

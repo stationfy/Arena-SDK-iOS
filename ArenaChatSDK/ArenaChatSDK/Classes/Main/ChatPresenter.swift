@@ -2,13 +2,15 @@
 
 import Foundation
 import FirebaseFirestore
+import SocketIO
 
-protocol ChatPresenting: class {
-
+public protocol ChatPresenting: class {
     func performUpdate(with batchUpdate: BatchUpdates)
     func nextPageDidLoad()
     func showLoadMore()
     func hideLoadMore()
+
+    func openLoginModal()
 }
 
 public class ChatPresenter {
@@ -16,8 +18,17 @@ public class ChatPresenter {
     static let reactionUpdatedNotification = Notification.Name("ArenaChat.reactionUpdatedNotification")
 
     private let serialQueue = DispatchQueue(label: "im.arena.chat.updatethread", qos: .utility)
-    private let eventSlug: String
-    private let service: CachedAPIServicing
+
+    private let writeKey: String
+    private let channel: String
+
+    private var loggedUser: LoggedUser?
+    private var externalUser: ExternalUser?
+
+    private var changedUser: Bool = false
+
+    private let cachedService: CachedAPIServicing
+    private let userService: UserServicing
     private var stream: ChatStreamProvider?
     private var event: Event?
 
@@ -30,16 +41,23 @@ public class ChatPresenter {
         filteredCards.count
     }
 
-    public init(eventSlug: String) {
-        self.eventSlug = eventSlug
-        self.service = CachedAPIService(client: HTTPClient(baseUrl: "",
-                                                           sessionManager: SessionManager(),
-                                                           logger: Logger(isEnabled: true)))
+    public init(writeKey: String, channel: String, delegate: ChatPresenting) {
+        self.writeKey = writeKey
+        self.channel = channel
+        self.delegate = delegate
+
+        let httpClient = HTTPClient(baseUrl: "",
+                                    sessionManager: SessionManager(),
+                                    logger: Logger(isEnabled: true))
+        let socketManager = SocketManager(socketURL: URL(string: "http://localhost:8080")!,
+                                          config: [.log(true), .compress])
+
+        self.cachedService = CachedAPIService(client: httpClient)
+        self.userService = UserService(client: httpClient, manager: socketManager)
     }
 
-    init(eventSlug: String, service: CachedAPIServicing) {
-        self.service = service
-        self.eventSlug = eventSlug
+    func setUser(_ externalUser: ExternalUser) {
+        self.externalUser = externalUser
     }
 
     func cellModel(for indexPath: IndexPath) -> Card {
@@ -47,15 +65,12 @@ public class ChatPresenter {
     }
 
     public func startEvent() {
-        guard let publisherSlug = ArenaChat.shared.publisherSlug else {
-            // TODO: Error handling
-            return
-        }
-        service.fetchEvent(publisherSlug: publisherSlug,
-                           eventSlug: eventSlug) { [weak self] result in
+        cachedService.fetchEvent(writeKey: writeKey,
+                                 channel: channel) { [weak self] result in
             switch result {
-            case .success(let event):
-                self?.createStream(fromEvent: event)
+            case let .success(event):
+                self?.event = event
+                self?.validateUser()
             case .failure:
                 // TODO: Error handling
                 break
@@ -67,7 +82,12 @@ public class ChatPresenter {
         stream?.requestNextEvents()
     }
 
-    private func createStream(fromEvent event: Event) {
+
+    private func createStream() {
+        guard let event = event else {
+            // TODO: Error handling
+            return
+        }
 
         let streamData = ChatStreamData.channels(eventId: event.eventInfo.key,
                                                  pagination: 20,
@@ -77,10 +97,16 @@ public class ChatPresenter {
         chatStream.delegate = self
         chatStream.startListeningEvents()
 
-        self.event = event
-
         self.stream = chatStream
 
+    }
+
+    public func registerUser(name: String) {
+        registerUser(ExternalUser(id: "", name: name))
+    }
+
+    public func registerAnonymous() {
+        registerUser(ExternalUser(id: ""))
     }
 
 }
@@ -114,7 +140,7 @@ extension ChatPresenter: ChatStreamDelegate {
                     self.cards.remove(at: newIndex)
                 case let .modified(fromIndex, toIndex):
                     let newIndex = Int(toIndex)
-                    var shouldReload = true
+                    //var shouldReload = true
                     if fromIndex != toIndex {
                         let oldIndex = Int(fromIndex)
                         self.cards[oldIndex] = self.cards[newIndex]
@@ -133,9 +159,9 @@ extension ChatPresenter: ChatStreamDelegate {
                         //                        }
 
                     }
-                    if shouldReload {
-                        reloadModuleIds.insert(card.chatMessage.key?.lowercased() ?? "")
-                    }
+                    //if shouldReload {
+                    reloadModuleIds.insert(card.chatMessage.key?.lowercased() ?? "")
+                    //}
                     
                     self.cards[newIndex] = card
                 }
@@ -164,4 +190,74 @@ extension ChatPresenter: ChatStreamDelegate {
     func stream(_ stream: ChatStreamProvider, didReceivedError error: Error) {
         // TODO: ERROR handling
     }
+}
+
+// MARK: User Context
+fileprivate extension ChatPresenter {
+
+    func validateUser() {
+        if let externalUser = externalUser {
+            registerUser(externalUser)
+        } else if loggedUser != nil {
+            createStream()
+        } else {
+            delegate?.openLoginModal()
+        }
+    }
+
+    func registerUser(_ externalUser: ExternalUser) {
+        userService.add(writeKey: writeKey,
+                        externalUser: externalUser) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(loggedUser):
+                self.loggedUser = loggedUser
+
+                if (self.changedUser) {
+                    self.changeUser(loggedUser)
+                } else {
+                    self.joinUser(loggedUser)
+                }
+
+            case .failure:
+                // TODO: Error handling
+                break
+            }
+        }
+    }
+
+    func changeUser(_ loggerUser: LoggedUser) {
+        self.userService.update(userId: loggedUser?._id,
+                                isAnonymous: loggedUser?._id?.isEmpty ?? true,
+                                name: loggedUser?.name,
+                                image: loggedUser?.image) { result in
+            self.changedUser = false
+
+            switch result {
+            case .success:
+                self.createStream()
+            case .failure:
+                // TODO: Error handling
+                break
+            }
+        }
+    }
+
+    func joinUser(_ loggerUser: LoggedUser) {
+        self.userService.join(channelId: event?.chatInfo?.id,
+                              siteId: event?.chatInfo?.siteId,
+                              userId: loggedUser?._id,
+                              isAnonymous: loggedUser?._id?.isEmpty ?? true,
+                              name: loggedUser?.name,
+                              image: loggedUser?.image) { result in
+            switch result {
+            case .success:
+                self.createStream()
+            case .failure:
+                // TODO: Error handling
+                break
+            }
+        }
+    }
+
 }

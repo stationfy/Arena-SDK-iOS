@@ -11,8 +11,10 @@ public struct AuthenticationData: Codable {
 }
 
 public struct User: Codable, Equatable {
-    public let id: Int
-    public let email: String
-    public let firstName: String
-    public let lastName: String
+    let userId: String?
+    let isAnonymous: Bool
+    let name: String?
+    let country: String?
+    let image: String?
+    let isMobile: Bool
 }
