@@ -27,6 +27,8 @@ public class ChatPresenter {
 
     private var changedUser: Bool = false
 
+    private let sessionManager: SessionManageable
+
     private let cachedService: CachedAPIServicing
     private let userService: UserServicing
     private var stream: ChatStreamProvider?
@@ -46,8 +48,10 @@ public class ChatPresenter {
         self.channel = channel
         self.delegate = delegate
 
+        self.sessionManager = SessionManager()
+
         let httpClient = HTTPClient(baseUrl: "",
-                                    sessionManager: SessionManager(),
+                                    sessionManager: sessionManager,
                                     logger: Logger(isEnabled: true))
         let socketManager = SocketManager(socketURL: URL(string: "http://localhost:8080")!,
                                           config: [.log(true), .compress])
@@ -102,11 +106,12 @@ public class ChatPresenter {
     }
 
     public func registerUser(name: String) {
-        registerUser(ExternalUser(id: "", name: name))
+        registerUser(ExternalUser(id: sessionManager.generateAnonymousId(),
+                                  name: name))
     }
 
     public func registerAnonymous() {
-        registerUser(ExternalUser(id: ""))
+        registerUser(ExternalUser(id: sessionManager.generateAnonymousId()))
     }
 
 }
@@ -212,6 +217,10 @@ fileprivate extension ChatPresenter {
             switch result {
             case let .success(loggedUser):
                 self.loggedUser = loggedUser
+                if let token = loggedUser.token {
+                    self.sessionManager.save(AuthenticationData(accessToken: token,
+                                                                user: loggedUser))
+                }
 
                 if (self.changedUser) {
                     self.changeUser(loggedUser)

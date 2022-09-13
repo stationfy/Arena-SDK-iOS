@@ -9,11 +9,12 @@ public protocol SessionClearable {
 
 public protocol SessionSavable {
     func save(_ session: AuthenticationData)
+    func generateAnonymousId() -> String
 }
 
 public protocol SessionConsultable {
     var isLogged: Bool { get }
-    var loggedUser: User? { get }
+    var loggedUser: LoggedUser? { get }
     var session: AuthenticationData? { get }
 }
 
@@ -27,7 +28,7 @@ public final class SessionManager: SessionManageable, ObservableObject {
 
     public var accessToken: String? { return session?.accessToken }
 
-    public var loggedUser: User? { return session?.user }
+    public var loggedUser: LoggedUser? { return session?.user }
 
     public var session: AuthenticationData? {
         let session = value(AuthenticationData.self, forKey: sessionKey)
@@ -47,6 +48,22 @@ public final class SessionManager: SessionManageable, ObservableObject {
     public func clear() {
         keychain.delete(for: sessionKey)
         updateLoggedState(with: false)
+    }
+
+    public func generateAnonymousId() -> String {
+        if let storedUUID = accessToken {
+            return storedUUID
+        }
+
+        let uuid: String
+
+        if let vendorId = UIDevice.current.identifierForVendor?.uuidString {
+            uuid = vendorId
+        } else {
+            uuid = UUID().uuidString
+        }
+
+        return uuid
     }
 
     private func set<T: Encodable>(encodable: T, forKey key: String) {

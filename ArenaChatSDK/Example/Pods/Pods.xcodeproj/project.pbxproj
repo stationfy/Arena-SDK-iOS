@@ -2948,7 +2948,7 @@
 		85E6733275DAAA9185CBC399CA105101 /* thread_quota.h in Headers */ = {isa = PBXBuildFile; fileRef = 151B4CC46FD160CFABEE55159161FF05 /* thread_quota.h */; };
 		85F7D56317DED98F2EFE034A0ED58788 /* memory_allocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A5F1F50685F62901FDDDF069BDF8024 /* memory_allocator.h */; };
 		8602DB934A1BA719DCA0183B2BD404FC /* init_secure.cc in Sources */ = {isa = PBXBuildFile; fileRef = 99F4973C81B1D668018836D70825D6C5 /* init_secure.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
-		861ED28CA5A8F0773774CAFEDA610642 /* LoggedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB9B1B2D8B29343C8EE83A9246E9AE /* LoggedUser.swift */; };
+		861ED28CA5A8F0773774CAFEDA610642 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DB9B1B2D8B29343C8EE83A9246E9AE /* User.swift */; };
 		8621AA91A2D668C1734FC7ED4189866A /* duration.upbdefs.h in Copy src/core/ext/upbdefs-generated/google/protobuf Private Headers */ = {isa = PBXBuildFile; fileRef = 959773E7F8500ABE1212AAB921F8BEE0 /* duration.upbdefs.h */; };
 		863766B407051C67AF6131FE57C7E776 /* sys_epoll_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F9BB7241F6EE8A863783B45664E83102 /* sys_epoll_wrapper.h */; };
 		863828A48683848C4E13C1C3EF4A877E /* scoped_route.upbdefs.h in Copy src/core/ext/upbdefs-generated/envoy/config/route/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = FFA369261E457C641A4AF6D6B96A2DCE /* scoped_route.upbdefs.h */; };
@@ -15729,7 +15729,7 @@
 		E3AFF98029B30FC3E55F3AEF78DDB198 /* repair.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = repair.cc; path = db/repair.cc; sourceTree = "<group>"; };
 		E3CC97398ACD93F79FB6FC7AF4B5E930 /* async.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = async.c; path = src/unix/async.c; sourceTree = "<group>"; };
 		E3D163E59B412214CB7C9F5ACB68C3BD /* thread_annotations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = thread_annotations.h; path = absl/base/thread_annotations.h; sourceTree = "<group>"; };
-		E3DB9B1B2D8B29343C8EE83A9246E9AE /* LoggedUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoggedUser.swift; sourceTree = "<group>"; };
+		E3DB9B1B2D8B29343C8EE83A9246E9AE /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E3E539D8AAB3FE90F5FB589BCC36909E /* load_balancer.upb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = load_balancer.upb.h; path = "src/core/ext/upb-generated/src/proto/grpc/lb/v1/load_balancer.upb.h"; sourceTree = "<group>"; };
 		E3E97C8D37098B7636341681A1EB1832 /* wire_reader_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = wire_reader_impl.h; path = src/core/ext/transport/binder/wire_format/wire_reader_impl.h; sourceTree = "<group>"; };
 		E3FCDB16A40B3D66A49B1C078968968A /* semantic_version.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = semantic_version.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/type/v3/semantic_version.upbdefs.h"; sourceTree = "<group>"; };
@@ -16378,7 +16378,7 @@
 			children = (
 				25C185D92CF4FD3D4A5808B7C277B77D /* BanUser.swift */,
 				EDA7CBB4C433A1D2608E388D81C12DCC /* ExternalUser.swift */,
-				E3DB9B1B2D8B29343C8EE83A9246E9AE /* LoggedUser.swift */,
+				E3DB9B1B2D8B29343C8EE83A9246E9AE /* User.swift */,
 				133F8F5ADB80B9677D8A0406DF16FD5D /* Name.swift */,
 				7F4E9AE1CF4B6D08651CFF87D255388A /* Profile.swift */,
 				EB7B5B8C1D0111D7139315DEE9DEA04B /* ProviderUser.swift */,
@@ -25637,7 +25637,7 @@
 				C582AC2E33A263E32ABB91B9D1438413 /* HTTPMethod.swift in Sources */,
 				73B6FAA1911CF3F3252BF91C25CB25CE /* ImageRepresentable.swift in Sources */,
 				F65464F1D863EFEC4DCF595D1D2D09E4 /* KeychainManageable.swift in Sources */,
-				861ED28CA5A8F0773774CAFEDA610642 /* LoggedUser.swift in Sources */,
+				861ED28CA5A8F0773774CAFEDA610642 /* User.swift in Sources */,
 				9909E81F7AF7F1B4967DD5F71F5E7A50 /* Logger.swift in Sources */,
 				230D44D2CEBA0E42C6BB69733D823326 /* Message.swift in Sources */,
 				8E899D1452CBBC04C41909F5A68F07ED /* MessageContent.swift in Sources */,

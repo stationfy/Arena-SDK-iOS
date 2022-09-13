@@ -1,5 +1,5 @@
 import Foundation
 
-struct UserThumbnail: Decodable {
+struct UserThumbnail: Codable {
     let raw: String?
 }
