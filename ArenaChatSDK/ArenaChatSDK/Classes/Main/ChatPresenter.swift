@@ -1,7 +1,8 @@
 //  Copyright
 
-import Foundation
+import Apollo
 import FirebaseFirestore
+import Foundation
 import SocketIO
 
 public protocol ChatPresenting: class {
@@ -31,6 +32,7 @@ public class ChatPresenter {
 
     private let cachedService: CachedAPIServicing
     private let userService: UserServicing
+    private let chatService: ChatGraphQLServicing
     private var stream: ChatStreamProvider?
     private var event: Event?
 
@@ -58,6 +60,10 @@ public class ChatPresenter {
 
         self.cachedService = CachedAPIService(client: httpClient)
         self.userService = UserService(client: httpClient, manager: socketManager)
+
+        let interceptor = HeaderAddingInterceptor()
+        self.chatService = ChatGraphQLService(client: ApolloClient.build(interceptor: interceptor),
+                                              interceptor: interceptor)
     }
 
     func setUser(_ externalUser: ExternalUser) {
@@ -86,25 +92,6 @@ public class ChatPresenter {
         stream?.requestNextEvents()
     }
 
-
-    private func createStream() {
-        guard let event = event else {
-            // TODO: Error handling
-            return
-        }
-
-        let streamData = ChatStreamData.channels(eventId: event.eventInfo.key,
-                                                 pagination: 20,
-                                                 descending: true)
-        let chatStream = try! ChatStreamProvider(streamData: streamData)
-
-        chatStream.delegate = self
-        chatStream.startListeningEvents()
-
-        self.stream = chatStream
-
-    }
-
     public func registerUser(name: String) {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId(),
                                   name: name))
@@ -114,6 +101,59 @@ public class ChatPresenter {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId()))
     }
 
+    public func sendMessage(
+        text: String,
+        mediaUrl: String?,
+        isGif: Bool
+    ) {
+        guard let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+              let siteId = event?.chatInfo?.siteId,
+              let openChannelId = event?.chatInfo?.mainChannelId else {
+            // TODO: Error handling
+            return
+        }
+
+        chatService.sendMessage(channelId: openChannelId,
+                                siteId: siteId,
+                                graphqlPubApiKey: graphqlPubApiKey,
+                                messageText: text,
+                                photoUrl: loggedUser?.image,
+                                mediaUrl: mediaUrl,
+                                displayName: loggedUser?.name,
+                                userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+                                token: sessionManager.accessToken,
+                                isGif: isGif) { result in
+
+        }
+    }
+
+    public func replyMessage(
+        text: String,
+        replyId: String,
+        mediaUrl: String?,
+        isGif: Bool
+    ) {
+        guard let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+              let siteId = event?.chatInfo?.siteId,
+              let openChannelId = event?.chatInfo?.mainChannelId else {
+            // TODO: Error handling
+            return
+        }
+
+        chatService.replyMessage(channelId: openChannelId,
+                                 siteId: siteId,
+                                 graphqlPubApiKey: graphqlPubApiKey,
+                                 messageText: text,
+                                 photoUrl: loggedUser?.image,
+                                 mediaUrl: mediaUrl,
+                                 displayName: loggedUser?.name,
+                                 userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+                                 replyId: replyId,
+                                 token: sessionManager.accessToken,
+                                 isGif: isGif) { result in
+
+        }
+    }
 }
 
 extension ChatPresenter: ChatStreamDelegate {
@@ -197,6 +237,26 @@ extension ChatPresenter: ChatStreamDelegate {
     }
 }
 
+// MARK: Stream Context
+fileprivate extension ChatPresenter {
+    private func createStream() {
+        guard let event = event else {
+            // TODO: Error handling
+            return
+        }
+
+        let streamData = ChatStreamData.channels(eventId: event.eventInfo.key,
+                                                 pagination: 20,
+                                                 descending: true)
+        let chatStream = try! ChatStreamProvider(streamData: streamData)
+
+        chatStream.delegate = self
+        chatStream.startListeningEvents()
+
+        self.stream = chatStream
+
+    }
+}
 // MARK: User Context
 fileprivate extension ChatPresenter {
 

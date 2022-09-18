@@ -596,7 +596,11 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - Apollo (0.53.0):
+    - Apollo/Core (= 0.53.0)
+  - Apollo/Core (0.53.0)
   - ArenaChatSDK (0.0.1):
+    - Apollo
     - FirebaseFirestore
     - KeychainSwift (~> 20.0)
     - Socket.IO-Client-Swift (~> 15.2.0)
@@ -715,6 +719,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - Apollo
     - BoringSSL-GRPC
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -738,7 +743,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
-  ArenaChatSDK: 56df8260fe331799bfc16b343a792c9163b3fb9a
+  Apollo: 204819ea82022fbc59ad05056820df867f19bd02
+  ArenaChatSDK: 4254673749e707e6c51ff6444f58eb59e176ad6c
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FirebaseCore: 25c0400b670fd1e2f2104349cd3b5dcce8d9418f
   FirebaseCoreDiagnostics: 17cbf4e72b1dbd64bfdc33d4b1f07bce4f16f1d8

@@ -1,0 +1,3 @@
+mutation PollVote($input: PollVoteInput!) {
+    pollVote(input: $input)
+}

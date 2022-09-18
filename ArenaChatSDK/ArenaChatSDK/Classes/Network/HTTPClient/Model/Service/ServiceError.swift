@@ -16,6 +16,7 @@ public enum ServiceError: Error {
     case notConnectedToInternet(String)
     case requestFailure(FailureResponse)
     case responseEncondingFailure(String)
+    case graphQLError(String)
     case unknown(String)
 
     public var localizedDescription: String {
@@ -34,6 +35,7 @@ public enum ServiceError: Error {
         case let .notConnectedToInternet(message): return message
         case let .requestFailure(response): return response.message ?? "Request Failure: Missing message"
         case let .responseEncondingFailure(message): return "Can not enconde response data. " + message
+        case let .graphQLError(message): return "GraphQL Failure. " + message
         case let .unknown(message): return message
         }
     }

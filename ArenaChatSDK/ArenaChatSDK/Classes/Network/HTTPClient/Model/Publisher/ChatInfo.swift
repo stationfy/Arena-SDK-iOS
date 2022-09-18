@@ -12,6 +12,7 @@ struct ChatInfo: Decodable {
 
     let streams: [String]?
 
+    let mainChannelId: String?
     let chatPreModerationIsEnabled: Bool?
     let chatClosedIsEnabled: Bool?
     let allowShareUrls: Bool?
@@ -34,6 +35,7 @@ struct ChatInfo: Decodable {
         case createdBy
         case presenceId
         case streams
+        case mainChannelId
         case chatPreModerationIsEnabled
         case chatClosedIsEnabled
         case allowShareUrls

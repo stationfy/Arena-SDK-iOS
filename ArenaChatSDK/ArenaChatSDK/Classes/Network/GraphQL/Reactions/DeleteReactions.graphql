@@ -1,0 +1,11 @@
+mutation DeleteReactions(
+    $itemId:ID!,
+    $reaction:String!,
+    $userId:ID!
+) {
+    deleteReaction(input: {
+        itemId: $itemId,
+        reaction: $reaction,
+        userId: $userId,
+    })
+}
