@@ -3954,6 +3954,7 @@
 		B5D337446A71260722C351FC481C78F3 /* xds_client.h in Headers */ = {isa = PBXBuildFile; fileRef = DB88C544FB72CA133815B097DDE9A9A2 /* xds_client.h */; };
 		B5D98B5A957720028C557FA8DB2859CD /* migrate.upb.h in Copy src/core/ext/upb-generated/udpa/annotations Private Headers */ = {isa = PBXBuildFile; fileRef = 46B6B73238C6631FB3BAE81B70BB6EE6 /* migrate.upb.h */; };
 		B5FB5FBDB135D8DE499346B5476B6859 /* FBLPromise+Race.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FE546890E2B7D60EE6EAB1A01533CC /* FBLPromise+Race.m */; };
+		B603DABA28D63D3A00FA59DD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B603DAB928D63D3A00FA59DD /* LoginView.swift */; };
 		B61346E96C595B256E2931575B2BC41B /* mpscq.h in Copy src/core/lib/gprpp Private Headers */ = {isa = PBXBuildFile; fileRef = 058C22128AEF420C5F9FE55490867AC6 /* mpscq.h */; };
 		B616DF3F1AEB721864514BEE06067B8B /* tcp_server.h in Copy src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = F2680DB9A4FF730196808D22E51048CF /* tcp_server.h */; };
 		B61A900D49AC1A1B67D7CF3B6294DBDB /* GDTCORMetrics.h in Headers */ = {isa = PBXBuildFile; fileRef = A333516F4B101A5375ED7573E9FBEB96 /* GDTCORMetrics.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -3967,6 +3968,8 @@
 		B67A83FDC0C049813ACEFDB1C646675E /* server_config_selector_filter.h in Headers */ = {isa = PBXBuildFile; fileRef = A1E7C92EAE5A5F5CC94BF2F87C130668 /* server_config_selector_filter.h */; };
 		B6974276A99500F19E722AD70D2770AE /* event_service_config.upb.h in Copy src/core/ext/upb-generated/envoy/config/core/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 55817F84BCCA3B631851E3FCBCFF6AB0 /* event_service_config.upb.h */; };
 		B698CF3F8A16DBE87317F47A0BF34685 /* tcp_posix.h in Headers */ = {isa = PBXBuildFile; fileRef = 0714C9E58F4553DB58C0777B4C2EF67F /* tcp_posix.h */; };
+		B69F1EF528C93ECC0043939B /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F1EF428C93ECC0043939B /* ChatDataSource.swift */; };
+		B69F1FDF28C959600043939B /* FeedackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F1FDE28C959600043939B /* FeedackView.swift */; };
 		B6CA8C7D1E2A99C89F3FFC008C6C87C7 /* time.h in Copy time Public Headers */ = {isa = PBXBuildFile; fileRef = 534D1A28BE6335CBA9A09BB23ECD1295 /* time.h */; };
 		B6D145A49088B08F8C7D08EE00AF1E90 /* FBLPromise+Reduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 9160F169F56A199F374BD996A82EF4E2 /* FBLPromise+Reduce.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6E112A4CE8C234B79FF40FE4A3A8A50 /* digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 284E7F97AC619081F7768B95A2EBE885 /* digest.h */; };
@@ -14909,11 +14912,14 @@
 		B5FB97558B3787366A2C0EF3B42F4A97 /* log_severity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = log_severity.h; path = absl/base/log_severity.h; sourceTree = "<group>"; };
 		B5FFC88867D642918E9B7DFAE52FA953 /* snapshots_in_sync_listener_registration.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = snapshots_in_sync_listener_registration.cc; path = Firestore/core/src/api/snapshots_in_sync_listener_registration.cc; sourceTree = "<group>"; };
 		B5FFDD161FA0930AD5349313CD77B113 /* protocol.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = protocol.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/core/v3/protocol.upbdefs.h"; sourceTree = "<group>"; };
+		B603DAB928D63D3A00FA59DD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B60F0ECE26D99FF520CFB5F93FF5C030 /* clock.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = clock.cc; path = absl/time/clock.cc; sourceTree = "<group>"; };
 		B631279E3E297D7DB75B039219D8FB4D /* transaction_runner.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = transaction_runner.cc; path = Firestore/core/src/core/transaction_runner.cc; sourceTree = "<group>"; };
 		B64317B1C2FA8AD9978E31599140512F /* reflection.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = reflection.c; path = third_party/upb/upb/reflection.c; sourceTree = "<group>"; };
 		B69C24AAABFC647FED858B83979A4672 /* stacktrace.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = stacktrace.cc; path = absl/debugging/stacktrace.cc; sourceTree = "<group>"; };
 		B69EAD69A12169DBC28BD552B35FEB30 /* in_filter.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = in_filter.cc; path = Firestore/core/src/core/in_filter.cc; sourceTree = "<group>"; };
+		B69F1EF428C93ECC0043939B /* ChatDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataSource.swift; sourceTree = "<group>"; };
+		B69F1FDE28C959600043939B /* FeedackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedackView.swift; sourceTree = "<group>"; };
 		B6AC638EFEC73C9333F69D4C5FB0A9F7 /* alts_iovec_record_protocol.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = alts_iovec_record_protocol.cc; path = src/core/tsi/alts/zero_copy_frame_protector/alts_iovec_record_protocol.cc; sourceTree = "<group>"; };
 		B6AE1DD1A1DA1341DA086C3E33699E9A /* cds.upbdefs.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cds.upbdefs.c; path = "src/core/ext/upbdefs-generated/envoy/service/cluster/v3/cds.upbdefs.c"; sourceTree = "<group>"; };
 		B6B86E5C11FDD688FDDBC8EAB296D37A /* grpc_ares_ev_driver_event_engine.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = grpc_ares_ev_driver_event_engine.cc; path = src/core/ext/filters/client_channel/resolver/dns/c_ares/grpc_ares_ev_driver_event_engine.cc; sourceTree = "<group>"; };
@@ -21354,6 +21360,9 @@
 				74C2912028C91F3F006584D8 /* OwnMessageCell.swift */,
 				74C2912328C91F40006584D8 /* ReplyChatCell.swift */,
 				B9DFE7583DEF52B4EE597BDBA9E92277 /* Color.swift */,
+				B69F1EF428C93ECC0043939B /* ChatDataSource.swift */,
+				B69F1FDE28C959600043939B /* FeedackView.swift */,
+				B603DAB928D63D3A00FA59DD /* LoginView.swift */,
 			);
 			name = Scenes;
 			path = ArenaChatSDK/Classes/Scenes;
@@ -26611,6 +26620,7 @@
 				B0F14C5334E9FAB996C383A8AD814D7A /* ChatStreamProvider.swift in Sources */,
 				9E251CBC8FE29FF02FB3DE7CDE7F5BC6 /* Color.swift in Sources */,
 				74E348C628C6405500F45A55 /* CacheAPIEndpoint.swift in Sources */,
+				B603DABA28D63D3A00FA59DD /* LoginView.swift in Sources */,
 				F6AE3F4ADAC1715D368697E4AEC915F5 /* Data+Decode.swift in Sources */,
 				4828E809686467D12D398869B92A9A94 /* Dictionary+Encoded.swift in Sources */,
 				74E348D128C6420100F45A55 /* PublisherConfig.swift in Sources */,
@@ -26635,6 +26645,7 @@
 				56EACFC6510EC322FA9B6211975A2C97 /* ParameterEncoding.swift in Sources */,
 				A046F548F7E49A4B9A27A5544FDEE7CA /* ProviderError.swift in Sources */,
 				1C512508EC62B5ADC821E93A58AE3382 /* ServiceError.swift in Sources */,
+				B69F1FDF28C959600043939B /* FeedackView.swift in Sources */,
 				74E348C428C63F8800F45A55 /* CacheAPIService.swift in Sources */,
 				740749CD28C0155C0030FF69 /* KeychainManageable.swift in Sources */,
 				86C363E7EF1A1DEECA2008BF90778A01 /* SessionManager.swift in Sources */,
@@ -26649,6 +26660,7 @@
 				293A4DA6167C88EC8724314B603DCA19 /* URL+Util.swift in Sources */,
 				74E348D928C65A9300F45A55 /* Settings.swift in Sources */,
 				74E348D528C642BC00F45A55 /* EventTag.swift in Sources */,
+				B69F1EF528C93ECC0043939B /* ChatDataSource.swift in Sources */,
 				74C2912828C91F41006584D8 /* Assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
