@@ -5,7 +5,7 @@ import FirebaseFirestore
 import Foundation
 import SocketIO
 
-public protocol ChatPresenting: class {
+protocol ChatPresenting: class {
     func performUpdate(with batchUpdate: BatchUpdates)
     func nextPageDidLoad()
     func showLoadMore()
@@ -14,7 +14,7 @@ public protocol ChatPresenting: class {
     func openLoginModal()
 }
 
-public class ChatPresenter {
+class ChatPresenter {
     static let pollUpdatedNotification = Notification.Name("ArenaChat.pollUpdatedNotification")
     static let reactionUpdatedNotification = Notification.Name("ArenaChat.reactionUpdatedNotification")
 
@@ -45,9 +45,15 @@ public class ChatPresenter {
         filteredCards.count
     }
 
-    public init(writeKey: String, channel: String, delegate: ChatPresenting) {
+    init(arenaChat: ArenaChat = ArenaChat.shared, delegate: ChatPresenting) {
+        guard let writeKey = arenaChat.writeKey,
+              let channel = arenaChat.channel else {
+            fatalError("ArenaChat `setup(writeKey: String, channel: String)` was not configured on AppDelegate")
+        }
+
         self.writeKey = writeKey
         self.channel = channel
+
         self.delegate = delegate
 
         self.sessionManager = SessionManager()
@@ -74,7 +80,7 @@ public class ChatPresenter {
         return filteredCards[indexPath.row]
     }
 
-    public func startEvent() {
+    func startEvent() {
         cachedService.fetchEvent(writeKey: writeKey,
                                  channel: channel) { [weak self] result in
             switch result {
@@ -88,20 +94,20 @@ public class ChatPresenter {
         }
     }
 
-    public func requestNextPage() {
+    func requestNextPage() {
         stream?.requestNextEvents()
     }
 
-    public func registerUser(name: String) {
+    func registerUser(name: String) {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId(),
                                   name: name))
     }
 
-    public func registerAnonymous() {
+    func registerAnonymous() {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId()))
     }
 
-    public func sendMessage(
+    func sendMessage(
         text: String,
         mediaUrl: String?,
         isGif: Bool
@@ -127,7 +133,7 @@ public class ChatPresenter {
         }
     }
 
-    public func replyMessage(
+    func replyMessage(
         text: String,
         replyId: String,
         mediaUrl: String?,

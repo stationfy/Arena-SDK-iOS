@@ -1,6 +1,6 @@
 import Foundation
 
-struct ExternalUser: Codable {
+public struct ExternalUser: Codable {
     let id: String
     let name: String?
     let email: String?

@@ -717,7 +717,7 @@
 		1F5320664C40410AAFD174C97F0840D7 /* typed_struct.upb.h in Copy src/core/ext/upb-generated/xds/type/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = C3CF4A9BDFF5E7F45F4A46CE02FEDDFA /* typed_struct.upb.h */; };
 		1F5A32E03204F321430E12513ED17FE1 /* wrappers.upbdefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8F8219FAA56C5D7FC78C92C1989496DD /* wrappers.upbdefs.c */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		1F61BE015BADC933D7F3FA1F3B85DF37 /* promise.h in Copy src/core/lib/iomgr/event_engine Private Headers */ = {isa = PBXBuildFile; fileRef = 869585A3305A9848D1A2958AE85EA665 /* promise.h */; };
-		1F778DE2945FE92784868BB980D1441A /* ReplyChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6437716F4B3DFB786834B387B88F6915 /* ReplyChatCell.swift */; };
+		1F778DE2945FE92784868BB980D1441A /* ReceivedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6437716F4B3DFB786834B387B88F6915 /* ReceivedMessageCell.swift */; };
 		1F7BCE679C6BF829C3BE4B7CE92E802D /* value_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0C245FF304F9075B65DFD1719950BB98 /* value_util.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder -Wno-comma -fno-objc-arc"; }; };
 		1F913D7DD8E9A0B31011C94EDCDE7E89 /* evaluate_args.h in Headers */ = {isa = PBXBuildFile; fileRef = DA225321E9CD5BBB8ECD53E1AAA13DE4 /* evaluate_args.h */; };
 		1FB6C7D3D974B14AC1E3081431CA5C5F /* socket_option.upbdefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 61FD238764AA1EA32E06A3751BE9ACF3 /* socket_option.upbdefs.c */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
@@ -2596,7 +2596,6 @@
 		73E9D2B9F48BA04A6B7ABB561BC4FBD6 /* wakeup_fd_pipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 1809039568170D0A980D6990BFC0B59B /* wakeup_fd_pipe.h */; };
 		73FBF275430FABF1547FABA2A090CAEC /* alts_frame_protector.h in Headers */ = {isa = PBXBuildFile; fileRef = B4C05F9F319CF3839A86EF306FE5C22E /* alts_frame_protector.h */; };
 		7402C4ED5F2A086EF8DBCA18479BE60E /* internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AED44494EF7A570BA88BF87BB64FC1C6 /* internal.h */; };
-		741A617328D6AF1A0084A9B9 /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A617028D6AF150084A9B9 /* ChatDataSource.swift */; };
 		741A617428D6AF1A0084A9B9 /* FeedackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A617128D6AF190084A9B9 /* FeedackView.swift */; };
 		741A617528D6AF1A0084A9B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A617228D6AF190084A9B9 /* LoginView.swift */; };
 		742FAE4643B9991F39D51C0FC306B7D3 /* client_unary_call.h in Headers */ = {isa = PBXBuildFile; fileRef = 363EC644FDDF4DE59C9F5E0879FA30D3 /* client_unary_call.h */; };
@@ -2605,6 +2604,8 @@
 		744586867AF1C738B2551E6CBF59993F /* iomgr.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4B8614509324779C06460A49111BE9CF /* iomgr.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		7445B4359351512399AE17A2D738DDE1 /* eds.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DA72033BFCE2DC368CB81C31851507 /* eds.upb.h */; };
 		7448CB4D798748756CA59A518882BD13 /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 60B867A273DC0282F820AFE1319C3EEC /* sync.h */; };
+		7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */; };
+		7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */; };
 		74848C6128D6B00B00311A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741A617628D6AF400084A9B9 /* Assets.xcassets */; };
 		74943AEE0EDADC3CE92584BEF7709046 /* murmur_hash.cc in Sources */ = {isa = PBXBuildFile; fileRef = 71AB3819DC01C5F32DD2BEBB5E6D6D7F /* murmur_hash.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		749D45F994A595FE2A1D372B7053CD1B /* grpc_tls_certificate_distributor.h in Copy src/core/lib/security/credentials/tls Private Headers */ = {isa = PBXBuildFile; fileRef = 3A41E5C887B4771DA304B4D2306A2DB8 /* grpc_tls_certificate_distributor.h */; };
@@ -2860,7 +2861,7 @@
 		7F7384E66164E38BE2B06C528BB19DB9 /* duration.upbdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = B644A9FF95612AC06106A71BD3BFE42B /* duration.upbdefs.h */; };
 		7F75D1B5046496320859A0FD36FA09CE /* stringpiece.h in Copy third_party/re2/re2 Private Headers */ = {isa = PBXBuildFile; fileRef = 8D02968F9ED2D47802ECC372AB893BDF /* stringpiece.h */; };
 		7F7EF9695285CDDF92F8F572533D70B1 /* value.upbdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = D5B525FF43FD01283A80B20AF46529C6 /* value.upbdefs.h */; };
-		7F9EBD6132EED71C786F616737037DD1 /* OwnMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFECEBC0BC51B1D06BA94C49B07AC731 /* OwnMessageCell.swift */; };
+		7F9EBD6132EED71C786F616737037DD1 /* SenderMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFECEBC0BC51B1D06BA94C49B07AC731 /* SenderMessageCell.swift */; };
 		7FA00C1159790A1DF793F4E6709A283E /* GDTCORConsoleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB06830A84576AFA1423933EC4B9F2D /* GDTCORConsoleLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FA20318A72EF2A8CB91C1C1B5E28ADB /* tcp_server_utils_posix_noifaddrs.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8409B5E34C300FC9EDAFCF74066 /* tcp_server_utils_posix_noifaddrs.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		7FABC368F0B36CA8F9C336A93DE63363 /* pcy_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 07A77DA56CE54A694C4E6ACE4C7C3AF9 /* pcy_tree.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
@@ -13976,7 +13977,7 @@
 		64092F2BA1DE94EAE2E47492FBC43A03 /* frame_settings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frame_settings.h; path = src/core/ext/transport/chttp2/transport/frame_settings.h; sourceTree = "<group>"; };
 		6436F01B61AAE208B0E00536CB9A62EF /* sha256.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha256.c; path = src/crypto/fipsmodule/sha/sha256.c; sourceTree = "<group>"; };
 		643706A1A7DB22717B4D2332D53D0988 /* re2.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = re2.cc; path = third_party/re2/re2/re2.cc; sourceTree = "<group>"; };
-		6437716F4B3DFB786834B387B88F6915 /* ReplyChatCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplyChatCell.swift; sourceTree = "<group>"; };
+		6437716F4B3DFB786834B387B88F6915 /* ReceivedMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReceivedMessageCell.swift; sourceTree = "<group>"; };
 		64436FBBDEFBF31E3FE9AAB4D1E2E7B0 /* server.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = server.cc; path = src/core/lib/surface/server.cc; sourceTree = "<group>"; };
 		644569028FAC3AE73AF3186880E8058E /* Pods-ArenaChatSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArenaChatSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		645F02679E008F78E901B9873D692222 /* server_chttp2.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = server_chttp2.cc; path = src/core/ext/transport/chttp2/server/insecure/server_chttp2.cc; sourceTree = "<group>"; };
@@ -14223,7 +14224,6 @@
 		73F0E02204C4DE738D1BD19CAE9CD370 /* string_format.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = string_format.cc; path = Firestore/core/src/util/string_format.cc; sourceTree = "<group>"; };
 		73FB6CB1E7A00607D2AE887DCEB2ABB6 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		7416488F6B562FB35A863B1B96F88C06 /* call_tracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call_tracer.h; path = src/core/lib/channel/call_tracer.h; sourceTree = "<group>"; };
-		741A617028D6AF150084A9B9 /* ChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataSource.swift; sourceTree = "<group>"; };
 		741A617128D6AF190084A9B9 /* FeedackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedackView.swift; sourceTree = "<group>"; };
 		741A617228D6AF190084A9B9 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		741A617628D6AF400084A9B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -14235,6 +14235,8 @@
 		744D83DEE5DEB8C138C1D7ACC94A49B3 /* client_callback.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = client_callback.cc; path = src/cpp/client/client_callback.cc; sourceTree = "<group>"; };
 		74555B2F44DF8AD511CC097626E8CD60 /* server_address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server_address.h; path = src/core/lib/resolver/server_address.h; sourceTree = "<group>"; };
 		745E85400E7381A7DAB9CAD2C34FB87F /* handshaker_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker_registry.h; path = src/core/lib/channel/handshaker_registry.h; sourceTree = "<group>"; };
+		7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Batches.swift"; sourceTree = "<group>"; };
+		7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocol.swift; sourceTree = "<group>"; };
 		74AC5F9C85F975AB332E49A2BEA536BD /* resolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolver.h; path = src/core/lib/iomgr/event_engine/resolver.h; sourceTree = "<group>"; };
 		74AE65333145B1EC5235AE8F9335BDDF /* file.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = file.c; path = src/crypto/bio/file.c; sourceTree = "<group>"; };
 		74B1E4B6A6AE8686DF44BF2A6CD9334A /* extension.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extension.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/core/v3/extension.upbdefs.h"; sourceTree = "<group>"; };
@@ -15632,7 +15634,7 @@
 		CFCEFD400978E48EADA9169E1F07C5D3 /* obj_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = src/include/openssl/obj_mac.h; sourceTree = "<group>"; };
 		CFD89EB327D8E32F30D80816F3A24F8A /* resource_quota.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resource_quota.h; path = include/grpcpp/resource_quota.h; sourceTree = "<group>"; };
 		CFE7C64AE05ED21209DE45FFAAE8654A /* versioning.upb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = versioning.upb.c; path = "src/core/ext/upb-generated/udpa/annotations/versioning.upb.c"; sourceTree = "<group>"; };
-		CFECEBC0BC51B1D06BA94C49B07AC731 /* OwnMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OwnMessageCell.swift; sourceTree = "<group>"; };
+		CFECEBC0BC51B1D06BA94C49B07AC731 /* SenderMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SenderMessageCell.swift; sourceTree = "<group>"; };
 		D0034365A507D53D09F6EB96BFEF0D9E /* ossl_typ.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ossl_typ.h; path = src/include/openssl/ossl_typ.h; sourceTree = "<group>"; };
 		D01E41A86DA60E1458E6FDBF5CA924A5 /* Apollo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Apollo-umbrella.h"; sourceTree = "<group>"; };
 		D024641C0E21D16E2FB4F80FC827E4BF /* murmur_hash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = murmur_hash.h; path = src/core/lib/gpr/murmur_hash.h; sourceTree = "<group>"; };
@@ -16838,6 +16840,7 @@
 			isa = PBXGroup;
 			children = (
 				008BDBF1C4EE41F37ED58D50A5E7C334 /* Logger.swift */,
+				7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */,
 			);
 			name = Commons;
 			path = ArenaChatSDK/Classes/Commons;
@@ -20268,15 +20271,15 @@
 			isa = PBXGroup;
 			children = (
 				741A617628D6AF400084A9B9 /* Assets.xcassets */,
-				741A617028D6AF150084A9B9 /* ChatDataSource.swift */,
 				741A617128D6AF190084A9B9 /* FeedackView.swift */,
 				741A617228D6AF190084A9B9 /* LoginView.swift */,
 				7BA5E62BF4F76FC6C761303F76BAC222 /* Assets.swift */,
 				55DF00F24394705D8B152B2032C0F91D /* ChatView.swift */,
 				B2E5D47838547EEEDECBFC874D799395 /* Color.swift */,
 				9617BA884B87E17485C6359BB462D491 /* ImageRepresentable.swift */,
-				CFECEBC0BC51B1D06BA94C49B07AC731 /* OwnMessageCell.swift */,
-				6437716F4B3DFB786834B387B88F6915 /* ReplyChatCell.swift */,
+				CFECEBC0BC51B1D06BA94C49B07AC731 /* SenderMessageCell.swift */,
+				6437716F4B3DFB786834B387B88F6915 /* ReceivedMessageCell.swift */,
+				7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */,
 			);
 			name = Scenes;
 			path = ArenaChatSDK/Classes/Scenes;
@@ -27570,10 +27573,10 @@
 				B771BCE7061EF57BAD7C44CDC2394F94 /* ChatStreamDelegate.swift in Sources */,
 				18F8954E4B469BD950C758CCF65AA6C9 /* ChatStreamProvider.swift in Sources */,
 				4C9CD07E0912C647686048910E15F2CC /* ChatView.swift in Sources */,
-				741A617328D6AF1A0084A9B9 /* ChatDataSource.swift in Sources */,
 				5AB4761FC48F628BCE578C158AEC49CB /* Color.swift in Sources */,
 				028833B41DCDFAAA372A42D7A1C39EA4 /* Data+Decode.swift in Sources */,
 				C48D39CEF4860D4B2E285D2301E8AA7A /* DeleteReactions.graphql in Sources */,
+				7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */,
 				62DEAF741086FED442853B6EB17F72E3 /* Dictionary+Encoded.swift in Sources */,
 				9415E670A566B66432A4796E0B9794CD /* Endpoint+Setuping.swift in Sources */,
 				AD239216E48752FAC34FBEB7E3A55061 /* Event.swift in Sources */,
@@ -27596,10 +27599,11 @@
 				0E95F7BFC931A58FD7FAA8C86EAEEA60 /* MessageContentMedia.swift in Sources */,
 				9074C2D7F36DB8B924E279D863D13A4A /* MessageResponse.swift in Sources */,
 				947F804F2936ADB7340487C49171446F /* MessageSender.swift in Sources */,
+				7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */,
 				01709722B32F81129E072A734E1A1AB2 /* MutationFactoring.swift in Sources */,
 				0D84DAB91978A3CBAAA375CEDECBBC80 /* Name.swift in Sources */,
 				21F9C3701DAC127664D783CA17D8A55E /* NetworkInterceptorProvider.swift in Sources */,
-				7F9EBD6132EED71C786F616737037DD1 /* OwnMessageCell.swift in Sources */,
+				7F9EBD6132EED71C786F616737037DD1 /* SenderMessageCell.swift in Sources */,
 				097F77CED847152109A5AB06D686D09F /* ParameterEncoding.swift in Sources */,
 				3432773DFE2C06F89AA4711F75E77DD5 /* Player.swift in Sources */,
 				DA63304D6E2B987836F0CEBD6E42A282 /* PollVote.graphql in Sources */,
@@ -27609,7 +27613,7 @@
 				7BE362D5596971F421579787D00DBE49 /* Publisher.swift in Sources */,
 				C54DCFBCB32F5BE5E81C15CB77653EA7 /* PublisherConfig.swift in Sources */,
 				A60477F0DEC09F59F2D440A59A894AC3 /* PublisherFeatureflag.swift in Sources */,
-				1F778DE2945FE92784868BB980D1441A /* ReplyChatCell.swift in Sources */,
+				1F778DE2945FE92784868BB980D1441A /* ReceivedMessageCell.swift in Sources */,
 				C39A4ED36E09B8CCF4A5007FCAE64987 /* ReplyMessage.graphql in Sources */,
 				779A8E941D9DC3372942D5F7606145C2 /* schema.json in Sources */,
 				FA6C95D199C6001BAEEE62E035DBC720 /* SendMessage.graphql in Sources */,

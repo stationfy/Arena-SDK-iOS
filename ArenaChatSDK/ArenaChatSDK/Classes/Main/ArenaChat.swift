@@ -33,16 +33,20 @@ public final class ArenaChat {
     public static var shared = ArenaChat()
     static let widgetType = "Chat"
 
-    var publisherSlug: String?
+    var writeKey: String?
+    var channel: String?
+
     var firestore: Firestore?
 
     init() {}
 
     /// Setup method that prepares all internal dependencies
     ///
-    /// - Parameter publisherSlug: String - your publisher slug.
-    public static func setup(publisherSlug: String) {
-        shared.publisherSlug = publisherSlug
+    /// - Parameter writeKey: The write key is the one used to initialize the SDK and will be provided by Arena team
+    /// - Parameter channel: The channel is the one used to initialize the SDK and will be provided by Arena team
+    public static func setup(writeKey: String, channel: String) {
+        shared.writeKey = writeKey
+        shared.channel = channel
 
         let options: FirebaseOptions = FirebaseOptions(googleAppID: Constants.googleAppID,
                                                        gcmSenderID: Constants.gcmSenderID)

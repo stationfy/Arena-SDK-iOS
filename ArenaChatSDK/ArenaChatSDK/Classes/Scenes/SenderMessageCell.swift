@@ -1,6 +1,6 @@
 import UIKit
 
-public final class OwnMessageCell: UITableViewCell {
+public final class SenderMessageCell: UITableViewCell {
     // MARK: - TopView
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -85,7 +85,6 @@ public final class OwnMessageCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildViewHierarchy()
         setupConstraints()
-        setup()
     }
 
     @available(*, unavailable)
@@ -94,7 +93,7 @@ public final class OwnMessageCell: UITableViewCell {
     }
 }
 
-extension OwnMessageCell {
+extension SenderMessageCell {
     func buildViewHierarchy() {
         messageContainerView.addSubview(ownMessageLabel)
         repliedMessageContainerView.addSubview(separatorView)
@@ -140,8 +139,8 @@ extension OwnMessageCell {
     }
 }
 
-extension OwnMessageCell {
-    func setup() {
+extension SenderMessageCell: CardCellSetuping {
+    func setup(with card: Card) {
         let isHidden = true
         nameLabel.text = "You replied Arelene McCoy"
         timeLabel.text = "10:54"

@@ -1,6 +1,6 @@
 import UIKit
 
-public final class ReplyChatCell: UITableViewCell {
+public final class ReceivedMessageCell: UITableViewCell {
     // MARK: - TopView
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -116,7 +116,6 @@ public final class ReplyChatCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildViewHierarchy()
         setupConstraints()
-        setup()
     }
     
     @available(*, unavailable)
@@ -125,7 +124,7 @@ public final class ReplyChatCell: UITableViewCell {
     }
 }
 
-extension ReplyChatCell {
+extension ReceivedMessageCell {
     func buildViewHierarchy() {
         roundViewContainerView.addSubview(roundView)
         profileImageContainerView.addSubview(profileImageView)
@@ -190,8 +189,8 @@ extension ReplyChatCell {
     }
 }
 
-public extension ReplyChatCell {
-    func setup() {
+extension ReceivedMessageCell: CardCellSetuping {
+    func setup(with card: Card) {
         let isHidden = false
         nameLabel.text = "Clau Maria"
         timeLabel.text = "09:13"

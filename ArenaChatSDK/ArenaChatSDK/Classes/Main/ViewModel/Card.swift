@@ -52,4 +52,15 @@ enum MessageType: Int, Decodable {
     case poll = 5467
     case receivedReply = 3463
     case received = 7562
+
+    var identifier: String {
+        switch self {
+        case .received, .receivedReply:
+            return "ReceivedMessageCell"
+        case .sender, .senderReply:
+            return "SenderMessageCell"
+        default:
+            return "ReceivedMessageCell"
+        }
+    }
 }

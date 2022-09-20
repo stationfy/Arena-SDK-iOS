@@ -60,8 +60,10 @@ public final class ChatView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(OwnMessageCell.self, forCellReuseIdentifier: "OwnMessageCell")
-        tableView.register(ReplyChatCell.self, forCellReuseIdentifier: "ReplyChatCell")
+        tableView.register(SenderMessageCell.self,
+                           forCellReuseIdentifier: "SenderMessageCell")
+        tableView.register(ReceivedMessageCell.self,
+                           forCellReuseIdentifier: "ReceivedMessageCell")
         tableView.showsVerticalScrollIndicator = false
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
@@ -115,6 +117,8 @@ public final class ChatView: UIView {
         return view
     }()
 
+    private lazy var presenter: ChatPresenter = ChatPresenter(delegate: self)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -126,7 +130,19 @@ public final class ChatView: UIView {
     }
 }
 
-extension ChatView {
+public extension ChatView {
+
+    func setUser(_ externalUser: ExternalUser) {
+        presenter.setUser(externalUser)
+    }
+
+    func startEvent() {
+        presenter.startEvent()
+    }
+
+}
+
+private extension ChatView {
     func buildLayout() {
         buildViewHierarchy()
         setupConstraints()
@@ -176,13 +192,42 @@ extension ChatView {
 
 extension ChatView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return presenter.numberOfRows
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyChatCell", for: indexPath) as! ReplyChatCell
+        let model = presenter.cellModel(for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: model.type.identifier,
+            for: indexPath
+        )
+
+        guard let cardCell = cell as? CardCellSetuping else {
+            return cell
+        }
+
+        cardCell.setup(with: model)
+
         return cell
     }
 }
 
 extension ChatView: UITableViewDelegate { }
+
+extension ChatView: ChatPresenting {
+    func performUpdate(with batchUpdate: BatchUpdates) {
+        tableView.performUpdate(with: batchUpdate)
+    }
+
+    func nextPageDidLoad() { }
+
+    func showLoadMore() { }
+
+    func hideLoadMore() { }
+
+    func openLoginModal() {
+
+    }
+
+}
