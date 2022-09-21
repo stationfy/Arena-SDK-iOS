@@ -232,7 +232,7 @@ extension ChatView: ChatPresenting {
     }
 
     func nextPageDidLoad() { }
-
+    
     func showLoadMore() { }
 
     func hideLoadMore() { }

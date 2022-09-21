@@ -7,15 +7,20 @@ public final class FeedbackView: UIView {
     private let backgroundImage: UIImage
     private let mainImage: UIImage
     private let title: String
-    private let feedackDescription: String
+    private let subtitle: String
     private let mainButtonTitle: String
     private let textButtonTitle: String?
 
-    private let headerContainerView = UIView()
+    private let headerContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private let backgroundImageView: UIImageView = {
         let imageview = UIImageView()
         imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageview.contentMode = .scaleAspectFit
         return imageview
     }()
 
@@ -29,6 +34,7 @@ public final class FeedbackView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = Color.darkGray
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,6 +43,8 @@ public final class FeedbackView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = Color.darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,8 +53,10 @@ public final class FeedbackView: UIView {
         let button = UIButton()
         button.backgroundColor = Color.mediumPurple
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.titleLabel?.textColor = .white
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(didTapMainButton), for: .touchUpInside)
+        button.layer.cornerRadius = 24
+        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -54,7 +64,7 @@ public final class FeedbackView: UIView {
     private lazy var textButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.titleLabel?.textColor = Color.blue
+        button.setTitleColor(Color.blue, for: .normal)
         button.addTarget(self, action: #selector(didTapTextButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -63,7 +73,7 @@ public final class FeedbackView: UIView {
     private lazy var bottomStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [mainButton, textButton])
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -76,21 +86,22 @@ public final class FeedbackView: UIView {
         return stackView
     }()
 
-    public init(backgroundImage: UIImage = Assets.clouds.image,
-                mainImage: UIImage = Assets.noConnection.image,
+    public init(backgroundImage: UIImage,
+                mainImage: UIImage,
                 title: String,
-                description: String,
+                subtitle: String,
                 mainButtonTitle: String,
                 textButtonTitle: String?) {
         self.backgroundImage = backgroundImage
         self.mainImage = mainImage
         self.title = title
-        self.feedackDescription = description
+        self.subtitle = subtitle
         self.mainButtonTitle = mainButtonTitle
         self.textButtonTitle = textButtonTitle
         super.init(frame: .zero)
         buildViewHierarchy()
         setupConstraints()
+        backgroundColor = Color.lightGray
     }
 
     required init?(coder: NSCoder) {
@@ -119,37 +130,40 @@ private extension FeedbackView {
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            headerContainerView.topAnchor.constraint(equalTo: self.topAnchor),
-            headerContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            headerContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            headerContainerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
+            headerContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            headerContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
 
             backgroundImageView.topAnchor.constraint(equalTo: headerContainerView.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: headerContainerView.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: headerContainerView.trailingAnchor),
-            backgroundImageView.heightAnchor.constraint(equalToConstant: 110),
 
-            mainImageView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -20),
-            mainImageView.leadingAnchor.constraint(equalTo: headerContainerView.leadingAnchor),
-            mainImageView.trailingAnchor.constraint(equalTo: headerContainerView.trailingAnchor),
+            mainImageView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -40),
+            mainImageView.centerXAnchor.constraint(equalTo: headerContainerView.centerXAnchor),
             mainImageView.bottomAnchor.constraint(equalTo: headerContainerView.bottomAnchor),
-            mainImageView.heightAnchor.constraint(equalToConstant: 110),
 
-            textStackView.topAnchor.constraint(equalTo: headerContainerView.bottomAnchor, constant: -24),
+            textStackView.topAnchor.constraint(equalTo: headerContainerView.bottomAnchor, constant: 24),
             textStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 48),
             textStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -48),
             textStackView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
 
-            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            mainButton.heightAnchor.constraint(equalToConstant: 48),
+
+            textButton.heightAnchor.constraint(equalToConstant: 40),
+
+            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40)
         ])
     }
+}
 
+public extension FeedbackView {
     func setup() {
         backgroundImageView.image = backgroundImage
         mainImageView.image = mainImage
         titleLabel.text = title
-        descriptionLabel.text = description
+        descriptionLabel.text = subtitle
         mainButton.setTitle(mainButtonTitle, for: .normal)
         textButton.setTitle(textButtonTitle, for: .normal)
         textButton.isHidden = textButtonTitle == nil
