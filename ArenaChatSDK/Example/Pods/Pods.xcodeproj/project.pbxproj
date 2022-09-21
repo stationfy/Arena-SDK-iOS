@@ -2606,6 +2606,7 @@
 		7448CB4D798748756CA59A518882BD13 /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 60B867A273DC0282F820AFE1319C3EEC /* sync.h */; };
 		7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */; };
 		7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */; };
+		7480ECD228DA577F00DE4507 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECD128DA577F00DE4507 /* Configurations.swift */; };
 		74848C6128D6B00B00311A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741A617628D6AF400084A9B9 /* Assets.xcassets */; };
 		74943AEE0EDADC3CE92584BEF7709046 /* murmur_hash.cc in Sources */ = {isa = PBXBuildFile; fileRef = 71AB3819DC01C5F32DD2BEBB5E6D6D7F /* murmur_hash.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		749D45F994A595FE2A1D372B7053CD1B /* grpc_tls_certificate_distributor.h in Copy src/core/lib/security/credentials/tls Private Headers */ = {isa = PBXBuildFile; fileRef = 3A41E5C887B4771DA304B4D2306A2DB8 /* grpc_tls_certificate_distributor.h */; };
@@ -14237,6 +14238,7 @@
 		745E85400E7381A7DAB9CAD2C34FB87F /* handshaker_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker_registry.h; path = src/core/lib/channel/handshaker_registry.h; sourceTree = "<group>"; };
 		7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Batches.swift"; sourceTree = "<group>"; };
 		7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocol.swift; sourceTree = "<group>"; };
+		7480ECD128DA577F00DE4507 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		74AC5F9C85F975AB332E49A2BEA536BD /* resolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolver.h; path = src/core/lib/iomgr/event_engine/resolver.h; sourceTree = "<group>"; };
 		74AE65333145B1EC5235AE8F9335BDDF /* file.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = file.c; path = src/crypto/bio/file.c; sourceTree = "<group>"; };
 		74B1E4B6A6AE8686DF44BF2A6CD9334A /* extension.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extension.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/core/v3/extension.upbdefs.h"; sourceTree = "<group>"; };
@@ -17881,6 +17883,7 @@
 		5AC9DD4C08A1E2D177CBF2438086F818 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7480ECD028DA576200DE4507 /* EnvironmentConfiguration */,
 				A40D757D18C265038B2FDB0801A3A79E /* ArenaChat.swift */,
 				B1B6379F0D8BCBE44A733F7042E16C86 /* ChatPresenter.swift */,
 				75CE148C9077463FEFB3590639673F10 /* Helper */,
@@ -18136,6 +18139,14 @@
 				DCF6E8D3F131EEA5F03622D1630A084D /* seed_sequences */,
 			);
 			name = random;
+			sourceTree = "<group>";
+		};
+		7480ECD028DA576200DE4507 /* EnvironmentConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				7480ECD128DA577F00DE4507 /* Configurations.swift */,
+			);
+			path = EnvironmentConfiguration;
 			sourceTree = "<group>";
 		};
 		74D0FCD320ABB0B1C12AC3FAC1C4C70B /* kernel_timeout_internal */ = {
@@ -25167,10 +25178,10 @@
 			buildConfigurationList = 8B1149FBAE11B752EF694ABB40A0694F /* Build configuration list for PBXNativeTarget "ArenaChatSDK" */;
 			buildPhases = (
 				24D481E6F0702AB27078AD5D3B02226B /* Headers */,
+				74848C6228D6B0D500311A29 /* Generate Apollo GraphQL API */,
 				EFA732CF5CF87957D0122D0ACA57EFE5 /* Sources */,
 				1169516F36705782171A6B5D7D730B59 /* Frameworks */,
 				4B2A2C8222D2F099EF0A49DAFEACEA55 /* Resources */,
-				74848C6228D6B0D500311A29 /* Generate Apollo GraphQL API */,
 			);
 			buildRules = (
 			);
@@ -27553,6 +27564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7480ECD228DA577F00DE4507 /* Configurations.swift in Sources */,
 				F3DF0D6B3ECEA11CF51D5548AB88D392 /* API+Constants.swift in Sources */,
 				895E60790AF903415D5266158DAC95F7 /* ApolloClientable.swift in Sources */,
 				9C11D929BE8C88194F5B3907AA300CEB /* ArenaChat.swift in Sources */,

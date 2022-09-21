@@ -24,12 +24,12 @@ extension ApolloClient: ApolloClientable {
                      resultHandler: resultHandler)
     }
 
-    static func build(interceptor: HeaderAddingInterceptor) -> ApolloClient {
+    static func build(url: URL,
+                      interceptor: HeaderAddingInterceptor) -> ApolloClient {
         let client = URLSessionClient()
         let cache = InMemoryNormalizedCache()
         let store = ApolloStore(cache: cache)
         let provider = NetworkInterceptorProvider(client: client, store: store, interceptor: interceptor)
-        let url = URL(string: "http://localhost:4000/graphql")!
         let transport = RequestChainNetworkTransport(interceptorProvider: provider,
                                                      endpointURL: url)
         return ApolloClient(networkTransport: transport, store: store)

@@ -58,18 +58,32 @@ class ChatPresenter {
 
         self.sessionManager = SessionManager()
 
-        let httpClient = HTTPClient(baseUrl: "",
-                                    sessionManager: sessionManager,
-                                    logger: Logger(isEnabled: true))
-        let socketManager = SocketManager(socketURL: URL(string: "http://localhost:8080")!,
-                                          config: [.log(true), .compress])
+        let cachedHttpClient = HTTPClient(
+            baseUrl: arenaChat.configuration.cachedBaseURL,
+            sessionManager: sessionManager,
+            logger: Logger(isEnabled: true)
+        )
+        let userHttpClient = HTTPClient(
+            baseUrl: arenaChat.configuration.chatBaseURL,
+            sessionManager: sessionManager,
+            logger: Logger(isEnabled: true)
+        )
 
-        self.cachedService = CachedAPIService(client: httpClient)
-        self.userService = UserService(client: httpClient, manager: socketManager)
+        let socketManager = SocketManager(
+            socketURL: URL(string: arenaChat.configuration.socketBaseURL)!,
+            config: [.log(true), .compress])
+
+        self.cachedService = CachedAPIService(client: cachedHttpClient)
+        self.userService = UserService(client: userHttpClient, manager: socketManager)
 
         let interceptor = HeaderAddingInterceptor()
-        self.chatService = ChatGraphQLService(client: ApolloClient.build(interceptor: interceptor),
-                                              interceptor: interceptor)
+        self.chatService = ChatGraphQLService(
+            client: ApolloClient.build(
+                url: URL(string: arenaChat.configuration.graphQLBaseURL)!,
+                interceptor: interceptor
+            ),
+            interceptor: interceptor
+        )
     }
 
     func setUser(_ externalUser: ExternalUser) {

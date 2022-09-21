@@ -37,6 +37,8 @@ class ViewController: UIViewController {
             loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
         ])
+
+        chatView.startEvent()
     }
 }
 

@@ -1,4 +1,5 @@
 import UIKit
+import ArenaChatSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
         }
+
+        //ArenaChat.setup(writeKey: <#T##String#>, channel: <#T##String#>, environment: <#T##Environment#>)
         
         return true
     }
