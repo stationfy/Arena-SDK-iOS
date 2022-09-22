@@ -255,7 +255,8 @@ extension ChatView: UITableViewDataSource {
             withIdentifier: model.type.identifier,
             for: indexPath
         )
-
+        
+        cell.selectionStyle = .none
         guard let cardCell = cell as? CardCellSetuping else {
             return cell
         }
