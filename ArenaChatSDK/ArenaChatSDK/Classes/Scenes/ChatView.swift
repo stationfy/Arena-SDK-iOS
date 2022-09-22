@@ -5,6 +5,13 @@ public protocol ChatDelegate: AnyObject {
 }
 
 public final class ChatView: UIView {
+    private let loadingView: LoadingView = {
+        let view = LoadingView()
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var loginView: LoginView = {
         let view = LoginView()
         view.isHidden = true
@@ -203,10 +210,16 @@ private extension ChatView {
         addSubview(tableView)
         addSubview(bottomContainerView)
         addSubview(loginView)
+        addSubview(loadingView)
     }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            loadingView.topAnchor.constraint(equalTo: self.topAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
             loginView.topAnchor.constraint(equalTo: self.topAnchor),
             loginView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             loginView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -255,7 +268,7 @@ extension ChatView: UITableViewDataSource {
             withIdentifier: model.type.identifier,
             for: indexPath
         )
-        
+
         cell.selectionStyle = .none
         guard let cardCell = cell as? CardCellSetuping else {
             return cell
@@ -274,9 +287,14 @@ extension ChatView: ChatPresenting {
         tableView.performUpdate(with: batchUpdate)
     }
 
-    func startLoading() { }
+    func startLoading() {
+        loadingView.isHidden = false
+        loadingView.startLoading()
+    }
 
-    func stopLoading() { }
+    func stopLoading() {
+        loadingView.isHidden = true
+    }
 
     func nextPageDidLoad() { }
     
