@@ -42,7 +42,7 @@ public final class LoginView: UIView {
         return label
     }()
 
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Single Sign On Service", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -55,7 +55,7 @@ public final class LoginView: UIView {
         return button
     }()
 
-    private let startChatButton: UIButton = {
+    private lazy var startChatButton: UIButton = {
         let button = UIButton()
         button.setTitle("Or start chatting without login", for: .normal)
         button.setTitleColor(Color.blue, for: .normal)

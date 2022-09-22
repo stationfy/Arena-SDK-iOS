@@ -2604,6 +2604,7 @@
 		744586867AF1C738B2551E6CBF59993F /* iomgr.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4B8614509324779C06460A49111BE9CF /* iomgr.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -Wno-comma -DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
 		7445B4359351512399AE17A2D738DDE1 /* eds.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DA72033BFCE2DC368CB81C31851507 /* eds.upb.h */; };
 		7448CB4D798748756CA59A518882BD13 /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 60B867A273DC0282F820AFE1319C3EEC /* sync.h */; };
+		746D9CDB28DC83B70061DDF8 /* DispatchQueueAsyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */; };
 		7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */; };
 		7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */; };
 		7480ECD228DA577F00DE4507 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECD128DA577F00DE4507 /* Configurations.swift */; };
@@ -14236,6 +14237,7 @@
 		744D83DEE5DEB8C138C1D7ACC94A49B3 /* client_callback.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = client_callback.cc; path = src/cpp/client/client_callback.cc; sourceTree = "<group>"; };
 		74555B2F44DF8AD511CC097626E8CD60 /* server_address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server_address.h; path = src/core/lib/resolver/server_address.h; sourceTree = "<group>"; };
 		745E85400E7381A7DAB9CAD2C34FB87F /* handshaker_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker_registry.h; path = src/core/lib/channel/handshaker_registry.h; sourceTree = "<group>"; };
+		746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueAsyncable.swift; sourceTree = "<group>"; };
 		7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Batches.swift"; sourceTree = "<group>"; };
 		7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocol.swift; sourceTree = "<group>"; };
 		7480ECD128DA577F00DE4507 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
@@ -20614,6 +20616,7 @@
 				06A0B239123C79C91DA223EFE22C8B16 /* Data+Decode.swift */,
 				99CF4B8AB6DB735BD3905B770F1E74AD /* Dictionary+Encoded.swift */,
 				E4EB8191D48D5920741D664507BE3044 /* ProviderError.swift */,
+				746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -27642,6 +27645,7 @@
 				211F7032711C29241B0CEC2D0FAB4D51 /* User.swift in Sources */,
 				8E4AA8ED661FA5A6FDB67A136EDBB60B /* UserEndpoint.swift in Sources */,
 				833C683D75F83037BA44CF3264D2BF8D /* UserService.swift in Sources */,
+				746D9CDB28DC83B70061DDF8 /* DispatchQueueAsyncable.swift in Sources */,
 				53B02C5A399267428E84DDFC7265CB50 /* UserThumbnail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

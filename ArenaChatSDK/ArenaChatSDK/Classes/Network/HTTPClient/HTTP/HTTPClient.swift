@@ -19,8 +19,9 @@ final public class HTTPClient {
     private var baseUrl: String
     private let successResponse: String = "success"
     private let sessionManager: SessionClearable
-    private let urlSession: URLSessionTaskable
     private let logger: Logging
+    private let dispatchQueue: DispatchQueueAsyncable
+    private let urlSession: URLSessionTaskable
 
     private var decoder: JSONDecoder = {
         let deconder = JSONDecoder()
@@ -31,11 +32,20 @@ final public class HTTPClient {
     public init(baseUrl: String,
                 sessionManager: SessionClearable,
                 logger: Logging,
+                dispatchQueue: DispatchQueueAsyncable = DispatchQueue.main,
                 urlSession: URLSessionTaskable = URLSession.shared) {
         self.baseUrl = baseUrl
         self.sessionManager = sessionManager
-        self.urlSession = urlSession
         self.logger = logger
+        self.dispatchQueue = dispatchQueue
+        self.urlSession = urlSession
+    }
+
+    private func runSafe<T: Any>(_ result: T,
+                                 completion: @escaping (T) -> Void) {
+        dispatchQueue.async {
+            completion(result)
+        }
     }
 
     private func handleError(error: Error) -> ServiceError {
@@ -110,11 +120,11 @@ extension HTTPClient: ClientRequestable {
             request = try URLRequest(baseUrl: baseUrl, sessionManager: sessionManager, setup: setup)
             logRequest(description: request.description)
         } catch let error as ServiceError {
-            completion(.failure(error))
+            runSafe(.failure(error), completion: completion)
             logger.log(object: error.localizedDescription, event: .error)
             return nil
         } catch let error {
-            completion(.failure(.unknown(error.localizedDescription)))
+            runSafe(.failure(.unknown(error.localizedDescription)), completion: completion)
             logger.log(object: error.localizedDescription, event: .error)
             return nil
         }
@@ -125,38 +135,39 @@ extension HTTPClient: ClientRequestable {
 
             if let error = error {
                 self.logger.log(object: error.localizedDescription, event: .error)
-                completion(.failure(self.handleError(error: error)))
+                self.runSafe(.failure(self.handleError(error: error)), completion: completion)
                 return
             }
 
             guard let urlResponse = response as? HTTPURLResponse else {
                 self.logger.log(object: ServiceError.invalidHttpUrlResponse.localizedDescription, event: .error)
-                completion(.failure(.invalidHttpUrlResponse))
+                self.runSafe(.failure(.invalidHttpUrlResponse), completion: completion)
                 return
             }
 
             guard let data = data else {
                 self.logger.log(object: ServiceError.brokenData(urlResponse.statusCode).localizedDescription, event: .error)
-                completion(.failure(.brokenData(urlResponse.statusCode)))
+                self.runSafe(.failure(.brokenData(urlResponse.statusCode)), completion: completion)
                 return
             }
 
             if let error = self.handleStatusError(code: urlResponse.statusCode, data: data) {
                 self.logger.log(object: error.localizedDescription, event: .error)
-                completion(.failure(error))
+                self.runSafe(.failure(error), completion: completion)
                 return
             }
 
             if data.isEmpty {
                 guard let success = SuccessResponse(response: self.successResponse) as? T else {
-                    completion(.failure(.emptyData))
+                    self.runSafe(.failure(.emptyData), completion: completion)
                     return
                 }
 
-                completion(.success(success))
+                self.runSafe(.success(success), completion: completion)
                 return
             }
-            return completion(self.decodeSuccess(data: data))
+
+            self.runSafe(self.decodeSuccess(data: data), completion: completion)
         }
 
         task.resume()

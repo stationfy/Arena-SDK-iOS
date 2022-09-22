@@ -3,7 +3,7 @@ import ArenaChatSDK
 
 class ViewController: UIViewController {
     private lazy var chatView: ChatView = {
-        let view = ChatView()
+        let view = ChatView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -21,7 +21,20 @@ class ViewController: UIViewController {
             chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
         ])
         
-      //  chatView.startEvent()
+        chatView.startEvent()
+    }
+}
+
+extension ViewController: ChatDelegate {
+    func ssoUserRequired() {
+        chatView.setUser(
+            ExternalUser(id: "123123",
+                         name: "Roberto",
+                         email: "roberto@gmail.com",
+                         image: "https://randomuser.me/api/portraits/women/",
+                         familyName: "Silva",
+                         givenName: "Lima")
+        )
     }
 }
 

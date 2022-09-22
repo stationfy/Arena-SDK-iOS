@@ -1,10 +1,20 @@
 import UIKit
 
+public protocol ChatDelegate: AnyObject {
+    func ssoUserRequired(completion: (ExternalUser) -> Void)
+}
+
 public final class ChatView: UIView {
-    private let loginView: LoginView = {
+    private lazy var loginView: LoginView = {
         let view = LoginView()
         view.isHidden = true
-        view.layer.opacity = 0
+        view.alpha = 0
+        view.loginAction = { [weak self] in
+            self?.login()
+        }
+        view.startChatAction = { [weak self] in
+            self?.loginAnonymously()
+        }
         return view
     }()
 
@@ -123,7 +133,14 @@ public final class ChatView: UIView {
         return view
     }()
 
+    private weak var delegate: ChatDelegate?
     private lazy var presenter: ChatPresenter = ChatPresenter(delegate: self)
+
+    init(delegate: ChatDelegate? = nil) {
+        super.init(frame: .zero)
+        self.delegate = delegate
+        buildLayout()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -133,6 +150,16 @@ public final class ChatView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func login() {
+        delegate?.ssoUserRequired { [weak self] externalUser in
+            self?.presenter.registerUser(externalUser: externalUser)
+        }
+    }
+
+    private func loginAnonymously() {
+        presenter.registerAnonymousUser()
     }
 }
 
@@ -161,6 +188,7 @@ private extension ChatView {
         addSubview(topContainerView)
         addSubview(tableView)
         addSubview(bottomContainerView)
+        addSubview(loginView)
     }
 
     func setupConstraints() {
@@ -238,9 +266,9 @@ extension ChatView: ChatPresenting {
     func hideLoadMore() { }
 
     func openLoginModal() {
+        loginView.isHidden = false
         UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.loginView.isHidden = false
-            self?.loginView.layer.opacity = 1
+            self?.loginView.alpha = 1
         }
     }
 }

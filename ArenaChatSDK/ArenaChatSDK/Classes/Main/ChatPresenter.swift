@@ -89,10 +89,6 @@ class ChatPresenter {
         self.externalUser = externalUser
     }
 
-    func cellModel(for indexPath: IndexPath) -> Card {
-        return filteredCards[indexPath.row]
-    }
-
     func startEvent() {
         cachedService.fetchEvent(writeKey: writeKey,
                                  channel: channel) { [weak self] result in
@@ -107,17 +103,26 @@ class ChatPresenter {
         }
     }
 
-    func requestNextPage() {
-        stream?.requestNextEvents()
+    func registerUser(externalUser: ExternalUser) {
+        self.externalUser = externalUser
+        registerUser(externalUser)
     }
 
     func registerUser(name: String) {
-        registerUser(ExternalUser(id: sessionManager.generateAnonymousId(),
-                                  name: name))
+        let userId = sessionManager.loggedUser?._id ?? sessionManager.generateAnonymousId()
+        registerUser(ExternalUser(id: userId, name: name))
     }
 
-    func registerAnonymous() {
+    func registerAnonymousUser() {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId()))
+    }
+
+    func cellModel(for indexPath: IndexPath) -> Card {
+        return filteredCards[indexPath.row]
+    }
+
+    func requestNextPage() {
+        stream?.requestNextEvents()
     }
 
     func sendMessage(
@@ -268,12 +273,18 @@ fileprivate extension ChatPresenter {
         let streamData = ChatStreamData.channels(eventId: eventId,
                                                  pagination: 20,
                                                  descending: true)
-        let chatStream = try! ChatStreamProvider(streamData: streamData)
+        do {
+            let chatStream = try ChatStreamProvider(streamData: streamData)
+            chatStream.delegate = self
+            chatStream.startListeningEvents()
 
-        chatStream.delegate = self
-        chatStream.startListeningEvents()
+            self.stream = chatStream
+        } catch let error {
+            // TODO: Error handling
+            print(error)
+        }
 
-        self.stream = chatStream
+
 
     }
 }
@@ -283,8 +294,6 @@ fileprivate extension ChatPresenter {
     func validateUser() {
         if loggedUser != nil {
             createStream()
-        } else if let externalUser = externalUser {
-            registerUser(externalUser)
         } else {
             delegate?.openLoginModal()
         }

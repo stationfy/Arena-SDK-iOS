@@ -9,13 +9,13 @@ public struct ExternalUser: Codable {
     let givenName: String?
     let extras: [String: String]
 
-    init(id: String,
-         name: String? = nil,
-         email: String? = nil,
-         image: String? = nil,
-         familyName: String? = nil,
-         givenName: String? = nil,
-         extras: [String: String] = [:]) {
+    public init(id: String,
+                name: String? = nil,
+                email: String? = nil,
+                image: String? = nil,
+                familyName: String? = nil,
+                givenName: String? = nil,
+                extras: [String: String] = [:]) {
         self.id = id
         self.name = name
         self.email = email
