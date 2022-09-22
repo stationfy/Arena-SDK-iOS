@@ -190,10 +190,10 @@ extension ChatPresenter: ChatStreamDelegate {
             messages.forEach { messageResponse in
 
                 let card = Card(chatMessage: messageResponse.message,
-                                userId: nil,
-                                eventId: self.event?.eventInfo.key,
-                                dateFormat: self.event?.eventInfo.summaryWordEvent,
-                                summaryWord: self.event?.publisher.config?.dateFormat)
+                                userId: self.sessionManager.loggedUser?._id,
+                                eventId: self.event?.eventInfo?.key,
+                                dateFormat: self.event?.eventInfo?.summaryWordEvent,
+                                summaryWord: self.event?.publisher?.config?.dateFormat)
 
 
                 switch messageResponse.action {
@@ -260,12 +260,13 @@ extension ChatPresenter: ChatStreamDelegate {
 // MARK: Stream Context
 fileprivate extension ChatPresenter {
     private func createStream() {
-        guard let event = event else {
+        guard let event = event,
+             let eventId = event.eventInfo?.key else {
             // TODO: Error handling
             return
         }
 
-        let streamData = ChatStreamData.channels(eventId: event.eventInfo.key,
+        let streamData = ChatStreamData.channels(eventId: eventId,
                                                  pagination: 20,
                                                  descending: true)
         let chatStream = try! ChatStreamProvider(streamData: streamData)
@@ -281,10 +282,10 @@ fileprivate extension ChatPresenter {
 fileprivate extension ChatPresenter {
 
     func validateUser() {
-        if let externalUser = externalUser {
-            registerUser(externalUser)
-        } else if loggedUser != nil {
+        if loggedUser != nil {
             createStream()
+        } else if let externalUser = externalUser {
+            registerUser(externalUser)
         } else {
             delegate?.openLoginModal()
         }
@@ -319,12 +320,12 @@ fileprivate extension ChatPresenter {
         self.userService.update(userId: loggedUser?._id,
                                 isAnonymous: loggedUser?._id?.isEmpty ?? true,
                                 name: loggedUser?.name,
-                                image: loggedUser?.image) { result in
-            self.changedUser = false
+                                image: loggedUser?.image) { [weak self] result in
+            self?.changedUser = false
 
             switch result {
             case .success:
-                self.createStream()
+                self?.startEvent()
             case .failure:
                 // TODO: Error handling
                 break
@@ -338,10 +339,10 @@ fileprivate extension ChatPresenter {
                               userId: loggedUser?._id,
                               isAnonymous: loggedUser?._id?.isEmpty ?? true,
                               name: loggedUser?.name,
-                              image: loggedUser?.image) { result in
+                              image: loggedUser?.image) { [weak self] result in
             switch result {
             case .success:
-                self.createStream()
+                self?.startEvent()
             case .failure:
                 // TODO: Error handling
                 break

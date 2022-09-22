@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
 
-        //ArenaChat.setup(writeKey: <#T##String#>, channel: <#T##String#>, environment: <#T##Environment#>)
+        ArenaChat.setup(writeKey: "new-business-3", channel: "n5fGttu", environment: .development)
         
         return true
     }
