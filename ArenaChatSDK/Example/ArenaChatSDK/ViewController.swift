@@ -10,8 +10,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = . white
-
+        view.backgroundColor = .white
+        
         view.addSubview(chatView)
         
         NSLayoutConstraint.activate([
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ChatDelegate {
-    func ssoUserRequired() {
-        chatView.setUser(
+    func ssoUserRequired(completion: (ExternalUser) -> Void) {
+        completion(
             ExternalUser(id: "123123",
                          name: "Roberto",
                          email: "roberto@gmail.com",

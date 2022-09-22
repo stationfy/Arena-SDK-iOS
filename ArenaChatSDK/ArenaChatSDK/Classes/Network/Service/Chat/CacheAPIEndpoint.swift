@@ -7,7 +7,7 @@ enum CacheAPIEndpoint: EndpointSetuping {
     var endpoint: String {
         switch self {
         case .requestEvent(writeKey: let writeKey, channel: let channel):
-            return "/v1/chatroom/\(writeKey)/\(channel)"
+            return "v1/chatroom/\(writeKey)/\(channel)"
         }
     }
 

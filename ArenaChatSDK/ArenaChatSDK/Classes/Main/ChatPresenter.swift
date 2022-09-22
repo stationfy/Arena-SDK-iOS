@@ -7,6 +7,8 @@ import SocketIO
 
 protocol ChatPresenting: class {
     func performUpdate(with batchUpdate: BatchUpdates)
+    func startLoading()
+    func stopLoading()
     func nextPageDidLoad()
     func showLoadMore()
     func hideLoadMore()
@@ -90,6 +92,7 @@ class ChatPresenter {
     }
 
     func startEvent() {
+        delegate?.startLoading()
         cachedService.fetchEvent(writeKey: writeKey,
                                  channel: channel) { [weak self] result in
             switch result {
@@ -106,6 +109,7 @@ class ChatPresenter {
     func registerUser(externalUser: ExternalUser) {
         self.externalUser = externalUser
         registerUser(externalUser)
+        delegate?.startLoading()
     }
 
     func registerUser(name: String) {
@@ -115,6 +119,7 @@ class ChatPresenter {
 
     func registerAnonymousUser() {
         registerUser(ExternalUser(id: sessionManager.generateAnonymousId()))
+        delegate?.startLoading()
     }
 
     func cellModel(for indexPath: IndexPath) -> Card {
@@ -122,7 +127,14 @@ class ChatPresenter {
     }
 
     func requestNextPage() {
-        stream?.requestNextEvents()
+        guard let chatInfo = event?.chatInfo,
+              let chatRoomId = chatInfo.id,
+              let channelId = chatInfo.mainChannelId else {
+            // TODO: Error handling
+            return
+        }
+
+        stream?.loadPreviousMessages(chatRoomId: chatRoomId, channelId: channelId)
     }
 
     func sendMessage(
@@ -247,6 +259,7 @@ extension ChatPresenter: ChatStreamDelegate {
             DispatchQueue.main.sync { [weak self] in
                 self?.delegate?.performUpdate(with: batchUpdates)
                 self?.delegate?.nextPageDidLoad()
+                self?.delegate?.stopLoading()
                 if shouldShowLoadMore {
                     self?.delegate?.showLoadMore()
                 } else {
@@ -257,6 +270,7 @@ extension ChatPresenter: ChatStreamDelegate {
     }
 
     func stream(_ stream: ChatStreamProvider, didReceivedError error: Error) {
+        print(error)
         // TODO: ERROR handling
     }
 }
@@ -264,22 +278,22 @@ extension ChatPresenter: ChatStreamDelegate {
 // MARK: Stream Context
 fileprivate extension ChatPresenter {
     private func createStream() {
-        guard let event = event,
-             let eventId = event.eventInfo?.key else {
+        guard let chatInfo = event?.chatInfo,
+              let chatRoomId = chatInfo.id,
+              let channelId = chatInfo.mainChannelId else {
             // TODO: Error handling
             return
         }
 
-        let streamData = ChatStreamData.channels(eventId: eventId,
-                                                 pagination: 20,
-                                                 descending: true)
         do {
-            let chatStream = try ChatStreamProvider(streamData: streamData)
+            let chatStream = try ChatStreamProvider()
             chatStream.delegate = self
-            chatStream.startListeningEvents()
+            chatStream.startListeningRecentMessages(chatRoomId: chatRoomId,
+                                                    channelId: channelId)
 
             self.stream = chatStream
         } catch let error {
+            delegate?.stopLoading()
             // TODO: Error handling
             print(error)
         }
@@ -294,7 +308,10 @@ fileprivate extension ChatPresenter {
     func validateUser() {
         if loggedUser != nil {
             createStream()
+        } else if let externalUser = externalUser {
+            registerUser(externalUser)
         } else {
+            delegate?.stopLoading()
             delegate?.openLoginModal()
         }
     }
@@ -317,8 +334,9 @@ fileprivate extension ChatPresenter {
                     self.joinUser(loggedUser)
                 }
 
-            case .failure:
-                // TODO: Error handling
+            case let .failure(error):
+                self.delegate?.stopLoading()
+                print(error)
                 break
             }
         }
@@ -334,8 +352,9 @@ fileprivate extension ChatPresenter {
             switch result {
             case .success:
                 self?.startEvent()
-            case .failure:
-                // TODO: Error handling
+            case let .failure(error):
+                self?.delegate?.stopLoading()
+                print(error)
                 break
             }
         }
@@ -351,7 +370,9 @@ fileprivate extension ChatPresenter {
             switch result {
             case .success:
                 self?.startEvent()
-            case .failure:
+            case let .failure(error):
+                print(error)
+                self?.delegate?.stopLoading()
                 // TODO: Error handling
                 break
             }

@@ -6,9 +6,9 @@ struct MessageContentMedia: Decodable {
     let html: String?
     let providerName: String?
     let providerUrl: String?
-    let thumbnailHeight: Int
+    let thumbnailHeight: Int?
     let thumbnailUrl: String?
-    let thumbnailWidth: Int
+    let thumbnailWidth: Int?
     let title: String?
     let videoUrl: String?
     let type: String?

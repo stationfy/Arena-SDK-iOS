@@ -6,5 +6,5 @@ struct MessageSender: Decodable {
     let uid: String?
     let displayName: String?
     let photoURL: String?
-    let isPublisher: Bool
+    let isPublisher: Bool?
 }

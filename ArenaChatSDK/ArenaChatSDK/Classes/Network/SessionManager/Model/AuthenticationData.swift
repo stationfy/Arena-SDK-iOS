@@ -34,7 +34,7 @@ public struct LoggedUser: Codable, Equatable {
     let thumbnails: UserThumbnail?
     let joinedAt: String?
     let type: String?
-    let metaData: [String: String]
+    let metaData: [String: String]?
     let isModerator: Bool?
     let isBanned: Bool?
 }

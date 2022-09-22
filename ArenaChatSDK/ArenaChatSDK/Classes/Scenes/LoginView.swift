@@ -76,12 +76,16 @@ public final class LoginView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
-        buildViewHierarchy()
-        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        buildViewHierarchy()
+        setupConstraints()
     }
 }
 

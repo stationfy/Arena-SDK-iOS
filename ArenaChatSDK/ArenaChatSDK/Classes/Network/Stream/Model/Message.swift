@@ -11,7 +11,7 @@ class Message: Decodable {
     let type: String?
     let changeType: String?
     let reactions: [String: Int]?
-    let alreadyFavorited: Bool
+    let alreadyFavorited: Bool?
     let totalReactions: Int?
 
     init(createdAt: Double? = nil,

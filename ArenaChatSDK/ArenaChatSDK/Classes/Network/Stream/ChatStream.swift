@@ -3,42 +3,47 @@
 import Foundation
 import FirebaseFirestore
 
-protocol Streaming {
+protocol ChatStreaming {
     var currentPageSize: Int { get }
 
     var delegate: StreamDelegate? { get set }
 
-    func startListeningEvents()
-    func requestNextEvents()
+    func startListeningRecentMessages(
+        chatRoomId: String,
+        channelId: String,
+        perPage: Int
+    )
+
+    func loadPreviousMessages(
+        chatRoomId: String,
+        channelId: String,
+        perPage: Int
+    )
+
     func startListeningReactions()
 }
 
-class Stream: Streaming {
+class ChatStream: ChatStreaming {
 
     struct Constants {
-        static let events: String = "events"
-        static let reactions: String = "reactions"
+        static let chatRooms: String = "chat-rooms"
+        static let channels: String = "channels"
+        static let messages: String = "messages"
 
-        static let priorityKey: String = "priority"
-        static let createdAtKey: String = "createdAt"
-        static let eventKey: String = "eventId"
-        static let userKey: String = "userId"
+        static let createdAt: String = "createdAt"
     }
 
     private let firestore: Firestore
-    private let streamData: StreamDatable
     weak var delegate: StreamDelegate?
     private var firestoreListener: ListenerRegistration?
     private var userReactionsListener: ListenerRegistration?
-    private(set) var currentPageSize: Int
+    private(set) var currentPageSize: Int = 0
 
-    init(streamData: StreamDatable) throws {
+    init() throws {
         guard let firestore = ArenaChat.shared.firestore else {
             throw ProviderError.firebaseNotConfigured
         }
         self.firestore = firestore
-        self.streamData = streamData
-        self.currentPageSize = streamData.pagination
     }
 
     deinit {
@@ -46,16 +51,21 @@ class Stream: Streaming {
         userReactionsListener?.remove()
     }
 
-    func startListeningEvents() {
+    func startListeningRecentMessages(
+        chatRoomId: String,
+        channelId: String,
+        perPage: Int
+    ) {
         firestoreListener?.remove()
-
+        currentPageSize = perPage
         var firstEvent = true
         firestoreListener = firestore
-            .collection(Constants.events)
-            .document(streamData.eventId)
-            .collection(streamData.collection)
-            .order(by: Constants.priorityKey, descending: true)
-            .order(by: Constants.createdAtKey, descending: streamData.descending)
+            .collection(Constants.chatRooms)
+            .document(chatRoomId)
+            .collection(Constants.channels)
+            .document(channelId)
+            .collection(Constants.messages)
+            .order(by: Constants.createdAt, descending: true)
             .limit(to: currentPageSize)
             .addSnapshotListener { [weak self] (snapshot, error) in
                 guard let self = self else { return }
@@ -70,31 +80,39 @@ class Stream: Streaming {
         }
     }
 
-    func requestNextEvents() {
-        currentPageSize += streamData.pagination
-        startListeningEvents()
+    func loadPreviousMessages(
+        chatRoomId: String,
+        channelId: String,
+        perPage: Int
+    ) {
+        currentPageSize += perPage
+        startListeningRecentMessages(
+            chatRoomId: chatRoomId,
+            channelId: channelId,
+            perPage: currentPageSize + 1
+        )
     }
 
     func startListeningReactions() {
-        userReactionsListener?.remove()
-        let userId = ""
-        var firstEvent = true
-
-        userReactionsListener = firestore
-            .collection(Constants.reactions)
-            .whereField(Constants.userKey, isEqualTo: userId)
-            .whereField(Constants.eventKey, isEqualTo: streamData.eventId)
-            .addSnapshotListener { [weak self] (snapshot, error) in
-                guard let self = self else { return }
-                if let error = error {
-                    self.handleSnapshotError(error)
-                } else if let snapshot = snapshot {
-                    self.handleSnapshotSuccess(snapshot,
-                                               type: .reaction,
-                                               isReloading: firstEvent)
-                    firstEvent = false
-                }
-        }
+//        userReactionsListener?.remove()
+//        let userId = ""
+//        var firstEvent = true
+//
+//        userReactionsListener = firestore
+//            .collection(Constants.reactions)
+//            .whereField(Constants.userKey, isEqualTo: userId)
+//            .whereField(Constants.eventKey, isEqualTo: streamData.eventId)
+//            .addSnapshotListener { [weak self] (snapshot, error) in
+//                guard let self = self else { return }
+//                if let error = error {
+//                    self.handleSnapshotError(error)
+//                } else if let snapshot = snapshot {
+//                    self.handleSnapshotSuccess(snapshot,
+//                                               type: .reaction,
+//                                               isReloading: firstEvent)
+//                    firstEvent = false
+//                }
+//        }
     }
 
     private func handleSnapshotSuccess(_ snapshot: QuerySnapshot,

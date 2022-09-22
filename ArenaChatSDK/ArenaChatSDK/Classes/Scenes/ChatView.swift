@@ -9,6 +9,7 @@ public final class ChatView: UIView {
         let view = LoginView()
         view.isHidden = true
         view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.loginAction = { [weak self] in
             self?.login()
         }
@@ -136,15 +137,13 @@ public final class ChatView: UIView {
     private weak var delegate: ChatDelegate?
     private lazy var presenter: ChatPresenter = ChatPresenter(delegate: self)
 
-    init(delegate: ChatDelegate? = nil) {
+    public init(delegate: ChatDelegate? = nil) {
         super.init(frame: .zero)
         self.delegate = delegate
-        buildLayout()
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        buildLayout()
     }
 
     @available(*, unavailable)
@@ -152,14 +151,29 @@ public final class ChatView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        buildLayout()
+    }
+
     private func login() {
         delegate?.ssoUserRequired { [weak self] externalUser in
             self?.presenter.registerUser(externalUser: externalUser)
+            hideLoginModal()
         }
     }
 
     private func loginAnonymously() {
         presenter.registerAnonymousUser()
+        hideLoginModal()
+    }
+
+    private func hideLoginModal() {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.loginView.alpha = 0.0
+        }) {  [weak self]  _ in
+            self?.loginView.isHidden = true
+        }
     }
 }
 
@@ -258,6 +272,10 @@ extension ChatView: ChatPresenting {
     func performUpdate(with batchUpdate: BatchUpdates) {
         tableView.performUpdate(with: batchUpdate)
     }
+
+    func startLoading() { }
+
+    func stopLoading() { }
 
     func nextPageDidLoad() { }
     

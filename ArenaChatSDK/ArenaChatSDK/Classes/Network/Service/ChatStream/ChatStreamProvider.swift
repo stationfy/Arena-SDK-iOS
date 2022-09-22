@@ -7,53 +7,71 @@ protocol ChatStreamProviding {
 
     var delegate: ChatStreamDelegate? { get set }
 
-    func startListeningEvents()
-    func requestNextEvents()
+    func startListeningRecentMessages(
+        chatRoomId: String,
+        channelId: String
+    )
+
+    func loadPreviousMessages(
+        chatRoomId: String,
+        channelId: String
+    )
 }
 
 final class ChatStreamProvider: ChatStreamProviding {
 
-    private var stream: Streaming
+    private var stream: ChatStreaming
 
     var currentPageSize: Int {
         stream.currentPageSize
     }
 
-    private var streamData: StreamDatable
-
     weak var delegate: ChatStreamDelegate?
 
-    init(streamData: StreamDatable) throws {
-        self.stream = try Stream(streamData: streamData)
-        self.streamData = streamData
+    init() throws {
+        self.stream = try ChatStream()
         self.stream.delegate = self
     }
 
-    func startListeningEvents() {
-        stream.startListeningEvents()
-        stream.startListeningReactions()
+    func startListeningRecentMessages(
+        chatRoomId: String,
+        channelId: String
+    ) {
+        stream.startListeningRecentMessages(chatRoomId: chatRoomId,
+                                            channelId: channelId,
+                                            perPage: 20)
     }
 
-    func requestNextEvents() {
-        stream.requestNextEvents()
+    func loadPreviousMessages(
+        chatRoomId: String,
+        channelId: String
+    ) {
+        stream.loadPreviousMessages(chatRoomId: chatRoomId,
+                                    channelId: channelId,
+                                    perPage: 20)
     }
 
     private func handleEventSnapshot(_ query: QuerySnapshot, isReloading: Bool) {
         var messageResponses: [MessageResponse] = [MessageResponse]()
 
         query.documentChanges.forEach { doc in
-            guard let dataResponse = try? doc.document.data().toData(),
-                  let message: Message = try? dataResponse.parse() else { return }
-            switch doc.type {
-            case .added:
-                messageResponses.append(MessageResponse(message: message,
-                                                        action: .added(index: doc.newIndex)))
-            case .modified:
-                messageResponses.append(MessageResponse(message: message,
-                                                        action: .modified(from: doc.oldIndex, to: doc.newIndex)))
-            case .removed:
-                messageResponses.append(MessageResponse(message: message,
-                                                        action: .removed(index: doc.oldIndex)))
+            do {
+                let dataResponse = try doc.document.data().toData()
+                let message: Message = try dataResponse.parse()
+
+                switch doc.type {
+                case .added:
+                    messageResponses.append(MessageResponse(message: message,
+                                                            action: .added(index: doc.newIndex)))
+                case .modified:
+                    messageResponses.append(MessageResponse(message: message,
+                                                            action: .modified(from: doc.oldIndex, to: doc.newIndex)))
+                case .removed:
+                    messageResponses.append(MessageResponse(message: message,
+                                                            action: .removed(index: doc.oldIndex)))
+                }
+            } catch let error {
+                delegate?.stream(self, didReceivedError: error)
             }
         }
 
@@ -64,14 +82,14 @@ final class ChatStreamProvider: ChatStreamProviding {
 }
 
 extension ChatStreamProvider: StreamDelegate {
-    func stream(_ stream: Streaming,
+    func stream(_ stream: ChatStreaming,
                 didReceivedSnapshot snapshot: QuerySnapshot,
                 snapshotType type: SnapsnotType,
                 isReloading: Bool) {
         handleEventSnapshot(snapshot, isReloading: isReloading)
     }
 
-    func stream(_ stream: Streaming, didReceivedError error: Error) {
+    func stream(_ stream: ChatStreaming, didReceivedError error: Error) {
         // TODO: Error handling
         delegate?.stream(self, didReceivedError: error)
         print("did receive error \(error)")

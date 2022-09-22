@@ -4636,7 +4636,6 @@
 		CFEF5BB5B70B3A52AB5A81DEEE6F54FE /* bin_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B01B56E614419DD5BD5DE3681CEDE7 /* bin_encoder.h */; };
 		D000652DAA117D999EC18B2A72936633 /* switch.h in Copy src/core/lib/promise/detail Private Headers */ = {isa = PBXBuildFile; fileRef = 2D3C0ABAEE3D319D46A92030208976AE /* switch.h */; };
 		D00C32DB5471EE2EC7E12DCFE057350F /* timer_heap.h in Copy src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 448EB7D46C46C8C52F0A722FA8733E86 /* timer_heap.h */; };
-		D0132C75B9C930D3430A3BC62F5B0678 /* ChatStreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFD43AF0BB4CCFAF46D6608BE7BDCC3 /* ChatStreamData.swift */; };
 		D0447BFF67DCDA024DCAE488668BBF15 /* printf.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3CFFC2D81D14432BE403DFE5E7AFD /* printf.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
 		D045490E8F96D946519AA6D530B7E9BB /* iterator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 50F9230E4630618D72EEB6D7F33C3179 /* iterator.cc */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0487DE71EBD5A36076DF0DA932F44CA /* http_tracer.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = E3F5557511A31CDD5C4AF9CC06569ABF /* http_tracer.upb.h */; };
@@ -4894,7 +4893,7 @@
 		DAD3CD77BC4A1E0364741E82D088D9DE /* status_internal.h in Copy status/internal Public Headers */ = {isa = PBXBuildFile; fileRef = 9DF51166CD713721F0A382B10EA4FF78 /* status_internal.h */; };
 		DAD4F037CEEAA8972B212CE57188BE9B /* global_config_generic.h in Headers */ = {isa = PBXBuildFile; fileRef = 57C0DD54CD0F3FD7DEC4C821A0BCDF7B /* global_config_generic.h */; };
 		DAD9ECFCD8DF1A7560F0374719E479E5 /* endpoint_binder_pool.cc in Sources */ = {isa = PBXBuildFile; fileRef = E3A6AEBC6A859C5F619722EA58576A75 /* endpoint_binder_pool.cc */; settings = {COMPILER_FLAGS = "-Wno-comma -Wno-unreachable-code -Wno-shorten-64-to-32 -fno-objc-arc"; }; };
-		DADBECC62A618DBABC3088C9BBCE48D1 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD8565508287F7A0BDBC603115C8A3 /* Stream.swift */; };
+		DADBECC62A618DBABC3088C9BBCE48D1 /* ChatStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABD8565508287F7A0BDBC603115C8A3 /* ChatStream.swift */; };
 		DADC0DF4742F6E0FE7DC7E7A4DDFBCB6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8464DF14361766A9E158A6E361BF2886 /* Security.framework */; };
 		DAE98E62D9955460D6F4DF53FEEB7087 /* rpc_service_method.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D2BE5D856C9795B137CB75A81E37E4A /* rpc_service_method.h */; };
 		DB053C0181304C41A1F460707EEA04D6 /* listener_components.upbdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 4084B086E81D2F21149211815665704C /* listener_components.upbdefs.h */; };
@@ -13576,7 +13575,6 @@
 		4BDE80118B76E5288C88BA28CFCE89E4 /* ssl_cipher.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ssl_cipher.cc; path = src/ssl/ssl_cipher.cc; sourceTree = "<group>"; };
 		4BDF5A256D710E063F4D4EFBDCAD6E22 /* metadata.upb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = metadata.upb.c; path = "src/core/ext/upb-generated/envoy/type/matcher/v3/metadata.upb.c"; sourceTree = "<group>"; };
 		4BED54A0CE01EBA6899709442030E2BD /* lds.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lds.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/service/listener/v3/lds.upbdefs.h"; sourceTree = "<group>"; };
-		4BFD43AF0BB4CCFAF46D6608BE7BDCC3 /* ChatStreamData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatStreamData.swift; sourceTree = "<group>"; };
 		4C051C451BD028B614B5337489300FDA /* Pods-ArenaChatSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArenaChatSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4C16F66943E85E791BB210F19C920825 /* api_listener.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = api_listener.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/listener/v3/api_listener.upbdefs.h"; sourceTree = "<group>"; };
 		4C177D0D0782865A4D961863C708D3F2 /* version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = version.h; path = include/uv/version.h; sourceTree = "<group>"; };
@@ -14337,7 +14335,7 @@
 		7AB3B739D17677400F870C5C6F151805 /* byte_buffer_reader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = byte_buffer_reader.h; path = include/grpc/byte_buffer_reader.h; sourceTree = "<group>"; };
 		7AB53CBA58ECAC5BE35579E172EE75A0 /* Apollo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Apollo.release.xcconfig; sourceTree = "<group>"; };
 		7ABADE7EF1CD4AB9D4638A51B85A878C /* authority.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = authority.upbdefs.h; path = "src/core/ext/upbdefs-generated/xds/core/v3/authority.upbdefs.h"; sourceTree = "<group>"; };
-		7ABD8565508287F7A0BDBC603115C8A3 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		7ABD8565508287F7A0BDBC603115C8A3 /* ChatStream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChatStream.swift; sourceTree = "<group>"; };
 		7AD6ACF208C9BFBC9787CE8A65CD1825 /* channel_stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channel_stack.h; path = src/core/lib/channel/channel_stack.h; sourceTree = "<group>"; };
 		7ADF0C4461CF08A6EE9AFBD4C2F93BDD /* HeartbeatsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeartbeatsBundle.swift; path = FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift; sourceTree = "<group>"; };
 		7AFCFFDBE9F3B1A56F5F22BC5217E854 /* env_windows_test_helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = env_windows_test_helper.h; path = util/env_windows_test_helper.h; sourceTree = "<group>"; };
@@ -17024,7 +17022,6 @@
 		2EF5A66DD1C843A53AA06CF5C2C48B5D /* ChatStream */ = {
 			isa = PBXGroup;
 			children = (
-				4BFD43AF0BB4CCFAF46D6608BE7BDCC3 /* ChatStreamData.swift */,
 				AD63E28BEE6250C80555D26CD83EECBA /* ChatStreamDelegate.swift */,
 				D1B8FE9607A7BDDDF43BFF05EFB12582 /* ChatStreamProvider.swift */,
 			);
@@ -20165,7 +20162,7 @@
 		B9D8D6F974B20A2752DFFD0A822297BA /* Stream */ = {
 			isa = PBXGroup;
 			children = (
-				7ABD8565508287F7A0BDBC603115C8A3 /* Stream.swift */,
+				7ABD8565508287F7A0BDBC603115C8A3 /* ChatStream.swift */,
 				595779C04AFAB70032AF253F02C44080 /* StreamDatable.swift */,
 				A20BE88288B3F95CFB3081205DFBFB2F /* StreamDelegate.swift */,
 				842C48F37722C934800BC8D7A4ADAA98 /* Model */,
@@ -27584,7 +27581,6 @@
 				B1E8F7B904F6E1526C01C5860A1C3DB6 /* ChatInfo.swift in Sources */,
 				0639B09E051A7E9ECF18109329E288A2 /* ChatOperationFactory.swift in Sources */,
 				3B6314BA78BC01A2B131B1E2C8857D9E /* ChatPresenter.swift in Sources */,
-				D0132C75B9C930D3430A3BC62F5B0678 /* ChatStreamData.swift in Sources */,
 				B771BCE7061EF57BAD7C44CDC2394F94 /* ChatStreamDelegate.swift in Sources */,
 				18F8954E4B469BD950C758CCF65AA6C9 /* ChatStreamProvider.swift in Sources */,
 				4C9CD07E0912C647686048910E15F2CC /* ChatView.swift in Sources */,
@@ -27636,7 +27632,7 @@
 				457E88B82BB4359373CC5AE52C21F83D /* SessionManager.swift in Sources */,
 				40CF38D8A3F1230C20D50DE454135D34 /* Settings.swift in Sources */,
 				1E25C56FBCCEB27477CD6EFC7D5AFBC2 /* SSOExchangeResult.swift in Sources */,
-				DADBECC62A618DBABC3088C9BBCE48D1 /* Stream.swift in Sources */,
+				DADBECC62A618DBABC3088C9BBCE48D1 /* ChatStream.swift in Sources */,
 				329EB8320DBFC4F08C22807199BA9D21 /* StreamDatable.swift in Sources */,
 				7EDEE10D70B14AF605BD9F6E4582CE38 /* StreamDelegate.swift in Sources */,
 				8A41BDE5099C158D32DD7DDDA33ACF4E /* SuccessResponse.swift in Sources */,
