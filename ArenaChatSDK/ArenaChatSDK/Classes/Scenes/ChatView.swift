@@ -1,7 +1,13 @@
 import UIKit
 
 public final class ChatView: UIView {
-    // MARK: - TopView
+    private let loginView: LoginView = {
+        let view = LoginView()
+        view.isHidden = true
+        view.layer.opacity = 0
+        return view
+    }()
+
     private let liveLabel: UILabel = {
         let label = UILabel()
         label.text = "Live Chat"
@@ -159,6 +165,11 @@ private extension ChatView {
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            loginView.topAnchor.constraint(equalTo: self.topAnchor),
+            loginView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            loginView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            loginView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
             onlineUsersIcon.leadingAnchor.constraint(equalTo: iconContainerView.leadingAnchor),
             onlineUsersIcon.trailingAnchor.constraint(equalTo: iconContainerView.trailingAnchor),
             onlineUsersIcon.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
@@ -221,13 +232,15 @@ extension ChatView: ChatPresenting {
     }
 
     func nextPageDidLoad() { }
-
+    
     func showLoadMore() { }
 
     func hideLoadMore() { }
 
     func openLoginModal() {
-
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.loginView.isHidden = false
+            self?.loginView.layer.opacity = 1
+        }
     }
-
 }

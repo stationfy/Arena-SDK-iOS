@@ -7,38 +7,21 @@ class ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    private lazy var feedbackView: FeedbackView = {
-        let view = FeedbackView(title: "No internet Connection",
-                                description: "Please check your internet connection and try again",
-                                mainButtonTitle: "Back to last screen",
-                                textButtonTitle: "Or try to reconnect")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private let loginView: LoginView = {
-        let view = LoginView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = . white
 
-       // view.addSubview(chatView)
-        //view.addSubview(feedbackView)
-        view.addSubview(loginView)
+        view.addSubview(chatView)
         
         NSLayoutConstraint.activate([
-            loginView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
+            chatView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            chatView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chatView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
         ])
-
-        chatView.startEvent()
+        
+      //  chatView.startEvent()
     }
 }
 

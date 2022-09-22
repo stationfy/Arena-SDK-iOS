@@ -10,7 +10,6 @@ protocol ChatPresenting: class {
     func nextPageDidLoad()
     func showLoadMore()
     func hideLoadMore()
-
     func openLoginModal()
 }
 
