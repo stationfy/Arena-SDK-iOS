@@ -191,12 +191,11 @@ extension ReceivedMessageCell {
 
 extension ReceivedMessageCell: CardCellSetuping {
     func setup(with card: Card) {
-        let isHidden = false
         nameLabel.text = "Clau Maria"
-        timeLabel.text = "09:13"
+        timeLabel.text = card.createdAt?.toString()
         repliedMessageLabel.text = "ola cara tudo bem com vc"
         messageLabel.text = "BORAAAA BORAAAA BORAAAA BORAAAA BORAAAA BORAAAABORAAAABORAAAABORAAAABORAAAABORAAAA"
         profileImageView.backgroundColor = .purple
-        updateConstraints(repliedMessageIsHidden: isHidden)
+        updateConstraints(repliedMessageIsHidden: card.type == .received)
     }
 }
