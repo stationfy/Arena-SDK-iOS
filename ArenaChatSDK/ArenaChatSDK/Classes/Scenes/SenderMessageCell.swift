@@ -47,6 +47,7 @@ public final class SenderMessageCell: UITableViewCell {
         label.backgroundColor = Color.mediumPurple
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14)
+        label.setContentHuggingPriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -146,7 +147,7 @@ extension SenderMessageCell: CardCellSetuping {
         timeLabel.text = "10:54"
         nameLabel.isHidden = isHidden
         ownMessageLabel.textAlignment = isHidden ? .right : .left
-        ownMessageLabel.text = "olá bb como estas"
+        ownMessageLabel.text = "olá como estas"
         repliedMessageLabel.text = "mte ala te amo cherosa te cmo mete ala te amo te amo te amo"
 
         updateConstraints(repliedMessageIsHidden: isHidden)
