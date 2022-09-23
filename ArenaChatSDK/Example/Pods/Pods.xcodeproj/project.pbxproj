@@ -2614,6 +2614,7 @@
 		74BA77657AC16E0D4D582A5198D1326A /* regex.upbdefs.h in Copy src/core/ext/upbdefs-generated/envoy/type/matcher/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 0B6DFE00B0468927C0B3638C038B657C /* regex.upbdefs.h */; };
 		74BA808379411625B18D5205DA2DF144 /* unicode_groups.h in Copy third_party/re2/re2 Private Headers */ = {isa = PBXBuildFile; fileRef = E5242F7DEF3FCDEECA60A597D8E30A4B /* unicode_groups.h */; };
 		74BB46192DDB0CA2424B69214057DDB6 /* cct.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = D392048334296E5F4F0BEAEAE8ECB4EF /* cct.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		74DBE53B28DD3D74005736A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBE53A28DD3D6E005736A2 /* LoadingView.swift */; };
 		74EB47AB17E7BCDB467DB7712BB3BE43 /* grpc_streaming_reader.cc in Sources */ = {isa = PBXBuildFile; fileRef = D90ABC2BFE6FD205DABF4B6EFC381C17 /* grpc_streaming_reader.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder -Wno-comma -fno-objc-arc"; }; };
 		74EF381A8590826275A389526F97D361 /* ssl_session.cc in Sources */ = {isa = PBXBuildFile; fileRef = 473585480CED3250E90D1CE70F786BF8 /* ssl_session.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
 		74F2811A3AE0E457B4970F14B452445F /* stats.upb.h in Copy src/core/ext/upb-generated/envoy/config/metrics/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 4F8AF5273DE3E8D418DB0F6CA864D54A /* stats.upb.h */; };
@@ -14245,6 +14246,7 @@
 		74C945E0E24018135795A4FC4E67D37C /* load_report.upb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = load_report.upb.h; path = "src/core/ext/upb-generated/envoy/config/endpoint/v3/load_report.upb.h"; sourceTree = "<group>"; };
 		74CAA5D5F463486D71C0770586F9E336 /* dynamic_filters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dynamic_filters.h; path = src/core/ext/filters/client_channel/dynamic_filters.h; sourceTree = "<group>"; };
 		74D61AE69CE52C9AE472C0B5D649F86D /* port.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = port.h; path = src/core/lib/iomgr/port.h; sourceTree = "<group>"; };
+		74DBE53A28DD3D6E005736A2 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		74E1D5A10F507A6940F79E82F25559BF /* grpc_service.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpc_service.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/config/core/v3/grpc_service.upbdefs.h"; sourceTree = "<group>"; };
 		750675BAA89F71930C75F1927717559C /* SocketAnyEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = Source/SocketIO/Client/SocketAnyEvent.swift; sourceTree = "<group>"; };
 		7508372EA04DA7A41D07A60C1EC8B5D6 /* byte_buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = byte_buffer.h; path = include/grpc/impl/codegen/byte_buffer.h; sourceTree = "<group>"; };
@@ -20280,6 +20282,7 @@
 		BECA9297DF4DB1A143063D42B3263106 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				74DBE53A28DD3D6E005736A2 /* LoadingView.swift */,
 				741A617628D6AF400084A9B9 /* Assets.xcassets */,
 				741A617128D6AF190084A9B9 /* FeedackView.swift */,
 				741A617228D6AF190084A9B9 /* LoginView.swift */,
@@ -27617,6 +27620,7 @@
 				7F9EBD6132EED71C786F616737037DD1 /* SenderMessageCell.swift in Sources */,
 				097F77CED847152109A5AB06D686D09F /* ParameterEncoding.swift in Sources */,
 				3432773DFE2C06F89AA4711F75E77DD5 /* Player.swift in Sources */,
+				74DBE53B28DD3D74005736A2 /* LoadingView.swift in Sources */,
 				DA63304D6E2B987836F0CEBD6E42A282 /* PollVote.graphql in Sources */,
 				EEF4E8D3BB1E35DEC2099DF4B427CCDE /* Profile.swift in Sources */,
 				EB181FA87106F65F30D8CF1876619667 /* ProviderError.swift in Sources */,
