@@ -12,7 +12,7 @@ struct MessageContentMedia: Decodable {
     let title: String?
     let videoUrl: String?
     let type: String?
-    let isVideo: Bool
+    let isVideo: Bool?
 
     init(url: String? = nil,
          description: String? = nil,

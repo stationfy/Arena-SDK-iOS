@@ -39,4 +39,19 @@ class Message: Decodable {
         self.alreadyFavorited = alreadyFavorited
         self.totalReactions = totalReactions
     }
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt
+        case key
+        case content = "message"
+        case publisherId
+        case referer
+        case replyMessage
+        case sender
+        case type
+        case changeType
+        case reactions
+        case alreadyFavorited
+        case totalReactions
+    }
 }

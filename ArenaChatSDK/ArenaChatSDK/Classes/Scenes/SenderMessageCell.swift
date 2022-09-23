@@ -138,18 +138,29 @@ extension SenderMessageCell {
         repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor, constant: -8).isActive = !isHidden
         separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !isHidden
     }
+
+    func getFormattedTime(from date: Date?) -> String {
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "hh:mm"
+        if let date = date {
+            let dateString = dayTimePeriodFormatter.string(from: date)
+            return dateString
+        } else {
+            return ""
+        }
+    }
 }
 
 extension SenderMessageCell: CardCellSetuping {
     func setup(with card: Card) {
-        let isHidden = true
-        nameLabel.text = "You replied Arelene McCoy"
-        timeLabel.text = "10:54"
-        nameLabel.isHidden = isHidden
-        ownMessageLabel.textAlignment = isHidden ? .right : .left
-        ownMessageLabel.text = "olá como estas"
-        repliedMessageLabel.text = "mte ala te amo cherosa te cmo mete ala te amo te amo te amo"
+        let isSender = card.type == .sender
+        nameLabel.isHidden = isSender
+        nameLabel.text = "You replied \(String(describing: card.chatMessage.sender?.displayName ?? ""))"
+        timeLabel.text = card.createdAt?.toString()
+        ownMessageLabel.textAlignment = isSender ? .right : .left
+        ownMessageLabel.text = card.chatMessage.content?.text
+        repliedMessageLabel.text = card.chatMessage.replyMessage?.content?.text
 
-        updateConstraints(repliedMessageIsHidden: isHidden)
+        updateConstraints(repliedMessageIsHidden: isSender)
     }
 }

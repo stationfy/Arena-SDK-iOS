@@ -4074,6 +4074,8 @@
 		B63C6A906A5F813E0F17230FAF6FE1C4 /* client_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 60174369AF11664B843A851FF5F3A4BB /* client_context.h */; };
 		B641F28768ABB9B4FED8EA660801BCC5 /* bad_any_cast.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B35F80CA27C139F89C148486D7FEE73 /* bad_any_cast.h */; };
 		B64251C4A5EB1DCACE1D7C57237D3C4F /* config_selector.h in Copy src/core/ext/filters/client_channel Private Headers */ = {isa = PBXBuildFile; fileRef = 8171342256DD341572F424D9605C7A8A /* config_selector.h */; };
+		B6497B6828DD0BAF00BFBF90 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */; };
+		B6497B6A28DD3D9800BFBF90 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6497B6928DD3D9800BFBF90 /* Date+Extension.swift */; };
 		B6569E2B62E8E9D3ABE1650C29102BF4 /* rbac.upbdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC75CB411E1EF366382790C8AE32099 /* rbac.upbdefs.h */; };
 		B65D454B21AF748ED98C954E0C933BD0 /* closure.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C8A21C982B77FC55582AD369293E0DE /* closure.h */; };
 		B6610291142567290CDDB2CDF5659FE1 /* common.upb.h in Copy src/core/ext/upb-generated/envoy/extensions/transport_sockets/tls/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = D7A4AFA9994705658BCC1856AFBFD28A /* common.upb.h */; };
@@ -15253,6 +15255,8 @@
 		B624A442D18F8C2CAE43553C330746AE /* passive.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = passive.c; path = src/crypto/rand_extra/passive.c; sourceTree = "<group>"; };
 		B635D22DF50AD3C012DE245BFAED7C9C /* rune.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = rune.cc; path = third_party/re2/util/rune.cc; sourceTree = "<group>"; };
 		B644A9FF95612AC06106A71BD3BFE42B /* duration.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = duration.upbdefs.h; path = "src/core/ext/upbdefs-generated/google/protobuf/duration.upbdefs.h"; sourceTree = "<group>"; };
+		B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B6497B6928DD3D9800BFBF90 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B64FA05FD2DC056BD1CC7615693D0149 /* cert.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cert.upbdefs.h; path = "src/core/ext/upbdefs-generated/envoy/extensions/transport_sockets/tls/v3/cert.upbdefs.h"; sourceTree = "<group>"; };
 		B681A2781A8CD67B4900570E4E66EE87 /* ResponsePath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponsePath.swift; path = Sources/Apollo/ResponsePath.swift; sourceTree = "<group>"; };
 		B6AA7ABDAB0FA263F837B15CAA74F4F2 /* sqrt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sqrt.c; path = src/crypto/fipsmodule/bn/sqrt.c; sourceTree = "<group>"; };
@@ -16841,6 +16845,7 @@
 		27CF24CC65C6B3BFAFCD9403CD70DFF7 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				B6497B6928DD3D9800BFBF90 /* Date+Extension.swift */,
 				008BDBF1C4EE41F37ED58D50A5E7C334 /* Logger.swift */,
 				7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */,
 			);
@@ -20290,6 +20295,7 @@
 				CFECEBC0BC51B1D06BA94C49B07AC731 /* SenderMessageCell.swift */,
 				6437716F4B3DFB786834B387B88F6915 /* ReceivedMessageCell.swift */,
 				7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */,
+				B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */,
 			);
 			name = Scenes;
 			path = ArenaChatSDK/Classes/Scenes;
@@ -27599,6 +27605,7 @@
 				701E0D63EBD84E009BA0EE39FDB71B75 /* HeaderAddingInterceptor.swift in Sources */,
 				0B51B8FA523FBCB51FB4F8EC723D0076 /* HTTPClient.swift in Sources */,
 				B23190AF37E58C2BB219A84D999058DC /* HTTPHeader.swift in Sources */,
+				B6497B6A28DD3D9800BFBF90 /* Date+Extension.swift in Sources */,
 				56A793D4F6BC6ACD849744DD795514D9 /* HTTPMethod.swift in Sources */,
 				5DE9E31CAC7D4DE3FF0BD4696CC776BE /* ImageRepresentable.swift in Sources */,
 				5D6D66DD3EC5F6DADEE0BC52A6F23535 /* Join.swift in Sources */,
@@ -27617,6 +27624,7 @@
 				7F9EBD6132EED71C786F616737037DD1 /* SenderMessageCell.swift in Sources */,
 				097F77CED847152109A5AB06D686D09F /* ParameterEncoding.swift in Sources */,
 				3432773DFE2C06F89AA4711F75E77DD5 /* Player.swift in Sources */,
+				B6497B6828DD0BAF00BFBF90 /* LoadingView.swift in Sources */,
 				DA63304D6E2B987836F0CEBD6E42A282 /* PollVote.graphql in Sources */,
 				EEF4E8D3BB1E35DEC2099DF4B427CCDE /* Profile.swift in Sources */,
 				EB181FA87106F65F30D8CF1876619667 /* ProviderError.swift in Sources */,
