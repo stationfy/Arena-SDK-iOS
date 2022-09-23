@@ -83,8 +83,9 @@ final public class HTTPClient {
             let item = try data.parse() as T
             return .success(item)
         } catch let error {
-            self.logger.log(object: error.localizedDescription, event: .error)
-            return .failure(.responseEncondingFailure(error.localizedDescription))
+            let errorDescription = error.localizedDescription + String(describing: error)
+            self.logger.log(object: errorDescription, event: .error)
+            return .failure(.responseEncondingFailure(errorDescription))
         }
     }
 
@@ -93,7 +94,8 @@ final public class HTTPClient {
             let item: FailureResponse = try data.parse()
             return .requestFailure(item)
         } catch let error {
-            return .unknown(error.localizedDescription)
+            self.logger.log(object: error.localizedDescription, event: .error)
+            return .unknown(error.localizedDescription + String(describing: error))
         }
     }
 

@@ -4,7 +4,7 @@ import SocketIO
 protocol UserServicing {
     func add(writeKey: String,
              externalUser: ExternalUser,
-             completion: @escaping (Result<LoggedUser, ServiceError>) -> Void)
+             completion: @escaping (Result<AuthResponse, ServiceError>) -> Void)
 
     func join(channelId: String?,
                siteId: String?,
@@ -39,7 +39,7 @@ struct UserService: UserServicing {
 extension UserService {
     func add(writeKey: String,
              externalUser: ExternalUser,
-             completion: @escaping (Result<LoggedUser, ServiceError>) -> Void) {
+             completion: @escaping (Result<AuthResponse, ServiceError>) -> Void) {
         let providerUser = ProviderUser(
             provider: writeKey,
             username: externalUser.name,
@@ -89,7 +89,7 @@ extension UserService {
             )
         )
 
-        guard let data = join.data else {
+        guard let data = join.toData else {
             completion(.failure(.responseEncondingFailure("Data parse failed")))
             return
         }
@@ -113,7 +113,7 @@ extension UserService {
             isMobile: true
         )
 
-        guard let data = user.data else {
+        guard let data = user.toData else {
             completion(.failure(.responseEncondingFailure("Data parse failed")))
             return
         }

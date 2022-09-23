@@ -26,7 +26,8 @@ public final class SessionManager: SessionManageable, ObservableObject {
 
     @Published public var isLogged: Bool = false
 
-    public var accessToken: String? { return session?.accessToken }
+
+    public var accessToken: String? { return session?.token }
 
     public var loggedUser: LoggedUser? { return session?.user }
 

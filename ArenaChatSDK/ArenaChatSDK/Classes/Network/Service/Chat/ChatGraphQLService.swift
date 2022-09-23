@@ -76,6 +76,15 @@ extension ChatGraphQLService: ChatGraphQLServicing {
         client.perform(mutation: factory.operation) { result in
             switch result {
             case let .success(graphQLResult):
+                if let errors = graphQLResult.errors {
+                    let errorDescriptions = errors.reduce("", { partialResult, error in
+                        partialResult + "\n" + (error.errorDescription ?? "")
+                    })
+
+                    completion(.failure(.graphQLError(errorDescriptions)))
+                    return
+                }
+
                 let message = Message(createdAt: Date().timeIntervalSince1970,
                                       key: graphQLResult.data?.sendMessage,
                                       content: MessageContent(text: messageText,
