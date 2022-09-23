@@ -138,11 +138,12 @@ class ChatPresenter {
     }
 
     func sendMessage(
-        text: String,
+        text: String?,
         mediaUrl: String?,
         isGif: Bool
     ) {
-        guard let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+        guard let text = text,
+              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
               let siteId = event?.chatInfo?.siteId,
               let openChannelId = event?.chatInfo?.mainChannelId else {
             // TODO: Error handling
@@ -164,12 +165,13 @@ class ChatPresenter {
     }
 
     func replyMessage(
-        text: String,
+        text: String?,
         replyId: String,
         mediaUrl: String?,
         isGif: Bool
     ) {
-        guard let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+        guard let text = text,
+              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
               let siteId = event?.chatInfo?.siteId,
               let openChannelId = event?.chatInfo?.mainChannelId else {
             // TODO: Error handling
@@ -321,12 +323,11 @@ fileprivate extension ChatPresenter {
                         externalUser: externalUser) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case let .success(loggedUser):
+            case let .success(authResponse):
+                self.sessionManager.save(authResponse.data)
+
+                let loggedUser = authResponse.data.user
                 self.loggedUser = loggedUser
-                if let token = loggedUser.token {
-                    self.sessionManager.save(AuthenticationData(accessToken: token,
-                                                                user: loggedUser))
-                }
 
                 if (self.changedUser) {
                     self.changeUser(loggedUser)

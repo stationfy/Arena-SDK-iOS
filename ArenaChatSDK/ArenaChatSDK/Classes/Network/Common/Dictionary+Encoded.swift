@@ -7,12 +7,12 @@ extension Dictionary {
 }
 
 extension Encodable {
-    var data: Data? {
+    var toData: Data? {
         try? JSONEncoder().encode(self)
     }
 
     var dictionary: [String: Any]? {
-        guard let data = self.data else { return nil }
+        guard let data = self.toData else { return nil }
         return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
     }
 }

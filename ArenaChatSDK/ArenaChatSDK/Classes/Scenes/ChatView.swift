@@ -104,6 +104,7 @@ public final class ChatView: UIView {
         let button = UIButton()
         let image = UIImage(systemName: Assets.smilingFace.rawValue)?.withTintColor(Color.darkGray, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(changeToEmojiKeyboard), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -112,6 +113,7 @@ public final class ChatView: UIView {
         let button = UIButton()
         let image = UIImage(systemName: Assets.arrowUp.rawValue)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -174,6 +176,17 @@ public final class ChatView: UIView {
         }) {  [weak self]  _ in
             self?.loginView.isHidden = true
         }
+    }
+}
+
+@objc private extension ChatView {
+    func changeToEmojiKeyboard() {
+
+    }
+
+    func sendMessage() {
+        presenter.sendMessage(text: textView.text, mediaUrl: nil, isGif: false)
+        textView.text = ""
     }
 }
 
