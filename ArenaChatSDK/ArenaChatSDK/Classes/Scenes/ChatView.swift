@@ -165,6 +165,20 @@ public final class ChatView: UIView {
         buildLayout()
     }
 
+    private func updateTableContentInset() {
+        let numRows = self.tableView.numberOfRows(inSection: 0)
+        var contentInsetTop = self.tableView.bounds.size.height
+        for i in 0..<numRows {
+            let rowRect = self.tableView.rectForRow(at: IndexPath(item: i, section: 0))
+            contentInsetTop -= rowRect.size.height
+            if contentInsetTop <= 0 {
+                contentInsetTop = 0
+                break
+            }
+        }
+        self.tableView.contentInset = UIEdgeInsets(top: contentInsetTop, left: 0, bottom: 0, right: 0)
+    }
+
     private func login() {
         delegate?.ssoUserRequired { [weak self] externalUser in
             self?.presenter.registerUser(externalUser: externalUser)
@@ -288,16 +302,20 @@ extension ChatView: UITableViewDataSource {
         }
 
         cardCell.setup(with: model)
+        cardCell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
 
-        return cell
+        return cardCell
     }
 }
 
 extension ChatView: UITableViewDelegate { }
 
 extension ChatView: ChatPresenting {
-    func performUpdate(with batchUpdate: BatchUpdates) {
+    func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
         tableView.performUpdate(with: batchUpdate)
+
+
+        //tableView.scrollToRow(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
     }
 
     func startLoading() {

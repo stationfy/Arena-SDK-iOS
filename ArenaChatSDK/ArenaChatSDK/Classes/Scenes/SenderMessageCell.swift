@@ -155,7 +155,8 @@ extension SenderMessageCell: CardCellSetuping {
     func setup(with card: Card) {
         let isSender = card.type == .sender
         nameLabel.isHidden = isSender
-        nameLabel.text = "You replied \(String(describing: card.chatMessage.sender?.displayName ?? ""))"
+        let replied = card.chatMessage.replyMessage?.sender?.displayName ?? ""
+        nameLabel.text = "You replied \(replied)"
         timeLabel.text = card.createdAt?.toString()
         ownMessageLabel.textAlignment = isSender ? .right : .left
         ownMessageLabel.text = card.chatMessage.content?.text

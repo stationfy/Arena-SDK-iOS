@@ -149,8 +149,8 @@ extension ReceivedMessageCell {
             profileImageContainerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             profileImageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 
-            roundView.heightAnchor.constraint(equalToConstant: 8),
-            roundView.widthAnchor.constraint(equalToConstant: 8),
+            roundView.heightAnchor.constraint(equalToConstant: 4),
+            roundView.widthAnchor.constraint(equalToConstant: 4),
             roundView.leadingAnchor.constraint(equalTo: roundViewContainerView.leadingAnchor),
             roundView.trailingAnchor.constraint(equalTo: roundViewContainerView.trailingAnchor),
             roundView.centerYAnchor.constraint(equalTo: roundViewContainerView.centerYAnchor),
@@ -191,11 +191,15 @@ extension ReceivedMessageCell {
 
 extension ReceivedMessageCell: CardCellSetuping {
     func setup(with card: Card) {
-        nameLabel.text = "Clau Maria"
+        let isReceived = card.type == .received
+        let sender = card.chatMessage.sender?.displayName ?? ""
+        let replied = card.chatMessage.replyMessage?.sender?.displayName ?? ""
+        nameLabel.text = isReceived ? sender : "\(sender) replied \(replied))"
         timeLabel.text = card.createdAt?.toString()
-        repliedMessageLabel.text = "ola cara tudo bem com vc"
-        messageLabel.text = "BORAAAA BORAAAA BORAAAA BORAAAA BORAAAA BORAAAABORAAAABORAAAABORAAAABORAAAABORAAAA"
+        messageLabel.text = card.chatMessage.content?.text
+        repliedMessageLabel.text = card.chatMessage.replyMessage?.content?.text
         profileImageView.backgroundColor = .purple
-        updateConstraints(repliedMessageIsHidden: card.type == .received)
+
+        updateConstraints(repliedMessageIsHidden: isReceived)
     }
 }

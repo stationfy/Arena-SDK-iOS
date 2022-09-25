@@ -60,7 +60,6 @@ enum ChatOperationFactory: OperationFactoring {
                       isGif: Bool) -> SendMessageMutation {
         SendMessageMutation(
             input: SendMessageInput(
-                groupChannelId: channelId,
                 message: MessageContentInput(
                     media: MessageMediaInput(
                         isGif: isGif,

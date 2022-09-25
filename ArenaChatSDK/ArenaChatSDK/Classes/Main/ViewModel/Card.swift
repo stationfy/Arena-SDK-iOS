@@ -28,8 +28,7 @@ struct Card {
 
         if chatMessage.type == "poll" {
             type = .poll
-        } else if chatMessage.sender?.anonymousId == userId ||
-                    chatMessage.sender?.uid == userId &&
+        } else if (chatMessage.sender?.anonymousId == userId || chatMessage.sender?.uid == userId) &&
                     chatMessage.replyMessage != nil {
             type = .senderReply
         } else if chatMessage.replyMessage != nil {

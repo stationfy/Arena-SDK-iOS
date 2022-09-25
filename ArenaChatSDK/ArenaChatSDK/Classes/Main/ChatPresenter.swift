@@ -6,7 +6,7 @@ import Foundation
 import SocketIO
 
 protocol ChatPresenting: class {
-    func performUpdate(with batchUpdate: BatchUpdates)
+    func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int)
     func startLoading()
     func stopLoading()
     func nextPageDidLoad()
@@ -150,17 +150,24 @@ class ChatPresenter {
             return
         }
 
-        chatService.sendMessage(channelId: openChannelId,
-                                siteId: siteId,
-                                graphqlPubApiKey: graphqlPubApiKey,
-                                messageText: text,
-                                photoUrl: loggedUser?.image,
-                                mediaUrl: mediaUrl,
-                                displayName: loggedUser?.name,
-                                userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
-                                token: sessionManager.accessToken,
-                                isGif: isGif) { result in
-
+        chatService.sendMessage(
+            channelId: openChannelId,
+            siteId: siteId,
+            graphqlPubApiKey: graphqlPubApiKey,
+            messageText: text,
+            photoUrl: loggedUser?.image,
+            mediaUrl: mediaUrl,
+            displayName: loggedUser?.name,
+            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+            token: sessionManager.accessToken,
+            isGif: isGif
+        ) { result in
+            switch result {
+            case let .success(message):
+                print(message)
+            case let .failure(error):
+                print(error)
+            }
         }
     }
 
@@ -178,18 +185,24 @@ class ChatPresenter {
             return
         }
 
-        chatService.replyMessage(channelId: openChannelId,
-                                 siteId: siteId,
-                                 graphqlPubApiKey: graphqlPubApiKey,
-                                 messageText: text,
-                                 photoUrl: loggedUser?.image,
-                                 mediaUrl: mediaUrl,
-                                 displayName: loggedUser?.name,
-                                 userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
-                                 replyId: replyId,
-                                 token: sessionManager.accessToken,
-                                 isGif: isGif) { result in
-
+        chatService.replyMessage(
+            channelId: openChannelId,
+            siteId: siteId,
+            graphqlPubApiKey: graphqlPubApiKey,
+            messageText: text,
+            photoUrl: loggedUser?.image,
+            mediaUrl: mediaUrl,
+            displayName: loggedUser?.name,
+            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+            replyId: replyId,
+            token: sessionManager.accessToken,
+            isGif: isGif
+        ) { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            default: break
+            }
         }
     }
 }
@@ -257,9 +270,10 @@ extension ChatPresenter: ChatStreamDelegate {
                                                     reloadModuleIds: reloadModuleIds)
 
             self.filteredCards = self.cards
+            let lastIndex = self.filteredCards.count - 1
 
             DispatchQueue.main.sync { [weak self] in
-                self?.delegate?.performUpdate(with: batchUpdates)
+                self?.delegate?.performUpdate(with: batchUpdates, lastIndex: lastIndex)
                 self?.delegate?.nextPageDidLoad()
                 self?.delegate?.stopLoading()
                 if shouldShowLoadMore {

@@ -78,7 +78,7 @@ extension ChatGraphQLService: ChatGraphQLServicing {
             case let .success(graphQLResult):
                 if let errors = graphQLResult.errors {
                     let errorDescriptions = errors.reduce("", { partialResult, error in
-                        partialResult + "\n" + (error.errorDescription ?? "")
+                        partialResult + " \n " + (error.errorDescription ?? "")
                     })
 
                     completion(.failure(.graphQLError(errorDescriptions)))
