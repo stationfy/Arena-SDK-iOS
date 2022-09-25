@@ -10,4 +10,5 @@ public enum Assets: String, ImageRepresentable {
     case clouds = "clouds"
     case background = "background"
     case arena = "arena"
+    case close = "xmark"
 }

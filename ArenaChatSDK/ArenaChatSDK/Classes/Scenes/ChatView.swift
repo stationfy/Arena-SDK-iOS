@@ -5,6 +5,13 @@ public protocol ChatDelegate: AnyObject {
 }
 
 public final class ChatView: UIView {
+    private let replyView: ReplyView = {
+        let view = ReplyView()
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let loadingView: LoadingView = {
         let view = LoadingView()
         view.isHidden = true
@@ -238,6 +245,7 @@ private extension ChatView {
         addSubview(bottomContainerView)
         addSubview(loginView)
         addSubview(loadingView)
+        addSubview(replyView)
     }
 
     func setupConstraints() {
@@ -251,6 +259,10 @@ private extension ChatView {
             loginView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             loginView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             loginView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
+            replyView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -12),
+            replyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            replyView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 
             onlineUsersIcon.leadingAnchor.constraint(equalTo: iconContainerView.leadingAnchor),
             onlineUsersIcon.trailingAnchor.constraint(equalTo: iconContainerView.trailingAnchor),
