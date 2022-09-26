@@ -33,15 +33,6 @@ public final class ChatView: UIView {
         return view
     }()
 
-    private let liveLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Live Chat"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = Color.mediumPurple
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     private let iconContainerView = UIView()
     private let onlineUsersIcon: UIImageView = {
         let imageView = UIImageView()
@@ -63,32 +54,6 @@ public final class ChatView: UIView {
         return label
     }()
 
-    private let menuButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Assets.threeDotsMenu.image, for: .normal)
-        button.setContentHuggingPriority(.required, for: .horizontal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    private lazy var topStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [liveLabel, iconContainerView, onlineUsersLabel, menuButton])
-        stackView.spacing = 8
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    private lazy var topContainerView: UIView = {
-        let view = UIView()
-        view.layer.shadowColor = Color.gray.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        view.layer.shadowRadius = 1
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SenderMessageCell.self,
@@ -105,13 +70,14 @@ public final class ChatView: UIView {
         return tableView
     }()
 
-    private lazy var textView: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Message"
-        textField.textColor = Color.darkGray
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
+    private lazy var textView: UITextView = {
+        let textView = UITextView()
+        textView.text = "Message"
+        textView.textColor = Color.gray
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.delegate = self
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
 
     private lazy var emojiButton: UIButton = {
@@ -133,7 +99,7 @@ public final class ChatView: UIView {
     }()
 
     private lazy var bottomStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [textView, emojiButton, sendButton])
+        let stackView = UIStackView(arrangedSubviews: [emojiButton, sendButton])
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -156,7 +122,12 @@ public final class ChatView: UIView {
     public init(delegate: ChatDelegate? = nil) {
         super.init(frame: .zero)
         self.delegate = delegate
+        setupKeyboard()
     }
+
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:)))
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -216,6 +187,24 @@ public final class ChatView: UIView {
         presenter.sendMessage(text: textView.text, mediaUrl: nil, isGif: false)
         textView.text = ""
     }
+
+    func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if frame.origin.y == 0 {
+                frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    func keyboardWillHide() {
+        if frame.origin.y != 0 {
+               frame.origin.y = 0
+           }
+    }
+
+    func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        textView.resignFirstResponder()
+    }
 }
 
 public extension ChatView {
@@ -237,10 +226,9 @@ private extension ChatView {
     }
 
     func buildViewHierarchy() {
-        iconContainerView.addSubview(onlineUsersIcon)
-        topContainerView.addSubview(topStackView)
+        addGestureRecognizer(tapGesture)
         bottomContainerView.addSubview(bottomStackView)
-        addSubview(topContainerView)
+        bottomContainerView.addSubview(textView)
         addSubview(tableView)
         addSubview(bottomContainerView)
         addSubview(loginView)
@@ -264,34 +252,37 @@ private extension ChatView {
             replyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             replyView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 
-            onlineUsersIcon.leadingAnchor.constraint(equalTo: iconContainerView.leadingAnchor),
-            onlineUsersIcon.trailingAnchor.constraint(equalTo: iconContainerView.trailingAnchor),
-            onlineUsersIcon.centerYAnchor.constraint(equalTo: iconContainerView.centerYAnchor),
-
-            topContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            topContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topContainerView.topAnchor.constraint(equalTo: self.topAnchor),
-            topContainerView.heightAnchor.constraint(equalToConstant: 48),
-
-            topStackView.leadingAnchor.constraint(equalTo: topContainerView.leadingAnchor, constant: 16),
-            topStackView.trailingAnchor.constraint(equalTo: topContainerView.trailingAnchor, constant: -24),
-            topStackView.topAnchor.constraint(equalTo: topContainerView.topAnchor),
-            topStackView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor),
-
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 2),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-            bottomStackView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
+          //  bottomStackView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
             bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
             bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
             bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
 
+            textView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
+            textView.trailingAnchor.constraint(equalTo: bottomStackView.leadingAnchor, constant: -8),
+            textView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 45),
+
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
         ])
+    }
+
+    func setupKeyboard() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: .UIKeyboardWillShow,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: .UIKeyboardWillHide,
+                                               object: nil)
     }
 }
 
@@ -349,6 +340,22 @@ extension ChatView: ChatPresenting {
         loginView.isHidden = false
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.loginView.alpha = 1
+        }
+    }
+}
+
+extension ChatView: UITextViewDelegate {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == Color.gray {
+            textView.text = nil
+            textView.textColor = Color.darkGray
+        }
+    }
+
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Message"
+            textView.textColor = Color.gray
         }
     }
 }

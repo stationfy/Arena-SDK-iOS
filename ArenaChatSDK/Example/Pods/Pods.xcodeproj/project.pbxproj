@@ -2614,7 +2614,6 @@
 		74BA77657AC16E0D4D582A5198D1326A /* regex.upbdefs.h in Copy src/core/ext/upbdefs-generated/envoy/type/matcher/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 0B6DFE00B0468927C0B3638C038B657C /* regex.upbdefs.h */; };
 		74BA808379411625B18D5205DA2DF144 /* unicode_groups.h in Copy third_party/re2/re2 Private Headers */ = {isa = PBXBuildFile; fileRef = E5242F7DEF3FCDEECA60A597D8E30A4B /* unicode_groups.h */; };
 		74BB46192DDB0CA2424B69214057DDB6 /* cct.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = D392048334296E5F4F0BEAEAE8ECB4EF /* cct.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		74DBE53B28DD3D74005736A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBE53A28DD3D6E005736A2 /* LoadingView.swift */; };
 		74EB47AB17E7BCDB467DB7712BB3BE43 /* grpc_streaming_reader.cc in Sources */ = {isa = PBXBuildFile; fileRef = D90ABC2BFE6FD205DABF4B6EFC381C17 /* grpc_streaming_reader.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder -Wno-comma -fno-objc-arc"; }; };
 		74EF381A8590826275A389526F97D361 /* ssl_session.cc in Sources */ = {isa = PBXBuildFile; fileRef = 473585480CED3250E90D1CE70F786BF8 /* ssl_session.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
 		74F2811A3AE0E457B4970F14B452445F /* stats.upb.h in Copy src/core/ext/upb-generated/envoy/config/metrics/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 4F8AF5273DE3E8D418DB0F6CA864D54A /* stats.upb.h */; };
@@ -4068,6 +4067,7 @@
 		B60828A7705A5BBFF753318D6A4EE59B /* node.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 35930066BE58707E1B55874248018298 /* node.upb.h */; };
 		B60F9FCC2942C59318E379DF192F1D02 /* FIRVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 959BA7382FF3E45CC5BF1BAEFAD9F204 /* FIRVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6233E37F581A8D93F97DB4FD2A05EE4 /* GraphQLResultAccumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41773316E720B45D4443B64B009AD8FF /* GraphQLResultAccumulator.swift */; };
+		B631882828E0C34F003C062C /* ReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631882728E0C34F003C062C /* ReplyView.swift */; };
 		B6319725699CBB80B9E8A698B4702E68 /* grpc_security_constants.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = AA9DCF53AF33466F396A73F4628A2BC8 /* grpc_security_constants.h */; };
 		B632AE71501555F5B79E098D86206945 /* channel_interface.h in Headers */ = {isa = PBXBuildFile; fileRef = 654E6053B29DB1F4DA65D9D1D8B734D1 /* channel_interface.h */; };
 		B6358FD57B0729B1DD4F1979A45F22EF /* grpc.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 056A319A216A53331EE5E943D2595E09 /* grpc.h */; };
@@ -15255,6 +15255,7 @@
 		B5D8B3B3ED8917957F411B7ABF1325AC /* value.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = value.upbdefs.h; path = "src/core/ext/upbdefs-generated/google/api/expr/v1alpha1/value.upbdefs.h"; sourceTree = "<group>"; };
 		B5EC83060F59D9BD00674F34EEFDA0D1 /* wire_reader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = wire_reader.h; path = src/core/ext/transport/binder/wire_format/wire_reader.h; sourceTree = "<group>"; };
 		B624A442D18F8C2CAE43553C330746AE /* passive.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = passive.c; path = src/crypto/rand_extra/passive.c; sourceTree = "<group>"; };
+		B631882728E0C34F003C062C /* ReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyView.swift; sourceTree = "<group>"; };
 		B635D22DF50AD3C012DE245BFAED7C9C /* rune.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = rune.cc; path = third_party/re2/util/rune.cc; sourceTree = "<group>"; };
 		B644A9FF95612AC06106A71BD3BFE42B /* duration.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = duration.upbdefs.h; path = "src/core/ext/upbdefs-generated/google/protobuf/duration.upbdefs.h"; sourceTree = "<group>"; };
 		B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -20299,6 +20300,7 @@
 				6437716F4B3DFB786834B387B88F6915 /* ReceivedMessageCell.swift */,
 				7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */,
 				B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */,
+				B631882728E0C34F003C062C /* ReplyView.swift */,
 			);
 			name = Scenes;
 			path = ArenaChatSDK/Classes/Scenes;
@@ -27584,6 +27586,7 @@
 				BF018F28D76A3CE70DEE3F433571B113 /* BatchUpdate.swift in Sources */,
 				741A617528D6AF1A0084A9B9 /* LoginView.swift in Sources */,
 				BD5EA077DCECDB063F1EB87BDB9D6C8B /* CacheAPIEndpoint.swift in Sources */,
+				B631882828E0C34F003C062C /* ReplyView.swift in Sources */,
 				0262CCF25DCC3C815C6F6B9FC1244114 /* CacheAPIService.swift in Sources */,
 				F0F9B4A1C0A0B93073AF061525E5C7E8 /* Card.swift in Sources */,
 				04784E7AF45404DCACDA199C9053043E /* ChatGraphQLService.swift in Sources */,
