@@ -2605,6 +2605,9 @@
 		7445B4359351512399AE17A2D738DDE1 /* eds.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DA72033BFCE2DC368CB81C31851507 /* eds.upb.h */; };
 		7448CB4D798748756CA59A518882BD13 /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 60B867A273DC0282F820AFE1319C3EEC /* sync.h */; };
 		746D9CDB28DC83B70061DDF8 /* DispatchQueueAsyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */; };
+		7475179428E1E58300B389FA /* ReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475179328E1E58200B389FA /* ReplyView.swift */; };
+		7475179628E1FFC600B389FA /* PresenceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475179528E1FFC600B389FA /* PresenceInfo.swift */; };
+		7475179828E2006300B389FA /* Visitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475179728E2006300B389FA /* Visitors.swift */; };
 		7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */; };
 		7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */; };
 		7480ECD228DA577F00DE4507 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECD128DA577F00DE4507 /* Configurations.swift */; };
@@ -14239,6 +14242,9 @@
 		74555B2F44DF8AD511CC097626E8CD60 /* server_address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server_address.h; path = src/core/lib/resolver/server_address.h; sourceTree = "<group>"; };
 		745E85400E7381A7DAB9CAD2C34FB87F /* handshaker_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker_registry.h; path = src/core/lib/channel/handshaker_registry.h; sourceTree = "<group>"; };
 		746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueAsyncable.swift; sourceTree = "<group>"; };
+		7475179328E1E58200B389FA /* ReplyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyView.swift; sourceTree = "<group>"; };
+		7475179528E1FFC600B389FA /* PresenceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceInfo.swift; sourceTree = "<group>"; };
+		7475179728E2006300B389FA /* Visitors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visitors.swift; sourceTree = "<group>"; };
 		7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Batches.swift"; sourceTree = "<group>"; };
 		7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocol.swift; sourceTree = "<group>"; };
 		7480ECD128DA577F00DE4507 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
@@ -18025,6 +18031,8 @@
 				8FEF37EDA83B82BC8A601BB54A6E73D6 /* SSOExchangeResult.swift */,
 				E4790A9714A2922A2745D6CA8A794F7F /* User.swift */,
 				4F5D9A525A4B0DDFDDF4A32431A82867 /* UserThumbnail.swift */,
+				7475179528E1FFC600B389FA /* PresenceInfo.swift */,
+				7475179728E2006300B389FA /* Visitors.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -20288,6 +20296,7 @@
 		BECA9297DF4DB1A143063D42B3263106 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7475179328E1E58200B389FA /* ReplyView.swift */,
 				74DBE53A28DD3D6E005736A2 /* LoadingView.swift */,
 				741A617628D6AF400084A9B9 /* Assets.xcassets */,
 				741A617128D6AF190084A9B9 /* FeedackView.swift */,
@@ -27586,7 +27595,7 @@
 				BF018F28D76A3CE70DEE3F433571B113 /* BatchUpdate.swift in Sources */,
 				741A617528D6AF1A0084A9B9 /* LoginView.swift in Sources */,
 				BD5EA077DCECDB063F1EB87BDB9D6C8B /* CacheAPIEndpoint.swift in Sources */,
-				B631882828E0C34F003C062C /* ReplyView.swift in Sources */,
+				7475179428E1E58300B389FA /* ReplyView.swift in Sources */,
 				0262CCF25DCC3C815C6F6B9FC1244114 /* CacheAPIService.swift in Sources */,
 				F0F9B4A1C0A0B93073AF061525E5C7E8 /* Card.swift in Sources */,
 				04784E7AF45404DCACDA199C9053043E /* ChatGraphQLService.swift in Sources */,
@@ -27643,6 +27652,7 @@
 				779A8E941D9DC3372942D5F7606145C2 /* schema.json in Sources */,
 				FA6C95D199C6001BAEEE62E035DBC720 /* SendMessage.graphql in Sources */,
 				8301ABDC0CFFE719C44B6E6FF1259F0D /* ServiceError.swift in Sources */,
+				7475179828E2006300B389FA /* Visitors.swift in Sources */,
 				457E88B82BB4359373CC5AE52C21F83D /* SessionManager.swift in Sources */,
 				40CF38D8A3F1230C20D50DE454135D34 /* Settings.swift in Sources */,
 				1E25C56FBCCEB27477CD6EFC7D5AFBC2 /* SSOExchangeResult.swift in Sources */,
@@ -27653,6 +27663,7 @@
 				741A617428D6AF1A0084A9B9 /* FeedackView.swift in Sources */,
 				3A257A2754625D1FA63DA56EABAAD804 /* URL+Util.swift in Sources */,
 				211F7032711C29241B0CEC2D0FAB4D51 /* User.swift in Sources */,
+				7475179628E1FFC600B389FA /* PresenceInfo.swift in Sources */,
 				8E4AA8ED661FA5A6FDB67A136EDBB60B /* UserEndpoint.swift in Sources */,
 				833C683D75F83037BA44CF3264D2BF8D /* UserService.swift in Sources */,
 				746D9CDB28DC83B70061DDF8 /* DispatchQueueAsyncable.swift in Sources */,

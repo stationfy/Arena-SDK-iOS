@@ -5,13 +5,6 @@ public protocol ChatDelegate: AnyObject {
 }
 
 public final class ChatView: UIView {
-    private let replyView: ReplyView = {
-        let view = ReplyView()
-        view.isHidden = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private let loadingView: LoadingView = {
         let view = LoadingView()
         view.isHidden = true
@@ -22,7 +15,7 @@ public final class ChatView: UIView {
     private lazy var loginView: LoginView = {
         let view = LoginView()
         view.isHidden = true
-        view.alpha = 0
+        view.alpha = 0.0
         view.translatesAutoresizingMaskIntoConstraints = false
         view.loginAction = { [weak self] in
             self?.login()
@@ -31,6 +24,26 @@ public final class ChatView: UIView {
             self?.loginAnonymously()
         }
         return view
+    }()
+
+    private lazy var replyView: ReplyView = {
+        let view = ReplyView()
+        view.isHidden = true
+        view.alpha = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.closeAction = { [weak self] in
+            self?.presenter.closeReplyMessage()
+        }
+        return view
+    }()
+
+    private let liveLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Live Chat"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = Color.mediumPurple
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     private let iconContainerView = UIView()
@@ -311,14 +324,22 @@ extension ChatView: UITableViewDataSource {
     }
 }
 
-extension ChatView: UITableViewDelegate { }
+extension ChatView: UITableViewDelegate {
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.openReplyMessage(index: indexPath.row)
+    }
+
+}
 
 extension ChatView: ChatPresenting {
+
+    func updateUsersOnline(count: String) {
+        onlineUsersLabel.text = count
+    }
+    
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
         tableView.performUpdate(with: batchUpdate)
-
-
-        //tableView.scrollToRow(at: IndexPath(row: lastIndex, section: 0), at: .bottom, animated: true)
     }
 
     func startLoading() {
@@ -340,6 +361,22 @@ extension ChatView: ChatPresenting {
         loginView.isHidden = false
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.loginView.alpha = 1
+        }
+    }
+
+    func showReplyModal(receiver: String, message: String) {
+        replyView.setup(receiver: receiver, message: message)
+        replyView.isHidden = false
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.replyView.alpha = 1
+        }
+    }
+
+    func hideReplyModal() {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.replyView.alpha = 0.0
+        }) {  [weak self]  _ in
+            self?.replyView.isHidden = true
         }
     }
 }

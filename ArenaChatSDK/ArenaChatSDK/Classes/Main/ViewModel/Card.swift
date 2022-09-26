@@ -35,7 +35,7 @@ struct Card {
             type = .receivedReply
         } else if userId == nil {
             type = .received
-        } else if chatMessage.sender?.anonymousId == userId {
+        } else if chatMessage.sender?.anonymousId == userId || chatMessage.sender?.uid == userId {
             type = .sender
         } else {
             type = .received
