@@ -62,7 +62,7 @@ public final class ChatView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = Color.mediumPurple
-        label.text = "12.5K"
+        label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -333,6 +333,11 @@ extension ChatView: UITableViewDelegate {
 }
 
 extension ChatView: ChatPresenting {
+
+    func updateUsersOnline(count: String) {
+        onlineUsersLabel.text = count
+    }
+    
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
         tableView.performUpdate(with: batchUpdate)
     }

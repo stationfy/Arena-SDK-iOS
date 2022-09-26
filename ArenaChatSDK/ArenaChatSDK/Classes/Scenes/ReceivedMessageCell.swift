@@ -112,6 +112,11 @@ public final class ReceivedMessageCell: UITableViewCell {
         return view
     }()
 
+    private var repliedMessageContainerHeightConstraint: NSLayoutConstraint?
+    private var repliedMessageLabelTopConsttraint: NSLayoutConstraint?
+    private var repliedMessageLabelBottomConsttraint: NSLayoutConstraint?
+    private var separatorViewTopConsttraint: NSLayoutConstraint?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildViewHierarchy()
@@ -179,13 +184,21 @@ extension ReceivedMessageCell {
             messageContainerView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
             messageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
+
+        repliedMessageContainerHeightConstraint = repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0)
+        repliedMessageLabelTopConsttraint = repliedMessageLabel.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor,
+                                                                                     constant: 8)
+        repliedMessageLabelBottomConsttraint = repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor,
+                                                                                           constant: -8)
+        separatorViewTopConsttraint = separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor,
+                                                                         constant: 8)
     }
 
     func updateConstraints(repliedMessageIsHidden: Bool) {
-        repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0).isActive = repliedMessageIsHidden
-        repliedMessageLabel.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !repliedMessageIsHidden
-        repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor, constant: -8).isActive = !repliedMessageIsHidden
-        separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !repliedMessageIsHidden
+        repliedMessageContainerHeightConstraint?.isActive = repliedMessageIsHidden
+        repliedMessageLabelTopConsttraint?.isActive = !repliedMessageIsHidden
+        repliedMessageLabelBottomConsttraint?.isActive = !repliedMessageIsHidden
+        separatorViewTopConsttraint?.isActive = !repliedMessageIsHidden
     }
 }
 

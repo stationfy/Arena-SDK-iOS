@@ -7,17 +7,18 @@ protocol UserServicing {
              completion: @escaping (Result<AuthResponse, ServiceError>) -> Void)
 
     func join(channelId: String?,
-               siteId: String?,
-               userId: String?,
-               isAnonymous: Bool,
-               name: String?,
-               image: String?,
-               completion: @escaping (Result<Void, ServiceError>) -> Void)
+              siteId: String?,
+              userId: String?,
+              isAnonymous: Bool,
+              name: String?,
+              image: String?,
+              completion: @escaping (Result<Void, ServiceError>) -> Void)
     func update(userId: String?,
                 isAnonymous: Bool,
                 name: String?,
                 image: String?,
                 completion: @escaping (Result<Void, ServiceError>) -> Void)
+    func onlineChatInformation(completion: @escaping (Result<PresenceInfo, ServiceError>) -> Void)
 }
 
 struct UserService: UserServicing {
@@ -27,6 +28,7 @@ struct UserService: UserServicing {
 
     private let eventJoin: String = "join"
     private let userSetData: String = "user.setdata"
+    private let eventInfo: String = "presence.info"
 
     init(client: ClientRequestable,
          manager: SocketManager) {
@@ -68,12 +70,12 @@ extension UserService {
 extension UserService {
 
     func join(channelId: String?,
-               siteId: String?,
-               userId: String?,
-               isAnonymous: Bool,
-               name: String?,
-               image: String?,
-               completion: @escaping (Result<Void, ServiceError>) -> Void) {
+              siteId: String?,
+              userId: String?,
+              isAnonymous: Bool,
+              name: String?,
+              image: String?,
+              completion: @escaping (Result<Void, ServiceError>) -> Void) {
 
         let join = Join(
             channelId: channelId,
@@ -120,6 +122,25 @@ extension UserService {
 
         socket.emit(userSetData, data)
         completion(.success(()))
+    }
+
+    func onlineChatInformation(completion: @escaping (Result<PresenceInfo, ServiceError>) -> Void) {
+        socket.on(eventInfo) { data, ack in
+            guard let name = data[0] as? String,
+                  let dictionary = data[1] as? [String: Any] else {
+                completion(.failure(.responseEncondingFailure("Data parse failed")))
+                return
+            }
+
+            do {
+                let dataObject = try dictionary.toData()
+                let presenceInfo: PresenceInfo = try dataObject.parse()
+                completion(.success(presenceInfo))
+            } catch let error {
+                completion(.failure(.responseEncondingFailure(error.localizedDescription)))
+            }
+
+        }
     }
 
 }

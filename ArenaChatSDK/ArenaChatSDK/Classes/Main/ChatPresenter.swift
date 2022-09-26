@@ -7,6 +7,7 @@ import SocketIO
 
 protocol ChatPresenting: class {
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int)
+    func updateUsersOnline(count: String)
     func startLoading()
     func stopLoading()
     func nextPageDidLoad()
@@ -176,6 +177,7 @@ extension ChatPresenter: ChatStreamDelegate {
     func stream(_ stream: ChatStreamProvider,
                 didReceivedMessages messages: [MessageResponse],
                 isReloading: Bool) {
+        usersOnline()
         serialQueue.async { [weak self] in
             guard let self = self else { return }
             let oldCards = self.cards
@@ -354,6 +356,27 @@ fileprivate extension ChatPresenter {
             case let .failure(error):
                 print(error)
                 self?.delegate?.stopLoading()
+                // TODO: Error handling
+                break
+            }
+        }
+    }
+
+    func usersOnline() {
+        self.userService.onlineChatInformation { [weak self] result in
+            switch result {
+            case let .success(presenceInfo):
+                let onlineCount = presenceInfo.onlineCount ?? 0
+                var countString = "\(onlineCount)"
+
+                if (presenceInfo.onlineCount ?? 0) >= 1000 {
+                    let formatedOnlineCount = floor(Double(onlineCount / 1000))
+                    countString = "\(formatedOnlineCount)K"
+                }
+
+                self?.delegate?.updateUsersOnline(count: countString)
+            case let .failure(error):
+                print(error)
                 // TODO: Error handling
                 break
             }

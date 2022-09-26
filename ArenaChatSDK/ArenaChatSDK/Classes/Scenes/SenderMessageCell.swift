@@ -47,7 +47,6 @@ public final class SenderMessageCell: UITableViewCell {
         label.backgroundColor = Color.mediumPurple
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14)
-        label.setContentHuggingPriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -81,6 +80,11 @@ public final class SenderMessageCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    private var repliedMessageContainerHeightConstraint: NSLayoutConstraint?
+    private var repliedMessageLabelTopConsttraint: NSLayoutConstraint?
+    private var repliedMessageLabelBottomConsttraint: NSLayoutConstraint?
+    private var separatorViewTopConsttraint: NSLayoutConstraint?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -130,13 +134,21 @@ extension SenderMessageCell {
             messageContainerView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
             messageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
         ])
+
+        repliedMessageContainerHeightConstraint = repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0)
+        repliedMessageLabelTopConsttraint = repliedMessageLabel.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor,
+                                                                                     constant: 8)
+        repliedMessageLabelBottomConsttraint = repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor,
+                                                                                           constant: -8)
+        separatorViewTopConsttraint = separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor,
+                                                                         constant: 8)
     }
 
     func updateConstraints(repliedMessageIsHidden isHidden: Bool) {
-        repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0).isActive = isHidden
-        repliedMessageLabel.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !isHidden
-        repliedMessageLabel.bottomAnchor.constraint(equalTo: repliedMessageContainerView.bottomAnchor, constant: -8).isActive = !isHidden
-        separatorView.topAnchor.constraint(equalTo: repliedMessageContainerView.topAnchor, constant: 8).isActive = !isHidden
+        repliedMessageContainerHeightConstraint?.isActive = isHidden
+        repliedMessageLabelTopConsttraint?.isActive = !isHidden
+        repliedMessageLabelBottomConsttraint?.isActive = !isHidden
+        separatorViewTopConsttraint?.isActive = !isHidden
     }
 
     func getFormattedTime(from date: Date?) -> String {
