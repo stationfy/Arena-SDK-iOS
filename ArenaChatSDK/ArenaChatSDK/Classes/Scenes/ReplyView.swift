@@ -96,9 +96,9 @@ private extension ReplyView {
 }
 
 extension ReplyView {
-    func setup(receiver: String, text: String) {
+    func setup(receiver: String, message: String) {
         backgroundColor = Color.darkGray
         replyTitleLabel.text = "Replying to \(receiver)"
-        messageLabel.text = text
+        messageLabel.text = message
     }
 }

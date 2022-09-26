@@ -13,6 +13,8 @@ protocol ChatPresenting: class {
     func showLoadMore()
     func hideLoadMore()
     func openLoginModal()
+    func showReplyModal(receiver: String, message: String)
+    func hideReplyModal()
 }
 
 class ChatPresenter {
@@ -39,6 +41,8 @@ class ChatPresenter {
 
     private var cards: [Card] = []
     private var filteredCards: [Card] = []
+
+    private var repliedMessageKey: String?
 
     weak var delegate: ChatPresenting?
 
@@ -142,68 +146,29 @@ class ChatPresenter {
         mediaUrl: String?,
         isGif: Bool
     ) {
-        guard let text = text,
-              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
-              let siteId = event?.chatInfo?.siteId,
-              let openChannelId = event?.chatInfo?.mainChannelId else {
-            // TODO: Error handling
-            return
-        }
-
-        chatService.sendMessage(
-            channelId: openChannelId,
-            siteId: siteId,
-            graphqlPubApiKey: graphqlPubApiKey,
-            messageText: text,
-            photoUrl: loggedUser?.image,
-            mediaUrl: mediaUrl,
-            displayName: loggedUser?.name,
-            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
-            token: sessionManager.accessToken,
-            isGif: isGif
-        ) { result in
-            switch result {
-            case let .success(message):
-                print(message)
-            case let .failure(error):
-                print(error)
-            }
+        if let repliedMessageKey = self.repliedMessageKey {
+            replyChatMessage(text: text, replyId: repliedMessageKey, mediaUrl: mediaUrl, isGif: isGif)
+            closeReplyMessage()
+        } else {
+            sendChatMessage(text: text, mediaUrl: mediaUrl, isGif: isGif)
         }
     }
 
-    func replyMessage(
-        text: String?,
-        replyId: String,
-        mediaUrl: String?,
-        isGif: Bool
-    ) {
-        guard let text = text,
-              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
-              let siteId = event?.chatInfo?.siteId,
-              let openChannelId = event?.chatInfo?.mainChannelId else {
+    func openReplyMessage(index: Int) {
+        guard let repliedMessageKey = filteredCards[index].chatMessage.key,
+              let repliedName = filteredCards[index].chatMessage.sender?.displayName,
+              let repliedMessage = filteredCards[index].chatMessage.content?.text else {
             // TODO: Error handling
             return
         }
 
-        chatService.replyMessage(
-            channelId: openChannelId,
-            siteId: siteId,
-            graphqlPubApiKey: graphqlPubApiKey,
-            messageText: text,
-            photoUrl: loggedUser?.image,
-            mediaUrl: mediaUrl,
-            displayName: loggedUser?.name,
-            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
-            replyId: replyId,
-            token: sessionManager.accessToken,
-            isGif: isGif
-        ) { result in
-            switch result {
-            case let .failure(error):
-                print(error)
-            default: break
-            }
-        }
+        self.repliedMessageKey = repliedMessageKey
+        delegate?.showReplyModal(receiver: repliedName, message: repliedMessage)
+    }
+
+    func closeReplyMessage() {
+        self.repliedMessageKey = nil
+        delegate?.hideReplyModal()
     }
 }
 
@@ -318,6 +283,7 @@ fileprivate extension ChatPresenter {
 
     }
 }
+
 // MARK: User Context
 fileprivate extension ChatPresenter {
 
@@ -394,4 +360,76 @@ fileprivate extension ChatPresenter {
         }
     }
 
+}
+
+// MARK: Sending Message Context
+fileprivate extension ChatPresenter {
+    func sendChatMessage(
+        text: String?,
+        mediaUrl: String?,
+        isGif: Bool
+    ) {
+        guard let text = text,
+              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+              let siteId = event?.chatInfo?.siteId,
+              let openChannelId = event?.chatInfo?.mainChannelId else {
+            // TODO: Error handling
+            return
+        }
+
+        chatService.sendMessage(
+            channelId: openChannelId,
+            siteId: siteId,
+            graphqlPubApiKey: graphqlPubApiKey,
+            messageText: text,
+            photoUrl: loggedUser?.image,
+            mediaUrl: mediaUrl,
+            displayName: loggedUser?.name,
+            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+            token: sessionManager.accessToken,
+            isGif: isGif
+        ) { result in
+            switch result {
+            case let .success(message):
+                print(message)
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+
+    func replyChatMessage(
+        text: String?,
+        replyId: String,
+        mediaUrl: String?,
+        isGif: Bool
+    ) {
+        guard let text = text,
+              let graphqlPubApiKey = event?.settings?.graphqlPubApiKey,
+              let siteId = event?.chatInfo?.siteId,
+              let openChannelId = event?.chatInfo?.mainChannelId else {
+            // TODO: Error handling
+            return
+        }
+
+        chatService.replyMessage(
+            channelId: openChannelId,
+            siteId: siteId,
+            graphqlPubApiKey: graphqlPubApiKey,
+            messageText: text,
+            photoUrl: loggedUser?.image,
+            mediaUrl: mediaUrl,
+            displayName: loggedUser?.name,
+            userId: loggedUser?._id ?? sessionManager.loggedUser?._id ?? "",
+            replyId: replyId,
+            token: sessionManager.accessToken,
+            isGif: isGif
+        ) { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            default: break
+            }
+        }
+    }
 }

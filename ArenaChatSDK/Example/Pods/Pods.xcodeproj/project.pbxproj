@@ -2605,6 +2605,7 @@
 		7445B4359351512399AE17A2D738DDE1 /* eds.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DA72033BFCE2DC368CB81C31851507 /* eds.upb.h */; };
 		7448CB4D798748756CA59A518882BD13 /* sync.h in Copy impl/codegen Public Headers */ = {isa = PBXBuildFile; fileRef = 60B867A273DC0282F820AFE1319C3EEC /* sync.h */; };
 		746D9CDB28DC83B70061DDF8 /* DispatchQueueAsyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */; };
+		7475179428E1E58300B389FA /* ReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7475179328E1E58200B389FA /* ReplyView.swift */; };
 		7480ECCC28DA120F00DE4507 /* TableView+Batches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */; };
 		7480ECCF28DA16F900DE4507 /* CardCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */; };
 		7480ECD228DA577F00DE4507 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480ECD128DA577F00DE4507 /* Configurations.swift */; };
@@ -2614,7 +2615,6 @@
 		74BA77657AC16E0D4D582A5198D1326A /* regex.upbdefs.h in Copy src/core/ext/upbdefs-generated/envoy/type/matcher/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 0B6DFE00B0468927C0B3638C038B657C /* regex.upbdefs.h */; };
 		74BA808379411625B18D5205DA2DF144 /* unicode_groups.h in Copy third_party/re2/re2 Private Headers */ = {isa = PBXBuildFile; fileRef = E5242F7DEF3FCDEECA60A597D8E30A4B /* unicode_groups.h */; };
 		74BB46192DDB0CA2424B69214057DDB6 /* cct.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = D392048334296E5F4F0BEAEAE8ECB4EF /* cct.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		74DBE53B28DD3D74005736A2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DBE53A28DD3D6E005736A2 /* LoadingView.swift */; };
 		74EB47AB17E7BCDB467DB7712BB3BE43 /* grpc_streaming_reader.cc in Sources */ = {isa = PBXBuildFile; fileRef = D90ABC2BFE6FD205DABF4B6EFC381C17 /* grpc_streaming_reader.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder -Wno-comma -fno-objc-arc"; }; };
 		74EF381A8590826275A389526F97D361 /* ssl_session.cc in Sources */ = {isa = PBXBuildFile; fileRef = 473585480CED3250E90D1CE70F786BF8 /* ssl_session.cc */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -DBORINGSSL_PREFIX=GRPC -fno-objc-arc"; }; };
 		74F2811A3AE0E457B4970F14B452445F /* stats.upb.h in Copy src/core/ext/upb-generated/envoy/config/metrics/v3 Private Headers */ = {isa = PBXBuildFile; fileRef = 4F8AF5273DE3E8D418DB0F6CA864D54A /* stats.upb.h */; };
@@ -14239,6 +14239,7 @@
 		74555B2F44DF8AD511CC097626E8CD60 /* server_address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server_address.h; path = src/core/lib/resolver/server_address.h; sourceTree = "<group>"; };
 		745E85400E7381A7DAB9CAD2C34FB87F /* handshaker_registry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = handshaker_registry.h; path = src/core/lib/channel/handshaker_registry.h; sourceTree = "<group>"; };
 		746D9CDA28DC83B60061DDF8 /* DispatchQueueAsyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueAsyncable.swift; sourceTree = "<group>"; };
+		7475179328E1E58200B389FA /* ReplyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyView.swift; sourceTree = "<group>"; };
 		7480ECCB28DA120F00DE4507 /* TableView+Batches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Batches.swift"; sourceTree = "<group>"; };
 		7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellProtocol.swift; sourceTree = "<group>"; };
 		7480ECD128DA577F00DE4507 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
@@ -20287,6 +20288,7 @@
 		BECA9297DF4DB1A143063D42B3263106 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7475179328E1E58200B389FA /* ReplyView.swift */,
 				74DBE53A28DD3D6E005736A2 /* LoadingView.swift */,
 				741A617628D6AF400084A9B9 /* Assets.xcassets */,
 				741A617128D6AF190084A9B9 /* FeedackView.swift */,
@@ -27584,6 +27586,7 @@
 				BF018F28D76A3CE70DEE3F433571B113 /* BatchUpdate.swift in Sources */,
 				741A617528D6AF1A0084A9B9 /* LoginView.swift in Sources */,
 				BD5EA077DCECDB063F1EB87BDB9D6C8B /* CacheAPIEndpoint.swift in Sources */,
+				7475179428E1E58300B389FA /* ReplyView.swift in Sources */,
 				0262CCF25DCC3C815C6F6B9FC1244114 /* CacheAPIService.swift in Sources */,
 				F0F9B4A1C0A0B93073AF061525E5C7E8 /* Card.swift in Sources */,
 				04784E7AF45404DCACDA199C9053043E /* ChatGraphQLService.swift in Sources */,
