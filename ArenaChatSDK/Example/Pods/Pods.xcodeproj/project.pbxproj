@@ -4070,7 +4070,7 @@
 		B60828A7705A5BBFF753318D6A4EE59B /* node.upb.h in Headers */ = {isa = PBXBuildFile; fileRef = 35930066BE58707E1B55874248018298 /* node.upb.h */; };
 		B60F9FCC2942C59318E379DF192F1D02 /* FIRVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 959BA7382FF3E45CC5BF1BAEFAD9F204 /* FIRVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6233E37F581A8D93F97DB4FD2A05EE4 /* GraphQLResultAccumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41773316E720B45D4443B64B009AD8FF /* GraphQLResultAccumulator.swift */; };
-		B631882828E0C34F003C062C /* ReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631882728E0C34F003C062C /* ReplyView.swift */; };
+		B631891228E27960003C062C /* OnlineUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631891128E27960003C062C /* OnlineUsersView.swift */; };
 		B6319725699CBB80B9E8A698B4702E68 /* grpc_security_constants.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = AA9DCF53AF33466F396A73F4628A2BC8 /* grpc_security_constants.h */; };
 		B632AE71501555F5B79E098D86206945 /* channel_interface.h in Headers */ = {isa = PBXBuildFile; fileRef = 654E6053B29DB1F4DA65D9D1D8B734D1 /* channel_interface.h */; };
 		B6358FD57B0729B1DD4F1979A45F22EF /* grpc.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 056A319A216A53331EE5E943D2595E09 /* grpc.h */; };
@@ -15262,6 +15262,7 @@
 		B5EC83060F59D9BD00674F34EEFDA0D1 /* wire_reader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = wire_reader.h; path = src/core/ext/transport/binder/wire_format/wire_reader.h; sourceTree = "<group>"; };
 		B624A442D18F8C2CAE43553C330746AE /* passive.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = passive.c; path = src/crypto/rand_extra/passive.c; sourceTree = "<group>"; };
 		B631882728E0C34F003C062C /* ReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyView.swift; sourceTree = "<group>"; };
+		B631891128E27960003C062C /* OnlineUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineUsersView.swift; sourceTree = "<group>"; };
 		B635D22DF50AD3C012DE245BFAED7C9C /* rune.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = rune.cc; path = third_party/re2/util/rune.cc; sourceTree = "<group>"; };
 		B644A9FF95612AC06106A71BD3BFE42B /* duration.upbdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = duration.upbdefs.h; path = "src/core/ext/upbdefs-generated/google/protobuf/duration.upbdefs.h"; sourceTree = "<group>"; };
 		B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -20310,6 +20311,7 @@
 				7480ECCE28DA16F900DE4507 /* CardCellProtocol.swift */,
 				B6497B6728DD0BAF00BFBF90 /* LoadingView.swift */,
 				B631882728E0C34F003C062C /* ReplyView.swift */,
+				B631891128E27960003C062C /* OnlineUsersView.swift */,
 			);
 			name = Scenes;
 			path = ArenaChatSDK/Classes/Scenes;
@@ -27592,6 +27594,7 @@
 				05277AA4E0AAF7F37C0A4452BFC50E76 /* Assets.swift in Sources */,
 				DF45D8152FC0C491CA2709AE1D49C366 /* AuthenticationData.swift in Sources */,
 				9D04BCBF2BCD39A7070EFE73CBE2301D /* BanUser.swift in Sources */,
+				B631891228E27960003C062C /* OnlineUsersView.swift in Sources */,
 				BF018F28D76A3CE70DEE3F433571B113 /* BatchUpdate.swift in Sources */,
 				741A617528D6AF1A0084A9B9 /* LoginView.swift in Sources */,
 				BD5EA077DCECDB063F1EB87BDB9D6C8B /* CacheAPIEndpoint.swift in Sources */,

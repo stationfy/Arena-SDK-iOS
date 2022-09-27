@@ -33,7 +33,7 @@ public final class ReceivedMessageCell: UITableViewCell {
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }()
 
@@ -162,6 +162,7 @@ extension ReceivedMessageCell {
 
             topStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             topStackView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor),
+            topStackView.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -48),
 
             separatorView.widthAnchor.constraint(equalToConstant: 2),
             separatorView.leadingAnchor.constraint(equalTo: repliedMessageContainerView.leadingAnchor, constant: 8),

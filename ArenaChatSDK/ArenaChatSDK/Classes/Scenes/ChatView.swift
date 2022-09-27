@@ -37,34 +37,12 @@ public final class ChatView: UIView {
         return view
     }()
 
-    private let liveLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Live Chat"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = Color.mediumPurple
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private let iconContainerView = UIView()
-    private let onlineUsersIcon: UIImageView = {
-        let imageView = UIImageView()
-        let configuration = UIImage.SymbolConfiguration(pointSize: 12)
-        imageView.image = UIImage(systemName: Assets.persons.rawValue, withConfiguration: configuration)
-        imageView.tintColor = Color.mediumPurple
-        imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingPriority(.required, for: .horizontal)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private let onlineUsersLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Color.mediumPurple
-        label.text = "12.5K"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let onlineUserView: OnlineUsersView = {
+        let view = OnlineUsersView()
+        view.isHidden = true
+        view.alpha = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private lazy var tableView: UITableView = {
@@ -189,6 +167,14 @@ public final class ChatView: UIView {
             self?.loginView.isHidden = true
         }
     }
+
+    private func setOnlineUserVisiility(isHidden: Bool) {
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.onlineUserView.alpha = isHidden ? 0.0 : 1
+        }) {  [weak self]  _ in
+            self?.onlineUserView.isHidden = isHidden
+        }
+    }
 }
 
 @objc private extension ChatView {
@@ -247,6 +233,7 @@ private extension ChatView {
         addSubview(loginView)
         addSubview(loadingView)
         addSubview(replyView)
+        addSubview(onlineUserView)
     }
 
     func setupConstraints() {
@@ -260,6 +247,9 @@ private extension ChatView {
             loginView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             loginView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             loginView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
+            onlineUserView.topAnchor.constraint(equalTo: self.topAnchor, constant: 76),
+            onlineUserView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             replyView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -12),
             replyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -277,7 +267,7 @@ private extension ChatView {
 
             textView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
             textView.trailingAnchor.constraint(equalTo: bottomStackView.leadingAnchor, constant: -8),
-            textView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
+           // textView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 45),
 
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -330,12 +320,25 @@ extension ChatView: UITableViewDelegate {
         presenter.openReplyMessage(index: indexPath.row)
     }
 
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        setOnlineUserVisiility(isHidden: true)
+    }
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        setOnlineUserVisiility(isHidden: false)
+    }
+
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate {
+            setOnlineUserVisiility(isHidden: false)
+        }
+    }
 }
 
 extension ChatView: ChatPresenting {
 
     func updateUsersOnline(count: String) {
-        onlineUsersLabel.text = count
+        onlineUserView.setup(with: count)
     }
     
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
