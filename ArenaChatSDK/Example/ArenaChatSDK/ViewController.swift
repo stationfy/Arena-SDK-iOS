@@ -15,10 +15,10 @@ class ViewController: UIViewController {
         view.addSubview(chatView)
         
         NSLayoutConstraint.activate([
-            chatView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            chatView.topAnchor.constraint(equalTo: view.topAnchor),
             chatView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             chatView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40)
+            chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         chatView.startEvent()
