@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 public final class ReceivedMessageCell: UITableViewCell {
     // MARK: - TopView
@@ -50,6 +51,7 @@ public final class ReceivedMessageCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -213,6 +215,11 @@ extension ReceivedMessageCell: CardCellSetuping {
         messageLabel.text = card.chatMessage.content?.text
         repliedMessageLabel.text = card.chatMessage.replyMessage?.content?.text
         profileImageView.backgroundColor = .purple
+
+        if let photoString = card.chatMessage.sender?.photoURL,
+           let photoURL = URL(string: photoString) {
+            profileImageView.kf.setImage(with: photoURL)
+        }
 
         updateConstraints(repliedMessageIsHidden: isReceived)
     }
