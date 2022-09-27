@@ -19,6 +19,12 @@
     "ios": "13.0"
   },
   "source_files": "ArenaChatSDK/Classes/**/*",
+  "resource_bundles": {
+    "ArenaChatSDK": [
+      "ArenaChatSDK/**/*.png",
+      "ArenaChatSDK/**/*.pdf"
+    ]
+  },
   "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}",
   "dependencies": {
     "Socket.IO-Client-Swift": [
@@ -32,6 +38,9 @@
     ],
     "KeychainSwift": [
       "~> 20.0"
+    ],
+    "Kingfisher": [
+      "~> 7.0"
     ]
   }
 }

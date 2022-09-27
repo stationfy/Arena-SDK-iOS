@@ -30,6 +30,10 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '13.0'
 
   s.source_files = 'ArenaChatSDK/Classes/**/*'
+  s.resource_bundles = {
+    'ArenaChatSDK' => ['ArenaChatSDK/**/*.png', 'ArenaChatSDK/**/*.pdf']
+  }
+
   s.resources = 'ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
@@ -38,4 +42,5 @@ TODO: Add long description of the pod here.
   s.dependency 'FirebaseFirestore'
   s.dependency 'Apollo'
   s.dependency 'KeychainSwift', '~> 20.0'
+  s.dependency 'Kingfisher', '~> 7.0'
 end
