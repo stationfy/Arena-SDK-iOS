@@ -44,6 +44,7 @@ class ChatPresenter {
     private var filteredCards: [Card] = []
 
     private var repliedMessageKey: String?
+    private var listIsLoading: Bool = false
 
     weak var delegate: ChatPresenting?
 
@@ -135,13 +136,16 @@ class ChatPresenter {
     }
 
     func requestNextPage() {
-        guard let chatInfo = event?.chatInfo,
+        guard stream?.isLastPage == false,
+              !listIsLoading,
+              let chatInfo = event?.chatInfo,
               let chatRoomId = chatInfo.id,
               let channelId = chatInfo.mainChannelId else {
             // TODO: Error handling
             return
         }
-
+        print("CALLED loadPreviousMessages")
+        listIsLoading = true
         stream?.loadPreviousMessages(chatRoomId: chatRoomId, channelId: channelId)
     }
 
@@ -242,6 +246,7 @@ extension ChatPresenter: ChatStreamDelegate {
             let lastIndex = self.filteredCards.count - 1
 
             DispatchQueue.main.sync { [weak self] in
+                self?.listIsLoading = false
                 self?.delegate?.performUpdate(with: batchUpdates, lastIndex: lastIndex)
                 self?.delegate?.nextPageDidLoad()
                 self?.delegate?.stopLoading()

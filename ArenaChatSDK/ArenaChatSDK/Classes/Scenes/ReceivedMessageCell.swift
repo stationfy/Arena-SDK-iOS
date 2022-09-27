@@ -51,7 +51,7 @@ public final class ReceivedMessageCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

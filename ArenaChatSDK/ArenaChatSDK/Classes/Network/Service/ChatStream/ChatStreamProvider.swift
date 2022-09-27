@@ -26,6 +26,9 @@ final class ChatStreamProvider: ChatStreamProviding {
         stream.currentPageSize
     }
 
+    private var lasIndex: UInt = 0
+    var isLastPage: Bool = false
+
     weak var delegate: ChatStreamDelegate?
 
     init() throws {
@@ -54,6 +57,9 @@ final class ChatStreamProvider: ChatStreamProviding {
     private func handleEventSnapshot(_ query: QuerySnapshot, isReloading: Bool) {
         var messageResponses: [MessageResponse] = [MessageResponse]()
 
+        isLastPage = lasIndex == query.documentChanges.last?.newIndex
+        lasIndex = query.documentChanges.last?.newIndex ?? 0
+        
         query.documentChanges.forEach { doc in
             do {
                 let dataResponse = try doc.document.data().toData()

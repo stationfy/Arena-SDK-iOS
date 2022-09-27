@@ -20,17 +20,4 @@ extension UITableView {
             self.transform = CGAffineTransform(scaleX: 1, y: -1)
         }
     }
-
-    private func updateTableContentInset(numRows: Int) {
-        var contentInsetTop = self.bounds.size.height
-        for i in 0..<numRows {
-            let rowRect = self.rectForRow(at: IndexPath(item: i, section: 0))
-            contentInsetTop -= rowRect.size.height
-            if contentInsetTop <= 0 {
-                contentInsetTop = 0
-                break
-            }
-        }
-        self.contentInset = UIEdgeInsets(top: contentInsetTop, left: 0, bottom: 0, right: 0)
-    }
 }

@@ -73,7 +73,9 @@ public final class ChatView: UIView {
 
     private lazy var emojiButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: Assets.smilingFace.rawValue)?.withTintColor(Color.darkGray, renderingMode: .alwaysOriginal)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
+        let image = UIImage(systemName: Assets.smilingFace.rawValue,
+                            withConfiguration: largeConfig)?.withTintColor(Color.darkGray, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(changeToEmojiKeyboard), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +84,9 @@ public final class ChatView: UIView {
 
     private lazy var sendButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: Assets.arrowUp.rawValue)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
+        let image = UIImage(systemName: Assets.arrowUp.rawValue,
+                            withConfiguration: largeConfig)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +95,7 @@ public final class ChatView: UIView {
 
     private lazy var bottomStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emojiButton, sendButton])
-        stackView.spacing = 16
+        stackView.spacing = 12
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -117,7 +121,13 @@ public final class ChatView: UIView {
     }
 
     private lazy var tapGesture: UITapGestureRecognizer = {
-        UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard (_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }()
+
+    private lazy var longPressGesture: UITapGestureRecognizer = {
+        UITapGestureRecognizer(target: self, action: #selector(handleCellLongPress(_:)))
     }()
 
     override init(frame: CGRect) {
@@ -132,20 +142,6 @@ public final class ChatView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         buildLayout()
-    }
-
-    private func updateTableContentInset() {
-        let numRows = self.tableView.numberOfRows(inSection: 0)
-        var contentInsetTop = self.tableView.bounds.size.height
-        for i in 0..<numRows {
-            let rowRect = self.tableView.rectForRow(at: IndexPath(item: i, section: 0))
-            contentInsetTop -= rowRect.size.height
-            if contentInsetTop <= 0 {
-                contentInsetTop = 0
-                break
-            }
-        }
-        self.tableView.contentInset = UIEdgeInsets(top: contentInsetTop, left: 0, bottom: 0, right: 0)
     }
 
     private func login() {
@@ -168,12 +164,20 @@ public final class ChatView: UIView {
         }
     }
 
-    private func setOnlineUserVisiility(isHidden: Bool) {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.onlineUserView.alpha = isHidden ? 0.0 : 1
-        }) {  [weak self]  _ in
-            self?.onlineUserView.isHidden = isHidden
+    private func setOnlineUserVisibility(isHidden: Bool) {
+        if isHidden {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.onlineUserView.alpha = 0.0
+            }) {  [weak self]  _ in
+                self?.onlineUserView.isHidden = true
+            }
+        } else {
+            onlineUserView.isHidden = false
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.onlineUserView.alpha = 1.0
+            }
         }
+
     }
 }
 
@@ -197,12 +201,21 @@ public final class ChatView: UIView {
 
     func keyboardWillHide() {
         if frame.origin.y != 0 {
-               frame.origin.y = 0
-           }
+            frame.origin.y = 0
+        }
     }
 
     func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         textView.resignFirstResponder()
+    }
+
+    func handleCellLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                presenter.openReplyMessage(index: indexPath.row)
+            }
+        }
     }
 }
 
@@ -226,6 +239,8 @@ private extension ChatView {
 
     func buildViewHierarchy() {
         addGestureRecognizer(tapGesture)
+        tableView.addGestureRecognizer(longPressGesture)
+
         bottomContainerView.addSubview(bottomStackView)
         bottomContainerView.addSubview(textView)
         addSubview(tableView)
@@ -260,15 +275,14 @@ private extension ChatView {
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-          //  bottomStackView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
             bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
             bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
             bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
 
             textView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
             textView.trailingAnchor.constraint(equalTo: bottomStackView.leadingAnchor, constant: -8),
-           // textView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 45),
+            textView.topAnchor.constraint(equalTo: bottomStackView.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: bottomStackView.bottomAnchor),
 
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -316,21 +330,17 @@ extension ChatView: UITableViewDataSource {
 
 extension ChatView: UITableViewDelegate {
 
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.openReplyMessage(index: indexPath.row)
-    }
-
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        setOnlineUserVisiility(isHidden: true)
+        setOnlineUserVisibility(isHidden: true)
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        setOnlineUserVisiility(isHidden: false)
+        setOnlineUserVisibility(isHidden: false)
     }
 
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if decelerate {
-            setOnlineUserVisiility(isHidden: false)
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if ((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) {
+            presenter.requestNextPage()
         }
     }
 }
@@ -339,7 +349,7 @@ extension ChatView: ChatPresenting {
 
     func updateUsersOnline(count: String) {
         onlineUserView.setup(with: count)
-        setOnlineUserVisiility(isHidden: false)
+        setOnlineUserVisibility(isHidden: false)
     }
     
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
@@ -371,13 +381,13 @@ extension ChatView: ChatPresenting {
     func showReplyModal(receiver: String, message: String) {
         replyView.setup(receiver: receiver, message: message)
         replyView.isHidden = false
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             self?.replyView.alpha = 1
         }
     }
 
     func hideReplyModal() {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.replyView.alpha = 0.0
         }) {  [weak self]  _ in
             self?.replyView.isHidden = true
