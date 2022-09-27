@@ -21,17 +21,17 @@
   "source_files": "ArenaChatSDK/Classes/**/*",
   "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}",
   "dependencies": {
+    "Socket.IO-Client-Swift": [
+      "~> 15.2.0"
+    ],
     "FirebaseFirestore": [
 
     ],
     "KeychainSwift": [
       "~> 20.0"
     ],
-    "Socket.IO-Client-Swift": [
-      "~> 15.2.0"
-    ],
     "Apollo": [
-      "~> 2.34.0"
+
     ]
   }
 }

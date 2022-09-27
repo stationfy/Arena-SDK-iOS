@@ -24,6 +24,7 @@ protocol UserServicing {
 struct UserService: UserServicing {
 
     private let client: ClientRequestable
+    private let manager: SocketManager
     private let socket: SocketIOClient
 
     private let eventJoin: String = "join"
@@ -33,7 +34,9 @@ struct UserService: UserServicing {
     init(client: ClientRequestable,
          manager: SocketManager) {
         self.client = client
-        self.socket = manager.defaultSocket
+        self.manager = manager
+        self.socket = self.manager.defaultSocket
+
     }
 }
 
@@ -91,7 +94,7 @@ extension UserService {
             )
         )
 
-        guard let data = join.toData else {
+        guard let data = join.dictionary else {
             completion(.failure(.responseEncondingFailure("Data parse failed")))
             return
         }
@@ -115,19 +118,23 @@ extension UserService {
             isMobile: true
         )
 
-        guard let data = user.toData else {
+        guard let data = user.dictionary else {
             completion(.failure(.responseEncondingFailure("Data parse failed")))
             return
         }
 
         socket.emit(userSetData, data)
+
         completion(.success(()))
     }
 
     func onlineChatInformation(completion: @escaping (Result<PresenceInfo, ServiceError>) -> Void) {
+        socket.onAny { event in
+            print("Hanlde any Socket event: \(event)")
+        }
+
         socket.on(eventInfo) { data, ack in
-            guard let name = data[0] as? String,
-                  let dictionary = data[1] as? [String: Any] else {
+            guard let dictionary = data.first as? [String: Any] else {
                 completion(.failure(.responseEncondingFailure("Data parse failed")))
                 return
             }
@@ -139,8 +146,9 @@ extension UserService {
             } catch let error {
                 completion(.failure(.responseEncondingFailure(error.localizedDescription)))
             }
-
         }
+
+        self.socket.connect()
     }
 
 }

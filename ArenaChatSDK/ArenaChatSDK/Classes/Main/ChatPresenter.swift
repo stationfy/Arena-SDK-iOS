@@ -77,7 +77,8 @@ class ChatPresenter {
 
         let socketManager = SocketManager(
             socketURL: URL(string: arenaChat.configuration.socketBaseURL)!,
-            config: [.log(true), .compress])
+            config: [.log(true), .compress, .forceNew(true), .forceWebsockets(true)]
+        )
 
         self.cachedService = CachedAPIService(client: cachedHttpClient)
         self.userService = UserService(client: userHttpClient, manager: socketManager)
@@ -90,6 +91,8 @@ class ChatPresenter {
             ),
             interceptor: interceptor
         )
+
+        self.usersOnline()
     }
 
     func setUser(_ externalUser: ExternalUser) {
@@ -177,7 +180,6 @@ extension ChatPresenter: ChatStreamDelegate {
     func stream(_ stream: ChatStreamProvider,
                 didReceivedMessages messages: [MessageResponse],
                 isReloading: Bool) {
-        usersOnline()
         serialQueue.async { [weak self] in
             guard let self = self else { return }
             let oldCards = self.cards
@@ -319,6 +321,8 @@ fileprivate extension ChatPresenter {
 
             case let .failure(error):
                 self.delegate?.stopLoading()
+                self.delegate?.openLoginModal()
+                // TODO: Error handling
                 print(error)
                 break
             }

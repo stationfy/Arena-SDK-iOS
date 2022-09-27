@@ -34,8 +34,8 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
+  s.dependency 'Socket.IO-Client-Swift', '~> 15.2.0'
   s.dependency 'FirebaseFirestore'
   s.dependency 'KeychainSwift', '~> 20.0'
-  s.dependency 'Socket.IO-Client-Swift', '~> 15.2.0'
   s.dependency 'Apollo'
 end
