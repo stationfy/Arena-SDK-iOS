@@ -1,5 +1,6 @@
 import UIKit
 import Apollo
+import Kingfisher
 
 public protocol ChatDelegate: AnyObject {
     func ssoUserRequired(completion: (ExternalUser) -> Void)
@@ -370,6 +371,13 @@ extension ChatView: ChatPresenting {
     
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
         tableView.performUpdate(with: batchUpdate)
+    }
+
+    func updateProfileImage(with stringUrl: String?) {
+        if let photoString = stringUrl,
+           let photoURL = URL(string: photoString) {
+            profileImageView.kf.setImage(with: photoURL)
+        }
     }
 
     func startLoading() {

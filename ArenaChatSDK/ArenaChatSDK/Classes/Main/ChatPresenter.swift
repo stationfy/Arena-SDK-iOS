@@ -8,6 +8,7 @@ import SocketIO
 protocol ChatPresenting: class {
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int)
     func updateUsersOnline(count: String)
+    func updateProfileImage(with stringUrl: String?)
     func startLoading()
     func stopLoading()
     func nextPageDidLoad()
@@ -317,6 +318,7 @@ fileprivate extension ChatPresenter {
 
                 let loggedUser = authResponse.data.user
                 self.loggedUser = loggedUser
+                self.delegate?.updateProfileImage(with: loggedUser.profile?.profileImage)
 
                 if (self.changedUser) {
                     self.changeUser(loggedUser)
