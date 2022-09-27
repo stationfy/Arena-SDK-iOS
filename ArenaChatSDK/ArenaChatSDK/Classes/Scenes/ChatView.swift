@@ -339,6 +339,7 @@ extension ChatView: ChatPresenting {
 
     func updateUsersOnline(count: String) {
         onlineUserView.setup(with: count)
+        setOnlineUserVisiility(isHidden: false)
     }
     
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {

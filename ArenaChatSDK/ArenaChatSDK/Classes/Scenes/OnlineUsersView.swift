@@ -57,8 +57,8 @@ private extension OnlineUsersView {
         NSLayoutConstraint.activate([
             contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 28),
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -28),
-            contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
-            contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8),
+            contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
 
             containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
