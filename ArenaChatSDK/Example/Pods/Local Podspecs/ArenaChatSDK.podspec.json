@@ -27,11 +27,11 @@
     "FirebaseFirestore": [
 
     ],
-    "KeychainSwift": [
-      "~> 20.0"
-    ],
     "Apollo": [
 
+    ],
+    "KeychainSwift": [
+      "~> 20.0"
     ]
   }
 }

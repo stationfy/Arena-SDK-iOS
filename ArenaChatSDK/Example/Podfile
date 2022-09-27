@@ -8,6 +8,5 @@ target 'ArenaChatSDK_Example' do
   target 'ArenaChatSDK_Tests' do
     inherit! :search_paths
 
-    
   end
 end
