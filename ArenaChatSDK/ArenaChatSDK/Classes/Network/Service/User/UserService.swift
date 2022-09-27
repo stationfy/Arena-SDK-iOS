@@ -129,10 +129,6 @@ extension UserService {
     }
 
     func onlineChatInformation(completion: @escaping (Result<PresenceInfo, ServiceError>) -> Void) {
-        socket.onAny { event in
-            print("Hanlde any Socket event: \(event)")
-        }
-
         socket.on(eventInfo) { data, ack in
             guard let dictionary = data.first as? [String: Any] else {
                 completion(.failure(.responseEncondingFailure("Data parse failed")))
