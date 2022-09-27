@@ -1,4 +1,5 @@
 import UIKit
+import Apollo
 
 public protocol ChatDelegate: AnyObject {
     func ssoUserRequired(completion: (ExternalUser) -> Void)
@@ -91,6 +92,14 @@ public final class ChatView: UIView {
         button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+
+    private let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 16
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
 
     private lazy var bottomStackView: UIStackView = {
@@ -241,8 +250,10 @@ private extension ChatView {
         addGestureRecognizer(tapGesture)
         tableView.addGestureRecognizer(longPressGesture)
 
-        bottomContainerView.addSubview(bottomStackView)
+        bottomContainerView.addSubview(profileImageView)
         bottomContainerView.addSubview(textView)
+        bottomContainerView.addSubview(bottomStackView)
+
         addSubview(tableView)
         addSubview(bottomContainerView)
         addSubview(loginView)
@@ -275,14 +286,19 @@ private extension ChatView {
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-            bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
-            bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
-            bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
+            profileImageView.widthAnchor.constraint(equalToConstant: 32),
+            profileImageView.heightAnchor.constraint(equalToConstant: 32),
+            profileImageView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 8),
+            profileImageView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
 
-            textView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
+            textView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
             textView.trailingAnchor.constraint(equalTo: bottomStackView.leadingAnchor, constant: -8),
             textView.topAnchor.constraint(equalTo: bottomStackView.topAnchor),
             textView.bottomAnchor.constraint(equalTo: bottomStackView.bottomAnchor),
+
+            bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
+            bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
+            bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
 
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
