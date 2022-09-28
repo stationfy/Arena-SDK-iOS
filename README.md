@@ -21,12 +21,7 @@ pod 'ArenaChatSDK'
 
 # Chat
 
-Arena provides a ready-to-use live group chat activity that doesn't require  
-any development effort and it can power many of the common scenarios.  
-For more complex use-cases we made available the Kotlin SDK that  
-provides the infra-structure necessary to build your own chat experience  
-and at the same time leverage the powerful moderation and backoffice  
-tools available at the Arena Dashboard.
+Arena provides a ready-to-use live group chat activity that doesn't require any development effort and it can power many of the common scenarios. For more complex use-cases we made available the Swift SDK that provides the infra-structure necessary to build your own chat experience and at the same time leverage the powerful moderation and backoffice tools available at the Arena Dashboard.
 
 
 #### Step 1: Setup SDK
