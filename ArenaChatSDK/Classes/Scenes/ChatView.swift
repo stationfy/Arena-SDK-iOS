@@ -87,17 +87,6 @@ public final class ChatView: UIView {
         return textView
     }()
 
-    private lazy var emojiButton: UIButton = {
-        let button = UIButton()
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
-        let image = UIImage(systemName: Assets.smilingFace.rawValue,
-                            withConfiguration: largeConfig)?.withTintColor(Color.darkGray, renderingMode: .alwaysOriginal)
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(changeToEmojiKeyboard), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
     private lazy var sendButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
@@ -133,7 +122,7 @@ public final class ChatView: UIView {
     }()
 
     private lazy var bottomStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [emojiButton, sendButton])
+        let stackView = UIStackView(arrangedSubviews: [sendButton])
         stackView.spacing = 12
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -225,10 +214,6 @@ public final class ChatView: UIView {
 }
 
 @objc private extension ChatView {
-    func changeToEmojiKeyboard() {
-
-    }
-
     func sendMessage() {
         presenter.sendMessage(text: textView.text, mediaUrl: nil, isGif: false)
         textView.text = ""
@@ -244,7 +229,7 @@ public final class ChatView: UIView {
             layoutIfNeeded()
         }
     }
-
+    
     func keyboardWillHide() {
         if containerViewBottomConstraint?.constant != 0 {
             containerViewBottomConstraint?.constant = 0
