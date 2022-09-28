@@ -49,7 +49,7 @@ ArenaChat.setup(writeKey: "writeKey", channel: "slug", environment: .development
 *  environment: Environment that the Chat is running: `.development` or `.production`
 
 #### Step 2: Start Chat
-To start the chat it is necessary to initiate the `ChatView`, add it as subview on your controller and call `startEvent()` as the exemple below:
+To start the chat it is necessary to initiate the `ChatView`, add it as subview on your ViewController and call `startEvent()` as the exemple below:
 
 ```swift
 import UIKit
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 After these steps, the chat is up and running in your app.
 
 #### Step 3: Singe Sign On
-Chat allows the product to have its own SSO login flow. Users can enter the chat while logged in. You can start the chat with a logged in user, just call before `chatView.startEvent()`:
+Chat allows the product to have its own SSO login flow. Users can enter the chat while logged in. You can start the chat with a logged in user, before `chatView.startEvent()`, just call:
 
 ```swift
 chatView.setUser(
@@ -102,13 +102,13 @@ chatView.setUser(
     ExternalUser(id: "123123",
                  name: "Roberto",
                  email: "roberto@gmail.com",
-                 image: "https://randomuser.me/api/portraits/women/5.jpg",
+                 image: "https://randomuser.me/api/portraits/",
                  familyName: "Silva",
                  givenName: "Lima")
 )
 ```
 
-If the chat is started in incognito mode and the user chooses to login with SSO, an event will be sent via delegate `ChatDelegate` on `func ssoUserRequired(completion: (ExternalUser) -> Void)`, indicating that you should start your login flow in the app.
+If the chat is started in incognito mode and the user chooses to login with SSO, it will be sent via delegate `ChatDelegate` on `func ssoUserRequired(completion: (ExternalUser) -> Void)`, indicating that you should start your login flow in the app.
 
 ```swift
 extension ViewController: ChatDelegate {
@@ -124,6 +124,12 @@ extension ViewController: ChatDelegate {
         )
     }
 }
+```
+
+Remember to initializate the `ChatView` passing the delegate, as in the example:
+
+```swift
+ChatView(delegate: self)
 ```
 
 ## Author
