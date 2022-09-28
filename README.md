@@ -7,7 +7,7 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo and run `pod install` from the Example directory first.
 
 
 ## Installation
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
 
 After these steps, the chat is up and running in your app.
 
-#### Step 3: Singe Sign On
+#### Step 3: Single Sign On
 Chat allows the product to have its own SSO login flow. Users can enter the chat while logged in. You can start the chat with a logged in user, before `chatView.startEvent()`, just call:
 
 ```swift
@@ -95,7 +95,7 @@ For example:
 ```swift
 chatView.setUser(
     ExternalUser(id: "123123",
-                 name: "Roberto",
+                 name: "Roberto Silva",
                  email: "roberto@gmail.com",
                  image: "https://randomuser.me/api/portraits/",
                  familyName: "Silva",
@@ -111,7 +111,7 @@ extension ViewController: ChatDelegate {
         // do the login flow and call the completion in the end
         completion(
             ExternalUser(id: "123123",
-                         name: "Roberto",
+                         name: "Roberto Silva",
                          email: "roberto@gmail.com",
                          image: "https://randomuser.me/api/portraits/",
                          familyName: "Silva",
