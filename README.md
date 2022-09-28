@@ -36,7 +36,7 @@ You can find your site slug in the dashboard settings: https://dashboard.arena.i
 
 To access the chat room slug, go to the [chat list page](https://dashboard.arena.im/chatlist), find the chat and take the last route param as in the example below:
 
-![Chat](showcase/Chat.png)
+<img width="251" alt="Chat" src="https://user-images.githubusercontent.com/7659026/192896818-42bb0cb6-fac0-44ac-a86e-cf54bc10e468.png">
 
 After retrieving the site slug and chat slug, it is necessary to call `ArenaChat.setup()`. The  method must be called once across your client app. It is recommended to initialize the in the `application(_:didFinishLaunchingWithOptions:)`method of the `AppDelegate`.
 
