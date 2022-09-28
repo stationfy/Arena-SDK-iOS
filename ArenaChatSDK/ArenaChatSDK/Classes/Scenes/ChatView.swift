@@ -47,6 +47,14 @@ public final class ChatView: UIView {
         return view
     }()
 
+    private let logoutView: LogoutView = {
+        let view = LogoutView()
+        view.isHidden = true
+        view.alpha = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SenderMessageCell.self,
@@ -99,8 +107,17 @@ public final class ChatView: UIView {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = Color.medimGray
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+
+    private lazy var profileButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     private lazy var bottomStackView: UIStackView = {
@@ -201,6 +218,14 @@ public final class ChatView: UIView {
         textView.text = ""
     }
 
+    func openProfile() {
+        logoutView.setup(with: "clau clau")
+        logoutView.isHidden = !logoutView.isHidden
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.logoutView.alpha = 1
+        }
+    }
+
     func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if frame.origin.y == 0 {
@@ -252,6 +277,7 @@ private extension ChatView {
         tableView.addGestureRecognizer(longPressGesture)
 
         bottomContainerView.addSubview(profileImageView)
+        bottomContainerView.addSubview(profileButton)
         bottomContainerView.addSubview(textView)
         bottomContainerView.addSubview(bottomStackView)
 
@@ -261,6 +287,7 @@ private extension ChatView {
         addSubview(loadingView)
         addSubview(replyView)
         addSubview(onlineUserView)
+        addSubview(logoutView)
     }
 
     func setupConstraints() {
@@ -286,6 +313,14 @@ private extension ChatView {
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
+
+            logoutView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            logoutView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
+
+            profileButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            profileButton.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            profileButton.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileButton.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor),
 
             profileImageView.widthAnchor.constraint(equalToConstant: 32),
             profileImageView.heightAnchor.constraint(equalToConstant: 32),
