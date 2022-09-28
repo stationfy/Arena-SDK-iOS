@@ -7,7 +7,7 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo and run `pod install` from the Example directory first.
 
 
 ## Installation
@@ -21,12 +21,7 @@ pod 'ArenaChatSDK'
 
 # Chat
 
-Arena provides a ready-to-use live group chat activity that doesn't require  
-any development effort and it can power many of the common scenarios.  
-For more complex use-cases we made available the Kotlin SDK that  
-provides the infra-structure necessary to build your own chat experience  
-and at the same time leverage the powerful moderation and backoffice  
-tools available at the Arena Dashboard.
+Arena provides a ready-to-use live group chat activity that doesn't require any development effort and it can power many of the common scenarios. For more complex use-cases we made available the Swift SDK that provides the infra-structure necessary to build your own chat experience and at the same time leverage the powerful moderation and backoffice tools available at the Arena Dashboard.
 
 
 #### Step 1: Setup SDK
@@ -36,7 +31,8 @@ You can find your site slug in the dashboard settings: https://dashboard.arena.i
 
 To access the chat room slug, go to the [chat list page](https://dashboard.arena.im/chatlist), find the chat and take the last route param as in the example below:
 
-![Chat](showcase/Chat.png)
+<img width="500" alt="Chat" src="https://user-images.githubusercontent.com/7659026/192896818-42bb0cb6-fac0-44ac-a86e-cf54bc10e468.png">
+
 
 After retrieving the site slug and chat slug, it is necessary to call `ArenaChat.setup()`. The  method must be called once across your client app. It is recommended to initialize the in the `application(_:didFinishLaunchingWithOptions:)`method of the `AppDelegate`.
 
@@ -48,7 +44,7 @@ ArenaChat.setup(writeKey: "writeKey", channel: "slug", environment: .development
 *  environment: Environment that the Chat is running: `.development` or `.production`
 
 #### Step 2: Start Chat
-To start the chat it is necessary to initiate the `ChatView`, add it as subview on your controller and call `startEvent()` as the exemple below:
+To start the chat it is necessary to initiate the `ChatView`, add it as subview on your ViewController and call `startEvent()` as the exemple below:
 
 ```swift
 import UIKit
@@ -73,8 +69,8 @@ class ViewController: UIViewController {
 
 After these steps, the chat is up and running in your app.
 
-#### Step 3: Singe Sign On
-Chat allows the product to have its own SSO login flow. Users can enter the chat while logged in. You can start the chat with a logged in user, just call before `chatView.startEvent()`:
+#### Step 3: Single Sign On
+Chat allows the product to have its own SSO login flow. Users can enter the chat while logged in. You can start the chat with a logged in user, before `chatView.startEvent()`, just call:
 
 ```swift
 chatView.setUser(
@@ -99,15 +95,15 @@ For example:
 ```swift
 chatView.setUser(
     ExternalUser(id: "123123",
-                 name: "Roberto",
+                 name: "Roberto Silva",
                  email: "roberto@gmail.com",
-                 image: "https://randomuser.me/api/portraits/women/5.jpg",
+                 image: "https://randomuser.me/api/portraits/",
                  familyName: "Silva",
                  givenName: "Lima")
 )
 ```
 
-If the chat is started in incognito mode and the user chooses to login with SSO, an event will be sent via delegate `ChatDelegate` on `func ssoUserRequired(completion: (ExternalUser) -> Void)`, indicating that you should start your login flow in the app.
+If the chat is started in incognito mode and the user chooses to login with SSO, it will be sent via delegate `ChatDelegate` on `func ssoUserRequired(completion: (ExternalUser) -> Void)`, indicating that you should start your login flow in the app.
 
 ```swift
 extension ViewController: ChatDelegate {
@@ -115,7 +111,7 @@ extension ViewController: ChatDelegate {
         // do the login flow and call the completion in the end
         completion(
             ExternalUser(id: "123123",
-                         name: "Roberto",
+                         name: "Roberto Silva",
                          email: "roberto@gmail.com",
                          image: "https://randomuser.me/api/portraits/",
                          familyName: "Silva",
@@ -123,6 +119,12 @@ extension ViewController: ChatDelegate {
         )
     }
 }
+```
+
+Remember to initializate the `ChatView` passing the delegate, as in the example:
+
+```swift
+ChatView(delegate: self)
 ```
 
 ## Author
