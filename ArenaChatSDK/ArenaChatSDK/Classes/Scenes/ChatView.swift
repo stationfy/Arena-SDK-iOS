@@ -123,11 +123,15 @@ public final class ChatView: UIView {
     private lazy var tapGesture: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
+        tap.delegate = self
         return tap
     }()
 
     private lazy var longPressGesture: UITapGestureRecognizer = {
-        UITapGestureRecognizer(target: self, action: #selector(handleCellLongPress(_:)))
+        let longPress = UITapGestureRecognizer(target: self, action: #selector(handleCellLongPress(_:)))
+        longPress.cancelsTouchesInView = false
+        longPress.delegate = self
+        return longPress
     }()
 
     override init(frame: CGRect) {
@@ -408,5 +412,12 @@ extension ChatView: UITextViewDelegate {
             textView.text = "Message"
             textView.textColor = Color.gray
         }
+    }
+}
+
+extension ChatView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                  shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }
