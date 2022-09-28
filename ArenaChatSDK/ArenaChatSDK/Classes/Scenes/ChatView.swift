@@ -1,4 +1,6 @@
 import UIKit
+import Apollo
+import Kingfisher
 
 public protocol ChatDelegate: AnyObject {
     func ssoUserRequired(completion: (ExternalUser) -> Void)
@@ -39,6 +41,14 @@ public final class ChatView: UIView {
 
     private let onlineUserView: OnlineUsersView = {
         let view = OnlineUsersView()
+        view.isHidden = true
+        view.alpha = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let logoutView: LogoutView = {
+        let view = LogoutView()
         view.isHidden = true
         view.alpha = 0.0
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +99,23 @@ public final class ChatView: UIView {
                             withConfiguration: largeConfig)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 16
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = Color.medimGray
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private lazy var profileButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -195,6 +222,14 @@ public final class ChatView: UIView {
         textView.text = ""
     }
 
+    func openProfile() {
+        logoutView.setup(with: "clau clau")
+        logoutView.isHidden = !logoutView.isHidden
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.logoutView.alpha = 1
+        }
+    }
+
     func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if frame.origin.y == 0 {
@@ -245,14 +280,18 @@ private extension ChatView {
         addGestureRecognizer(tapGesture)
         tableView.addGestureRecognizer(longPressGesture)
 
-        bottomContainerView.addSubview(bottomStackView)
+        bottomContainerView.addSubview(profileImageView)
+        bottomContainerView.addSubview(profileButton)
         bottomContainerView.addSubview(textView)
+        bottomContainerView.addSubview(bottomStackView)
+
         addSubview(tableView)
         addSubview(bottomContainerView)
         addSubview(loginView)
         addSubview(loadingView)
         addSubview(replyView)
         addSubview(onlineUserView)
+        addSubview(logoutView)
     }
 
     func setupConstraints() {
@@ -279,18 +318,31 @@ private extension ChatView {
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-            bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
-            bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
-            bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
+            logoutView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            logoutView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-            textView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 16),
+            profileButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            profileButton.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            profileButton.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileButton.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor),
+
+            profileImageView.widthAnchor.constraint(equalToConstant: 32),
+            profileImageView.heightAnchor.constraint(equalToConstant: 32),
+            profileImageView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: 8),
+            profileImageView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
+
+            textView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
             textView.trailingAnchor.constraint(equalTo: bottomStackView.leadingAnchor, constant: -8),
             textView.topAnchor.constraint(equalTo: bottomStackView.topAnchor),
             textView.bottomAnchor.constraint(equalTo: bottomStackView.bottomAnchor),
 
+            bottomStackView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -16),
+            bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
+            bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
+
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
+            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 
@@ -303,6 +355,11 @@ private extension ChatView {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillHide),
                                                name: .UIKeyboardWillHide,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: .UIKeyboardWillChangeFrame,
                                                object: nil)
     }
 }
@@ -358,6 +415,13 @@ extension ChatView: ChatPresenting {
     
     func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
         tableView.performUpdate(with: batchUpdate)
+    }
+
+    func updateProfileImage(with stringUrl: String?) {
+        if let photoString = stringUrl,
+           let photoURL = URL(string: photoString) {
+            profileImageView.kf.setImage(with: photoURL)
+        }
     }
 
     func startLoading() {

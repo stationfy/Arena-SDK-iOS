@@ -214,7 +214,6 @@ extension ReceivedMessageCell: CardCellSetuping {
         timeLabel.text = card.createdAt?.toString()
         messageLabel.text = card.chatMessage.content?.text
         repliedMessageLabel.text = card.chatMessage.replyMessage?.content?.text
-        profileImageView.backgroundColor = .purple
 
         if let photoString = card.chatMessage.sender?.photoURL,
            let photoURL = URL(string: photoString) {
