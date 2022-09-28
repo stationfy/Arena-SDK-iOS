@@ -7,6 +7,12 @@ public protocol ChatDelegate: AnyObject {
 }
 
 public final class ChatView: UIView {
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let loadingView: LoadingView = {
         let view = LoadingView()
         view.isHidden = true
@@ -95,10 +101,16 @@ public final class ChatView: UIView {
     private lazy var sendButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large)
-        let image = UIImage(systemName: Assets.arrowUp.rawValue,
-                            withConfiguration: largeConfig)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
-        button.setImage(image, for: .normal)
+
+        let imageEnabled = UIImage(systemName: Assets.arrowUp.rawValue,
+                                   withConfiguration: largeConfig)?.withTintColor(Color.blue, renderingMode: .alwaysOriginal)
+        let imageDisabled = UIImage(systemName: Assets.arrowUp.rawValue,
+                                   withConfiguration: largeConfig)?.withTintColor(Color.gray, renderingMode: .alwaysOriginal)
+
+        button.setImage(imageEnabled, for: .normal)
+        button.setImage(imageDisabled, for: .disabled)
         button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -115,7 +127,7 @@ public final class ChatView: UIView {
     private lazy var profileButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setupProfile), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -141,12 +153,6 @@ public final class ChatView: UIView {
     private weak var delegate: ChatDelegate?
     private lazy var presenter: ChatPresenter = ChatPresenter(delegate: self)
 
-    public init(delegate: ChatDelegate? = nil) {
-        super.init(frame: .zero)
-        self.delegate = delegate
-        setupKeyboard()
-    }
-
     private lazy var tapGesture: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
@@ -154,25 +160,31 @@ public final class ChatView: UIView {
         return tap
     }()
 
-    private lazy var longPressGesture: UITapGestureRecognizer = {
-        let longPress = UITapGestureRecognizer(target: self, action: #selector(handleCellLongPress(_:)))
+    private lazy var longPressGesture: UILongPressGestureRecognizer = {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleCellLongPress(_:)))
         longPress.cancelsTouchesInView = false
         longPress.delegate = self
         return longPress
     }()
 
+    private var containerViewBottomConstraint: NSLayoutConstraint?
+
+    public init(delegate: ChatDelegate? = nil) {
+        super.init(frame: .zero)
+        self.delegate = delegate
+        buildLayout()
+        setupKeyboard()
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        buildLayout()
+        setupKeyboard()
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        buildLayout()
     }
 
     private func login() {
@@ -222,25 +234,21 @@ public final class ChatView: UIView {
         textView.text = ""
     }
 
-    func openProfile() {
-        logoutView.setup(with: "clau clau")
-        logoutView.isHidden = !logoutView.isHidden
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.logoutView.alpha = 1
-        }
+    func setupProfile() {
+        presenter.setupProfile()
     }
 
     func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if frame.origin.y == 0 {
-                frame.origin.y -= keyboardSize.height
-            }
+            containerViewBottomConstraint?.constant = -keyboardSize.height
+            layoutIfNeeded()
         }
     }
 
     func keyboardWillHide() {
-        if frame.origin.y != 0 {
-            frame.origin.y = 0
+        if containerViewBottomConstraint?.constant != 0 {
+            containerViewBottomConstraint?.constant = 0
+            layoutIfNeeded()
         }
     }
 
@@ -285,40 +293,46 @@ private extension ChatView {
         bottomContainerView.addSubview(textView)
         bottomContainerView.addSubview(bottomStackView)
 
-        addSubview(tableView)
-        addSubview(bottomContainerView)
-        addSubview(loginView)
-        addSubview(loadingView)
-        addSubview(replyView)
-        addSubview(onlineUserView)
-        addSubview(logoutView)
+        containerView.addSubview(tableView)
+        containerView.addSubview(bottomContainerView)
+        containerView.addSubview(loginView)
+        containerView.addSubview(loadingView)
+        containerView.addSubview(replyView)
+        containerView.addSubview(onlineUserView)
+        containerView.addSubview(logoutView)
+
+        addSubview(containerView)
     }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            loadingView.topAnchor.constraint(equalTo: self.topAnchor),
-            loadingView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            loadingView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            loginView.topAnchor.constraint(equalTo: self.topAnchor),
-            loginView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            loginView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
 
-            onlineUserView.topAnchor.constraint(equalTo: self.topAnchor, constant: 76),
-            onlineUserView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            loginView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            loginView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            loginView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            loginView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+
+            onlineUserView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
+            onlineUserView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
 
             replyView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -12),
-            replyView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            replyView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            replyView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            replyView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
 
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: containerView.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
-            logoutView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            logoutView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             logoutView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor),
 
             profileButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
@@ -340,10 +354,13 @@ private extension ChatView {
             bottomStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: 16),
             bottomStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -16),
 
-            bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            bottomContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bottomContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            bottomContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
+
+        containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        containerViewBottomConstraint?.isActive = true
     }
 
     func setupKeyboard() {
@@ -461,6 +478,14 @@ extension ChatView: ChatPresenting {
             self?.replyView.isHidden = true
         }
     }
+
+    func openProfile(userName: String) {
+        logoutView.setup(with: userName)
+        logoutView.isHidden = !logoutView.isHidden
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.logoutView.alpha = 1
+        }
+    }
 }
 
 extension ChatView: UITextViewDelegate {
@@ -476,6 +501,10 @@ extension ChatView: UITextViewDelegate {
             textView.text = "Message"
             textView.textColor = Color.gray
         }
+    }
+
+    public func textViewDidChange(_ textView: UITextView) {
+        sendButton.isEnabled = !textView.text.isEmpty
     }
 }
 

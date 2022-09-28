@@ -49,7 +49,6 @@ public final class ReceivedMessageCell: UITableViewCell {
 // MARK: - ProfileView
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +128,11 @@ public final class ReceivedMessageCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+    }
 }
 
 extension ReceivedMessageCell {
@@ -185,7 +189,8 @@ extension ReceivedMessageCell {
             messageContainerView.leadingAnchor.constraint(equalTo: profileImageContainerView.trailingAnchor, constant: 8),
             messageContainerView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -72),
             messageContainerView.topAnchor.constraint(equalTo: topStackView.bottomAnchor),
-            messageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            messageContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            messageContainerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 33.0)
         ])
 
         repliedMessageContainerHeightConstraint = repliedMessageContainerView.heightAnchor.constraint(equalToConstant: 0.0)
@@ -212,7 +217,15 @@ extension ReceivedMessageCell: CardCellSetuping {
         let replied = card.chatMessage.replyMessage?.sender?.displayName ?? ""
         nameLabel.text = isReceived ? sender : "\(sender) replied \(replied))"
         timeLabel.text = card.createdAt?.toString()
-        messageLabel.text = card.chatMessage.content?.text
+
+        if card.chatMessage.content?.media?.url != nil || card.chatMessage.content?.media?.providerName != nil {
+            messageLabel.font = UIFont.italicSystemFont(ofSize: 9)
+            messageLabel.text = "Version does not support this presentation"
+        } else {
+            messageLabel.font = UIFont.systemFont(ofSize: 14)
+            messageLabel.text = card.chatMessage.content?.text
+        }
+
         repliedMessageLabel.text = card.chatMessage.replyMessage?.content?.text
 
         if let photoString = card.chatMessage.sender?.photoURL,

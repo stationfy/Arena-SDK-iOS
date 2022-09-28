@@ -17,6 +17,7 @@ protocol ChatPresenting: class {
     func openLoginModal()
     func showReplyModal(receiver: String, message: String)
     func hideReplyModal()
+    func openProfile(userName: String)
 }
 
 class ChatPresenter {
@@ -178,6 +179,10 @@ class ChatPresenter {
     func closeReplyMessage() {
         self.repliedMessageKey = nil
         delegate?.hideReplyModal()
+    }
+
+    func setupProfile() {
+        delegate?.openProfile(userName: loggedUser?.name ?? "")
     }
 }
 

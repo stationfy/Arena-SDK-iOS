@@ -13,12 +13,12 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(chatView)
-        
+        let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            chatView.topAnchor.constraint(equalTo: view.topAnchor),
+            chatView.topAnchor.constraint(equalTo: guide.topAnchor),
             chatView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             chatView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            chatView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            chatView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
         
         chatView.startEvent()
@@ -31,7 +31,7 @@ extension ViewController: ChatDelegate {
             ExternalUser(id: "123123",
                          name: "Roberto",
                          email: "roberto@gmail.com",
-                         image: "https://randomuser.me/api/portraits/women/",
+                         image: "https://randomuser.me/api/portraits/women/5.jpg",
                          familyName: "Silva",
                          givenName: "Lima")
         )
