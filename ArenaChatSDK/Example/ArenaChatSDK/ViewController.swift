@@ -11,8 +11,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         view.addSubview(chatView)
+        setupConstraints()
+
+        chatView.startEvent()
+    }
+
+    func setupConstraints() {
+
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             chatView.topAnchor.constraint(equalTo: guide.topAnchor),
@@ -20,8 +27,6 @@ class ViewController: UIViewController {
             chatView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chatView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
         ])
-        
-        chatView.startEvent()
     }
 }
 
