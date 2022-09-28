@@ -338,7 +338,7 @@ private extension ChatView {
 
             bottomContainerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
+            bottomContainerView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 
@@ -351,6 +351,11 @@ private extension ChatView {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillHide),
                                                name: .UIKeyboardWillHide,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: .UIKeyboardWillChangeFrame,
                                                object: nil)
     }
 }
