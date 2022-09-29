@@ -19,6 +19,7 @@ protocol UserServicing {
                 image: String?,
                 completion: @escaping (Result<Void, ServiceError>) -> Void)
     func onlineChatInformation(completion: @escaping (Result<PresenceInfo, ServiceError>) -> Void)
+    func disconnect()
 }
 
 struct UserService: UserServicing {
@@ -145,6 +146,11 @@ extension UserService {
         }
 
         self.socket.connect()
+    }
+
+    func disconnect() {
+        self.socket.removeAllHandlers()
+        self.socket.disconnect()
     }
 
 }

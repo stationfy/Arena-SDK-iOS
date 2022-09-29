@@ -6,7 +6,8 @@ import Foundation
 import SocketIO
 
 protocol ChatPresenting: class {
-    func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int)
+    func performUpdate(with batchUpdate: BatchUpdates)
+    func reloadTable()
     func updateUsersOnline(count: String)
     func updateProfileImage(with stringUrl: String?)
     func startLoading()
@@ -18,6 +19,7 @@ protocol ChatPresenting: class {
     func showReplyModal(receiver: String, message: String)
     func hideReplyModal()
     func openProfile(userName: String)
+    func closeProfile()
 }
 
 class ChatPresenter {
@@ -47,6 +49,10 @@ class ChatPresenter {
 
     private var repliedMessageKey: String?
     private var listIsLoading: Bool = false
+    private var profileIsOpened: Bool = false
+    private var isLoggedAnonymously: Bool {
+        externalUser == nil
+    }
 
     private weak var delegate: ChatPresenting?
 
@@ -95,7 +101,7 @@ class ChatPresenter {
             interceptor: interceptor
         )
 
-        self.usersOnline()
+        setupUsersOnline()
     }
 
     func setUser(_ externalUser: ExternalUser) {
@@ -182,7 +188,40 @@ class ChatPresenter {
     }
 
     func setupProfile() {
-        delegate?.openProfile(userName: loggedUser?.name ?? "")
+        guard !isLoggedAnonymously else {
+            clearSession()
+            delegate?.openLoginModal()
+            return
+        }
+
+        if profileIsOpened {
+            delegate?.closeProfile()
+        } else {
+            delegate?.openProfile(userName: loggedUser?.name ?? "")
+        }
+
+        profileIsOpened.toggle()
+    }
+
+    func logout() {
+        delegate?.closeProfile()
+        guard !isLoggedAnonymously else { return }
+        delegate?.startLoading()
+        clearSession()
+        setupUsersOnline()
+
+        registerAnonymousUser()
+    }
+
+    private func clearSession() {
+        externalUser = nil
+
+        userService.disconnect()
+        stream?.stopListeners()
+
+        cards = []
+        filteredCards = []
+        delegate?.reloadTable()
     }
 }
 
@@ -249,11 +288,10 @@ extension ChatPresenter: ChatStreamDelegate {
                                                     reloadModuleIds: reloadModuleIds)
 
             self.filteredCards = self.cards
-            let lastIndex = self.filteredCards.count - 1
 
             DispatchQueue.main.sync { [weak self] in
                 self?.listIsLoading = false
-                self?.delegate?.performUpdate(with: batchUpdates, lastIndex: lastIndex)
+                self?.delegate?.performUpdate(with: batchUpdates)
                 self?.delegate?.nextPageDidLoad()
                 self?.delegate?.stopLoading()
                 if shouldShowLoadMore {
@@ -378,7 +416,7 @@ fileprivate extension ChatPresenter {
         }
     }
 
-    func usersOnline() {
+    func setupUsersOnline() {
         self.userService.onlineChatInformation { [weak self] result in
             switch result {
             case let .success(presenceInfo):

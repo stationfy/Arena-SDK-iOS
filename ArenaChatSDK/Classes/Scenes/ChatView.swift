@@ -53,11 +53,14 @@ public final class ChatView: UIView {
         return view
     }()
 
-    private let logoutView: LogoutView = {
+    private lazy var logoutView: LogoutView = {
         let view = LogoutView()
         view.isHidden = true
         view.alpha = 0.0
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.logoutAction = { [weak self] in
+            self?.presenter.logout()
+        }
         return view
     }()
 
@@ -280,11 +283,11 @@ private extension ChatView {
 
         containerView.addSubview(tableView)
         containerView.addSubview(bottomContainerView)
+        containerView.addSubview(onlineUserView)
+        containerView.addSubview(replyView)
+        containerView.addSubview(logoutView)
         containerView.addSubview(loginView)
         containerView.addSubview(loadingView)
-        containerView.addSubview(replyView)
-        containerView.addSubview(onlineUserView)
-        containerView.addSubview(logoutView)
 
         addSubview(containerView)
     }
@@ -415,14 +418,20 @@ extension ChatView: ChatPresenting {
         setOnlineUserVisibility(isHidden: false)
     }
     
-    func performUpdate(with batchUpdate: BatchUpdates, lastIndex: Int) {
+    func performUpdate(with batchUpdate: BatchUpdates) {
         tableView.performUpdate(with: batchUpdate)
+    }
+
+    func reloadTable() {
+        tableView.reloadData()
     }
 
     func updateProfileImage(with stringUrl: String?) {
         if let photoString = stringUrl,
            let photoURL = URL(string: photoString) {
             profileImageView.kf.setImage(with: photoURL)
+        } else {
+            profileImageView.image = nil
         }
     }
 
@@ -466,9 +475,18 @@ extension ChatView: ChatPresenting {
 
     func openProfile(userName: String) {
         logoutView.setup(with: userName)
-        logoutView.isHidden = !logoutView.isHidden
+        logoutView.isHidden = false
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.logoutView.alpha = 1
+        }
+    }
+
+    func closeProfile() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.logoutView.alpha = 0.0
+        }) { [weak self] _ in
+            self?.logoutView.isHidden = true
+            self?.logoutView.setup(with: "")
         }
     }
 }

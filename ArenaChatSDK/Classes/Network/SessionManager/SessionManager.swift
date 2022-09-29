@@ -52,7 +52,7 @@ final class SessionManager: SessionManageable, ObservableObject {
     }
 
     func generateAnonymousId() -> String {
-        if let storedUUID = accessToken {
+        if let storedUUID = loggedUser?._id {
             return storedUUID
         }
 

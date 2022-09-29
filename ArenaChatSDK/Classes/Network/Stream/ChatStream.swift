@@ -21,6 +21,7 @@ protocol ChatStreaming {
     )
 
     func startListeningReactions()
+    func stopListeners()
 }
 
 final class ChatStream: ChatStreaming {
@@ -113,6 +114,10 @@ final class ChatStream: ChatStreaming {
 //                    firstEvent = false
 //                }
 //        }
+    }
+
+    func stopListeners() {
+        firestoreListener?.remove()
     }
 
     private func handleSnapshotSuccess(_ snapshot: QuerySnapshot,

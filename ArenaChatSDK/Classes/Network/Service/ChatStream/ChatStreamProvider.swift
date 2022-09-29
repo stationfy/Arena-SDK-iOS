@@ -16,6 +16,8 @@ protocol ChatStreamProviding {
         chatRoomId: String,
         channelId: String
     )
+
+    func stopListeners()
 }
 
 final class ChatStreamProvider: ChatStreamProviding {
@@ -84,6 +86,10 @@ final class ChatStreamProvider: ChatStreamProviding {
         delegate?.stream(self,
                          didReceivedMessages: messageResponses,
                          isReloading: isReloading)
+    }
+
+    func stopListeners() {
+        stream.stopListeners()
     }
 }
 
