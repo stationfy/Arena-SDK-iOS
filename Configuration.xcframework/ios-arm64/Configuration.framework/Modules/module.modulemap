@@ -1,0 +1,11 @@
+framework module Configuration {
+  umbrella header "Configuration.h"
+
+  export *
+  module * { export * }
+}
+
+module Configuration.Swift {
+    header "Configuration-Swift.h"
+    requires objc
+}

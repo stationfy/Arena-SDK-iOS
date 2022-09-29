@@ -28,17 +28,19 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '13.0'
+  s.swift_version = '4.2'
 
   s.source_files = 'ArenaChatSDK/Classes/**/*'
+  s.ios.vendored_frameworks = 'Configuration.xcframework'
   s.resource_bundles = {
-    'ArenaChatSDK' => ['ArenaChatSDK/**/*.png', 'ArenaChatSDK/**/*.pdf']
+    'ArenaChatSDK' => ['ArenaChatSDK/**/*.png', 'ArenaChatSDK/**/*.pdf', '**/*.xcframework']
   }
 
   s.resources = 'ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Socket.IO-Client-Swift', '~> 15.2.0'
+  s.dependency 'Socket.IO-Client-Swift', '~> 16.0.1'
   s.dependency 'FirebaseFirestore'
   s.dependency 'Apollo'
   s.dependency 'KeychainSwift', '~> 20.0'

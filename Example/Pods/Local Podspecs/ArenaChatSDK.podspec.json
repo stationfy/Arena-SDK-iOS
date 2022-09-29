@@ -18,17 +18,22 @@
   "platforms": {
     "ios": "13.0"
   },
+  "swift_versions": "4.2",
   "source_files": "ArenaChatSDK/Classes/**/*",
+  "ios": {
+    "vendored_frameworks": "Configuration.xcframework"
+  },
   "resource_bundles": {
     "ArenaChatSDK": [
       "ArenaChatSDK/**/*.png",
-      "ArenaChatSDK/**/*.pdf"
+      "ArenaChatSDK/**/*.pdf",
+      "**/*.xcframework"
     ]
   },
   "resources": "ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}",
   "dependencies": {
     "Socket.IO-Client-Swift": [
-      "~> 15.2.0"
+      "~> 16.0.1"
     ],
     "FirebaseFirestore": [
 
@@ -42,5 +47,6 @@
     "Kingfisher": [
       "~> 7.0"
     ]
-  }
+  },
+  "swift_version": "4.2"
 }

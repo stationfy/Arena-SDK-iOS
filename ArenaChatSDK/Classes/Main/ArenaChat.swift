@@ -1,6 +1,7 @@
 import Foundation
 import FirebaseCore
 import FirebaseFirestore
+import Configuration
 
 public final class ArenaChat {
 
@@ -10,7 +11,7 @@ public final class ArenaChat {
     var writeKey: String?
     var channel: String?
 
-    internal var configuration: Configuration = Configuration(environment: .production)
+    internal var configuration: ChatConfiguration = ChatConfiguration(environment: .production)
 
     var firestore: Firestore?
 
@@ -23,8 +24,8 @@ public final class ArenaChat {
     /// - Parameter environment: Environment configuration (`.production` or `.development`). Default value: `.production`
     public static func setup(writeKey: String,
                              channel: String,
-                             environment: Environment = .production) {
-        let configuration = Configuration(environment: environment)
+                             environment: ChatConfiguration.ChatEnvironment = .production) {
+        let configuration = ChatConfiguration(environment: environment)
         shared.writeKey = writeKey
         shared.channel = channel
         shared.configuration = configuration
