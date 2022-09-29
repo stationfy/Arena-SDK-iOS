@@ -4,8 +4,8 @@
 import Apollo
 import Foundation
 
-public struct SendMessageInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
+struct SendMessageInput: GraphQLMapConvertible {
+  var graphQLMap: GraphQLMap
 
   /// - Parameters:
   ///   - groupChannelId
@@ -15,11 +15,11 @@ public struct SendMessageInput: GraphQLMapConvertible {
   ///   - sender
   ///   - slowMode
   ///   - tempId
-  public init(groupChannelId: Swift.Optional<GraphQLID?> = nil, message: Swift.Optional<MessageContentInput?> = nil, openChannelId: Swift.Optional<GraphQLID?> = nil, replyTo: Swift.Optional<GraphQLID?> = nil, sender: Swift.Optional<AnonymousSenderInput?> = nil, slowMode: Swift.Optional<Bool?> = nil, tempId: Swift.Optional<String?> = nil) {
+  init(groupChannelId: Swift.Optional<GraphQLID?> = nil, message: Swift.Optional<MessageContentInput?> = nil, openChannelId: Swift.Optional<GraphQLID?> = nil, replyTo: Swift.Optional<GraphQLID?> = nil, sender: Swift.Optional<AnonymousSenderInput?> = nil, slowMode: Swift.Optional<Bool?> = nil, tempId: Swift.Optional<String?> = nil) {
     graphQLMap = ["groupChannelId": groupChannelId, "message": message, "openChannelId": openChannelId, "replyTo": replyTo, "sender": sender, "slowMode": slowMode, "tempId": tempId]
   }
 
-  public var groupChannelId: Swift.Optional<GraphQLID?> {
+  var groupChannelId: Swift.Optional<GraphQLID?> {
     get {
       return graphQLMap["groupChannelId"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
     }
@@ -28,7 +28,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var message: Swift.Optional<MessageContentInput?> {
+  var message: Swift.Optional<MessageContentInput?> {
     get {
       return graphQLMap["message"] as? Swift.Optional<MessageContentInput?> ?? Swift.Optional<MessageContentInput?>.none
     }
@@ -37,7 +37,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var openChannelId: Swift.Optional<GraphQLID?> {
+  var openChannelId: Swift.Optional<GraphQLID?> {
     get {
       return graphQLMap["openChannelId"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
     }
@@ -46,7 +46,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var replyTo: Swift.Optional<GraphQLID?> {
+  var replyTo: Swift.Optional<GraphQLID?> {
     get {
       return graphQLMap["replyTo"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
     }
@@ -55,7 +55,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var sender: Swift.Optional<AnonymousSenderInput?> {
+  var sender: Swift.Optional<AnonymousSenderInput?> {
     get {
       return graphQLMap["sender"] as? Swift.Optional<AnonymousSenderInput?> ?? Swift.Optional<AnonymousSenderInput?>.none
     }
@@ -64,7 +64,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var slowMode: Swift.Optional<Bool?> {
+  var slowMode: Swift.Optional<Bool?> {
     get {
       return graphQLMap["slowMode"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
     }
@@ -73,7 +73,7 @@ public struct SendMessageInput: GraphQLMapConvertible {
     }
   }
 
-  public var tempId: Swift.Optional<String?> {
+  var tempId: Swift.Optional<String?> {
     get {
       return graphQLMap["tempId"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
     }
@@ -83,17 +83,17 @@ public struct SendMessageInput: GraphQLMapConvertible {
   }
 }
 
-public struct MessageContentInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
+struct MessageContentInput: GraphQLMapConvertible {
+  var graphQLMap: GraphQLMap
 
   /// - Parameters:
   ///   - media
   ///   - text
-  public init(media: Swift.Optional<MessageMediaInput?> = nil, text: Swift.Optional<String?> = nil) {
+  init(media: Swift.Optional<MessageMediaInput?> = nil, text: Swift.Optional<String?> = nil) {
     graphQLMap = ["media": media, "text": text]
   }
 
-  public var media: Swift.Optional<MessageMediaInput?> {
+  var media: Swift.Optional<MessageMediaInput?> {
     get {
       return graphQLMap["media"] as? Swift.Optional<MessageMediaInput?> ?? Swift.Optional<MessageMediaInput?>.none
     }
@@ -102,7 +102,7 @@ public struct MessageContentInput: GraphQLMapConvertible {
     }
   }
 
-  public var text: Swift.Optional<String?> {
+  var text: Swift.Optional<String?> {
     get {
       return graphQLMap["text"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
     }
@@ -112,17 +112,17 @@ public struct MessageContentInput: GraphQLMapConvertible {
   }
 }
 
-public struct MessageMediaInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
+struct MessageMediaInput: GraphQLMapConvertible {
+  var graphQLMap: GraphQLMap
 
   /// - Parameters:
   ///   - isGif
   ///   - url
-  public init(isGif: Swift.Optional<Bool?> = nil, url: Swift.Optional<String?> = nil) {
+  init(isGif: Swift.Optional<Bool?> = nil, url: Swift.Optional<String?> = nil) {
     graphQLMap = ["isGif": isGif, "url": url]
   }
 
-  public var isGif: Swift.Optional<Bool?> {
+  var isGif: Swift.Optional<Bool?> {
     get {
       return graphQLMap["isGif"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
     }
@@ -131,7 +131,7 @@ public struct MessageMediaInput: GraphQLMapConvertible {
     }
   }
 
-  public var url: Swift.Optional<String?> {
+  var url: Swift.Optional<String?> {
     get {
       return graphQLMap["url"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
     }
@@ -141,18 +141,18 @@ public struct MessageMediaInput: GraphQLMapConvertible {
   }
 }
 
-public struct AnonymousSenderInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
+struct AnonymousSenderInput: GraphQLMapConvertible {
+  var graphQLMap: GraphQLMap
 
   /// - Parameters:
   ///   - _id
   ///   - name
   ///   - image
-  public init(_id: GraphQLID, name: String, image: Swift.Optional<String?> = nil) {
+  init(_id: GraphQLID, name: String, image: Swift.Optional<String?> = nil) {
     graphQLMap = ["_id": _id, "name": name, "image": image]
   }
 
-  public var _id: GraphQLID {
+  var _id: GraphQLID {
     get {
       return graphQLMap["_id"] as! GraphQLID
     }
@@ -161,7 +161,7 @@ public struct AnonymousSenderInput: GraphQLMapConvertible {
     }
   }
 
-  public var name: String {
+  var name: String {
     get {
       return graphQLMap["name"] as! String
     }
@@ -170,7 +170,7 @@ public struct AnonymousSenderInput: GraphQLMapConvertible {
     }
   }
 
-  public var image: Swift.Optional<String?> {
+  var image: Swift.Optional<String?> {
     get {
       return graphQLMap["image"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
     }
@@ -180,18 +180,18 @@ public struct AnonymousSenderInput: GraphQLMapConvertible {
   }
 }
 
-public struct PollVoteInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
+struct PollVoteInput: GraphQLMapConvertible {
+  var graphQLMap: GraphQLMap
 
   /// - Parameters:
   ///   - optionId
   ///   - pollId
   ///   - userId
-  public init(optionId: Int, pollId: GraphQLID, userId: Swift.Optional<GraphQLID?> = nil) {
+  init(optionId: Int, pollId: GraphQLID, userId: Swift.Optional<GraphQLID?> = nil) {
     graphQLMap = ["optionId": optionId, "pollId": pollId, "userId": userId]
   }
 
-  public var optionId: Int {
+  var optionId: Int {
     get {
       return graphQLMap["optionId"] as! Int
     }
@@ -200,7 +200,7 @@ public struct PollVoteInput: GraphQLMapConvertible {
     }
   }
 
-  public var pollId: GraphQLID {
+  var pollId: GraphQLID {
     get {
       return graphQLMap["pollId"] as! GraphQLID
     }
@@ -209,7 +209,7 @@ public struct PollVoteInput: GraphQLMapConvertible {
     }
   }
 
-  public var userId: Swift.Optional<GraphQLID?> {
+  var userId: Swift.Optional<GraphQLID?> {
     get {
       return graphQLMap["userId"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
     }
@@ -219,47 +219,47 @@ public struct PollVoteInput: GraphQLMapConvertible {
   }
 }
 
-public final class ReplyMessageMutationMutation: GraphQLMutation {
+final class ReplyMessageMutationMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition: String =
+  let operationDefinition: String =
     """
     mutation ReplyMessageMutation($input: SendMessageInput!) {
       sendMessage(input: $input)
     }
     """
 
-  public let operationName: String = "ReplyMessageMutation"
+  let operationName: String = "ReplyMessageMutation"
 
-  public var input: SendMessageInput
+  var input: SendMessageInput
 
-  public init(input: SendMessageInput) {
+  init(input: SendMessageInput) {
     self.input = input
   }
 
-  public var variables: GraphQLMap? {
+  var variables: GraphQLMap? {
     return ["input": input]
   }
 
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Mutation"]
+  struct Data: GraphQLSelectionSet {
+    static let possibleTypes: [String] = ["Mutation"]
 
-    public static var selections: [GraphQLSelection] {
+    static var selections: [GraphQLSelection] {
       return [
         GraphQLField("sendMessage", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.scalar(GraphQLID.self))),
       ]
     }
 
-    public private(set) var resultMap: ResultMap
+    private(set) var resultMap: ResultMap
 
-    public init(unsafeResultMap: ResultMap) {
+    init(unsafeResultMap: ResultMap) {
       self.resultMap = unsafeResultMap
     }
 
-    public init(sendMessage: GraphQLID) {
+    init(sendMessage: GraphQLID) {
       self.init(unsafeResultMap: ["__typename": "Mutation", "sendMessage": sendMessage])
     }
 
-    public var sendMessage: GraphQLID {
+    var sendMessage: GraphQLID {
       get {
         return resultMap["sendMessage"]! as! GraphQLID
       }
@@ -270,47 +270,47 @@ public final class ReplyMessageMutationMutation: GraphQLMutation {
   }
 }
 
-public final class SendMessageMutation: GraphQLMutation {
+final class SendMessageMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition: String =
+  let operationDefinition: String =
     """
     mutation SendMessage($input: SendMessageInput!) {
       sendMessage(input: $input)
     }
     """
 
-  public let operationName: String = "SendMessage"
+  let operationName: String = "SendMessage"
 
-  public var input: SendMessageInput
+  var input: SendMessageInput
 
-  public init(input: SendMessageInput) {
+  init(input: SendMessageInput) {
     self.input = input
   }
 
-  public var variables: GraphQLMap? {
+  var variables: GraphQLMap? {
     return ["input": input]
   }
 
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Mutation"]
+  struct Data: GraphQLSelectionSet {
+    static let possibleTypes: [String] = ["Mutation"]
 
-    public static var selections: [GraphQLSelection] {
+    static var selections: [GraphQLSelection] {
       return [
         GraphQLField("sendMessage", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.scalar(GraphQLID.self))),
       ]
     }
 
-    public private(set) var resultMap: ResultMap
+    private(set) var resultMap: ResultMap
 
-    public init(unsafeResultMap: ResultMap) {
+    init(unsafeResultMap: ResultMap) {
       self.resultMap = unsafeResultMap
     }
 
-    public init(sendMessage: GraphQLID) {
+    init(sendMessage: GraphQLID) {
       self.init(unsafeResultMap: ["__typename": "Mutation", "sendMessage": sendMessage])
     }
 
-    public var sendMessage: GraphQLID {
+    var sendMessage: GraphQLID {
       get {
         return resultMap["sendMessage"]! as! GraphQLID
       }
@@ -321,47 +321,47 @@ public final class SendMessageMutation: GraphQLMutation {
   }
 }
 
-public final class PollVoteMutation: GraphQLMutation {
+final class PollVoteMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition: String =
+  let operationDefinition: String =
     """
     mutation PollVote($input: PollVoteInput!) {
       pollVote(input: $input)
     }
     """
 
-  public let operationName: String = "PollVote"
+  let operationName: String = "PollVote"
 
-  public var input: PollVoteInput
+  var input: PollVoteInput
 
-  public init(input: PollVoteInput) {
+  init(input: PollVoteInput) {
     self.input = input
   }
 
-  public var variables: GraphQLMap? {
+  var variables: GraphQLMap? {
     return ["input": input]
   }
 
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Mutation"]
+  struct Data: GraphQLSelectionSet {
+    static let possibleTypes: [String] = ["Mutation"]
 
-    public static var selections: [GraphQLSelection] {
+    static var selections: [GraphQLSelection] {
       return [
         GraphQLField("pollVote", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.scalar(Bool.self))),
       ]
     }
 
-    public private(set) var resultMap: ResultMap
+    private(set) var resultMap: ResultMap
 
-    public init(unsafeResultMap: ResultMap) {
+    init(unsafeResultMap: ResultMap) {
       self.resultMap = unsafeResultMap
     }
 
-    public init(pollVote: Bool) {
+    init(pollVote: Bool) {
       self.init(unsafeResultMap: ["__typename": "Mutation", "pollVote": pollVote])
     }
 
-    public var pollVote: Bool {
+    var pollVote: Bool {
       get {
         return resultMap["pollVote"]! as! Bool
       }
@@ -372,51 +372,51 @@ public final class PollVoteMutation: GraphQLMutation {
   }
 }
 
-public final class DeleteReactionsMutation: GraphQLMutation {
+final class DeleteReactionsMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition: String =
+  let operationDefinition: String =
     """
     mutation DeleteReactions($itemId: ID!, $reaction: String!, $userId: ID!) {
       deleteReaction(input: {itemId: $itemId, reaction: $reaction, userId: $userId})
     }
     """
 
-  public let operationName: String = "DeleteReactions"
+  let operationName: String = "DeleteReactions"
 
-  public var itemId: GraphQLID
-  public var reaction: String
-  public var userId: GraphQLID
+  var itemId: GraphQLID
+  var reaction: String
+  var userId: GraphQLID
 
-  public init(itemId: GraphQLID, reaction: String, userId: GraphQLID) {
+  init(itemId: GraphQLID, reaction: String, userId: GraphQLID) {
     self.itemId = itemId
     self.reaction = reaction
     self.userId = userId
   }
 
-  public var variables: GraphQLMap? {
+  var variables: GraphQLMap? {
     return ["itemId": itemId, "reaction": reaction, "userId": userId]
   }
 
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Mutation"]
+  struct Data: GraphQLSelectionSet {
+    static let possibleTypes: [String] = ["Mutation"]
 
-    public static var selections: [GraphQLSelection] {
+    static var selections: [GraphQLSelection] {
       return [
         GraphQLField("deleteReaction", arguments: ["input": ["itemId": GraphQLVariable("itemId"), "reaction": GraphQLVariable("reaction"), "userId": GraphQLVariable("userId")]], type: .nonNull(.scalar(Bool.self))),
       ]
     }
 
-    public private(set) var resultMap: ResultMap
+    private(set) var resultMap: ResultMap
 
-    public init(unsafeResultMap: ResultMap) {
+    init(unsafeResultMap: ResultMap) {
       self.resultMap = unsafeResultMap
     }
 
-    public init(deleteReaction: Bool) {
+    init(deleteReaction: Bool) {
       self.init(unsafeResultMap: ["__typename": "Mutation", "deleteReaction": deleteReaction])
     }
 
-    public var deleteReaction: Bool {
+    var deleteReaction: Bool {
       get {
         return resultMap["deleteReaction"]! as! Bool
       }

@@ -1,7 +1,7 @@
 import Foundation
 import Apollo
 
-public protocol ApolloClientable {
+protocol ApolloClientable {
     @discardableResult
     func perform<Mutation: GraphQLMutation>(mutation: Mutation,
                                             resultHandler: GraphQLResultHandler<Mutation.Data>?) -> Cancellable
@@ -14,7 +14,7 @@ public protocol ApolloClientable {
 
 extension ApolloClient: ApolloClientable {
     @discardableResult
-    public func perform<Mutation>(
+    func perform<Mutation>(
         mutation: Mutation,
         resultHandler: GraphQLResultHandler<Mutation.Data>?
     ) -> Cancellable where Mutation : GraphQLMutation {

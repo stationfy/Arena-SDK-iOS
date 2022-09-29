@@ -1,7 +1,7 @@
 import Apollo
 import Foundation
 
-class HeaderAddingInterceptor: ApolloInterceptor {
+final class HeaderAddingInterceptor: ApolloInterceptor {
 
     var headers: [String: String] = [:]
 

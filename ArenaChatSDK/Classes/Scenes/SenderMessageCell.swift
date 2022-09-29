@@ -1,6 +1,6 @@
 import UIKit
 
-public final class SenderMessageCell: UITableViewCell {
+final class SenderMessageCell: UITableViewCell {
     // MARK: - TopView
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -98,7 +98,7 @@ public final class SenderMessageCell: UITableViewCell {
     }
 }
 
-extension SenderMessageCell {
+private extension SenderMessageCell {
     func buildViewHierarchy() {
         messageContainerView.addSubview(ownMessageLabel)
         repliedMessageContainerView.addSubview(separatorView)

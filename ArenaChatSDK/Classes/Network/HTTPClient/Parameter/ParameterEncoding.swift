@@ -1,9 +1,9 @@
 import Foundation
 
-public typealias Parameters = [String: Any]
+typealias Parameters = [String: Any]
 
 /// A type used to define how a set of parameters are applied to a `URLRequest`.
-public protocol ParameterEncoding {
+protocol ParameterEncoding {
     /// Creates a `URLRequest` by encoding parameters and applying them on the passed request.
     ///
     /// - Parameters:

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol URLSessionTaskable {
+protocol URLSessionTaskable {
     func dataTask(with request: URLRequest,
                   completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
     ) -> URLSessionDataTask
@@ -8,7 +8,7 @@ public protocol URLSessionTaskable {
 
 extension URLSession: URLSessionTaskable { }
 
-public protocol URLSessionDataTaskCancelable {
+protocol URLSessionDataTaskCancelable {
     func cancel()
 }
 

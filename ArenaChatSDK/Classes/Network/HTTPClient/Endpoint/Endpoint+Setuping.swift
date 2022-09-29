@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol EndpointSetuping {
+protocol EndpointSetuping {
     var version: API.Version { get }
     var path: API.Path { get }
     var endpoint: String { get }
@@ -10,7 +10,7 @@ public protocol EndpointSetuping {
     var isAuthenticated: Bool { get }
 }
 
-public extension EndpointSetuping {
+extension EndpointSetuping {
     var version: API.Version { .none }
     var path: API.Path { .none }
     var parameters: Parameters? { nil }

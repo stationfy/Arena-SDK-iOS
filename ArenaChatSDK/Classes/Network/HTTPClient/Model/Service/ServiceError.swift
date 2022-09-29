@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ServiceError: Error {
+enum ServiceError: Error {
 
     case authenticationRequired
     case emptyData
@@ -19,7 +19,7 @@ public enum ServiceError: Error {
     case graphQLError(String)
     case unknown(String)
 
-    public var localizedDescription: String {
+    var localizedDescription: String {
         switch self {
         case .authenticationRequired: return "Authentication is required."
         case .emptyData: return "Empty Data."
@@ -42,7 +42,7 @@ public enum ServiceError: Error {
 }
 
 extension ServiceError: Equatable {
-    public static func == (lhs: ServiceError, rhs: ServiceError) -> Bool {
+    static func == (lhs: ServiceError, rhs: ServiceError) -> Bool {
         return lhs.localizedDescription == rhs.localizedDescription
     }
 }

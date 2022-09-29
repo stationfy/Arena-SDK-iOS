@@ -23,7 +23,7 @@ protocol ChatStreaming {
     func startListeningReactions()
 }
 
-class ChatStream: ChatStreaming {
+final class ChatStream: ChatStreaming {
 
     struct Constants {
         static let chatRooms: String = "chat-rooms"

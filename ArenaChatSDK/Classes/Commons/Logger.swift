@@ -1,35 +1,35 @@
 import Foundation
 
-public enum LogEvent: String {
+enum LogEvent: String {
     case error = "[‼️]"
     case debug = "[💬]"
     case warning = "[⚠️]"
 }
 
-public protocol Logging {
+protocol Logging {
     func log(object: Any)
     func log(object: Any, event: LogEvent)
 }
 
-public struct Logger: Logging {
+struct Logger: Logging {
 
     private let isEnabled: Bool
     private let isVerbose: Bool
 
-    public init(isEnabled: Bool, isVerbose: Bool = false) {
+    init(isEnabled: Bool, isVerbose: Bool = false) {
         self.isEnabled = isEnabled
         self.isVerbose = isVerbose
     }
 
-    public func log(object: Any) {
+    func log(object: Any) {
         log(object: object, event: .debug)
     }
 
-    public func log(object: Any, event: LogEvent) {
+    func log(object: Any, event: LogEvent) {
         logEvent(object: object, event: event)
     }
 
-    private func logEvent(object: Any,
+    func logEvent(object: Any,
                           event: LogEvent,
                           filename: String = #file,
                           line: Int = #line,

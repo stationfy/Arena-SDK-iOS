@@ -1,6 +1,6 @@
 import UIKit
 
-public final class FeedbackView: UIView {
+final class FeedbackView: UIView {
     var mainButtonAction: (() -> Void)?
     var textButtonAction: (() -> Void)?
 
@@ -86,12 +86,12 @@ public final class FeedbackView: UIView {
         return stackView
     }()
 
-    public init(backgroundImage: UIImage,
-                mainImage: UIImage,
-                title: String,
-                subtitle: String,
-                mainButtonTitle: String,
-                textButtonTitle: String?) {
+    init(backgroundImage: UIImage,
+         mainImage: UIImage,
+         title: String,
+         subtitle: String,
+         mainButtonTitle: String,
+         textButtonTitle: String?) {
         self.backgroundImage = backgroundImage
         self.mainImage = mainImage
         self.title = title
@@ -158,7 +158,7 @@ private extension FeedbackView {
     }
 }
 
-public extension FeedbackView {
+extension FeedbackView {
     func setup() {
         backgroundImageView.image = backgroundImage
         mainImageView.image = mainImage

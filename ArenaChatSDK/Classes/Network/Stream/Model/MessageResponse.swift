@@ -1,10 +1,3 @@
-//
-//  MessageResponse.swift
-//  ArenaChatSDK
-//
-//  Created by Erick Vicente on 30/08/22.
-//
-
 import Foundation
 
 struct MessageResponse {

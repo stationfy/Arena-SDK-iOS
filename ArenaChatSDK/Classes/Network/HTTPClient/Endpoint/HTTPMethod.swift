@@ -1,19 +1,19 @@
 import Foundation
 
 ///  Restfull API HTTP Method
-public struct HTTPMethod: RawRepresentable, Equatable, Hashable {
+struct HTTPMethod: RawRepresentable, Equatable, Hashable {
     /// `DELETE` method.
-    public static let delete = HTTPMethod(rawValue: "DELETE")
+    static let delete = HTTPMethod(rawValue: "DELETE")
     /// `GET` method.
-    public static let get = HTTPMethod(rawValue: "GET")
+    static let get = HTTPMethod(rawValue: "GET")
     /// `POST` method.
-    public static let post = HTTPMethod(rawValue: "POST")
+    static let post = HTTPMethod(rawValue: "POST")
     /// `PUT` method.
-    public static let put = HTTPMethod(rawValue: "PUT")
+    static let put = HTTPMethod(rawValue: "PUT")
 
-    public let rawValue: String
+    let rawValue: String
 
-    public init(rawValue: String) {
+    init(rawValue: String) {
         self.rawValue = rawValue
     }
 }

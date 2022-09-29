@@ -1,7 +1,7 @@
 import Foundation
 import KeychainSwift
 
-public protocol KeychainManageable {
+protocol KeychainManageable {
     func set(_ value: Data, forKey key: String)
     func getData(_ key: String) -> Data?
     func delete(for key: String)

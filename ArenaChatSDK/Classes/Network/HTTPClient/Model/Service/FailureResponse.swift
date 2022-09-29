@@ -1,6 +1,6 @@
 import Foundation
 
-public struct FailureResponse: Decodable {
-    public let message: String?
-    public let status: String
+struct FailureResponse: Decodable {
+    let message: String?
+    let status: String
 }

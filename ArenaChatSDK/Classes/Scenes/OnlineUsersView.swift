@@ -36,7 +36,7 @@ final class OnlineUsersView: UIView {
         return stackView
     }()
 
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         buildViewHierarchy()
         setupConstraints()

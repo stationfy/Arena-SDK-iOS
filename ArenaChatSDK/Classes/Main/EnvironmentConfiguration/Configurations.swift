@@ -1,6 +1,6 @@
 import Foundation
 
-internal struct Configuration {
+struct Configuration {
     private let environment: Environment
 
     init(environment: Environment = .production) {

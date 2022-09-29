@@ -50,7 +50,7 @@ final class ReplyView: UIView {
         return stackView
     }()
 
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
     }
@@ -59,7 +59,7 @@ final class ReplyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         buildViewHierarchy()
         setupConstraints()

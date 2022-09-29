@@ -1,9 +1,9 @@
 import Foundation
 
-public struct SuccessResponse: Decodable {
-    public let response: String?
+struct SuccessResponse: Decodable {
+    let response: String?
 
-    public init(response: String?) {
+    init(response: String?) {
         self.response = response
     }
 }

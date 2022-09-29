@@ -1,23 +1,23 @@
 import Foundation
 
-public struct AuthResponse: Codable {
+struct AuthResponse: Codable {
     public let data: AuthenticationData
 }
 
-public struct AuthenticationData: Codable {
+struct AuthenticationData: Codable {
     public let token: String
     public let firebaseToken: String?
     public let user: LoggedUser
 
-    public init(accessToken: String, user: LoggedUser) {
+    init(accessToken: String, user: LoggedUser) {
         self.token = accessToken
         self.user = user
         self.firebaseToken = nil
     }
 }
 
-public struct LoggedUser: Codable, Equatable {
-    public static func == (lhs: LoggedUser, rhs: LoggedUser) -> Bool {
+struct LoggedUser: Codable, Equatable {
+    static func == (lhs: LoggedUser, rhs: LoggedUser) -> Bool {
         lhs._id == rhs._id &&
         lhs.name == rhs.name &&
         lhs.userName == rhs.userName &&

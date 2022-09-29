@@ -4,7 +4,7 @@ import FirebaseFirestore
 
 public final class ArenaChat {
 
-    internal static var shared = ArenaChat()
+    public static var shared = ArenaChat()
     static let widgetType = "Chat"
 
     var writeKey: String?

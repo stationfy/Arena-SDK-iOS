@@ -9,7 +9,6 @@ enum SnapsnotType {
 }
 
 protocol StreamDelegate: class {
-
     func stream(_ streamLayer: ChatStreaming,
                 didReceivedSnapshot snapshot: QuerySnapshot,
                 snapshotType type: SnapsnotType,

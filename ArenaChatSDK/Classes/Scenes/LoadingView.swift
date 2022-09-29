@@ -14,8 +14,7 @@ final class LoadingView: UIView {
         return view
     }()
 
-
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         buildViewHierarchy()
         setupConstraints()

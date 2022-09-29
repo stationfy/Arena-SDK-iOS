@@ -1,7 +1,7 @@
 import Foundation
 import Apollo
 
-class NetworkInterceptorProvider: DefaultInterceptorProvider {
+final class NetworkInterceptorProvider: DefaultInterceptorProvider {
 
     let interceptor: HeaderAddingInterceptor
 

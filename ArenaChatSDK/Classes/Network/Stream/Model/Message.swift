@@ -1,6 +1,6 @@
 import Foundation
 
-class Message: Decodable {
+final class Message: Decodable {
     let createdAt: Double?
     let key: String?
     let content: MessageContent?

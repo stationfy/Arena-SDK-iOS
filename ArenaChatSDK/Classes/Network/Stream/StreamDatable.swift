@@ -1,7 +1,6 @@
 import Foundation
 
-public protocol StreamDatable {
-
+protocol StreamDatable {
     var parameters: [String: String] { get }
     var pagination: Int { get }
     var collection: String { get }

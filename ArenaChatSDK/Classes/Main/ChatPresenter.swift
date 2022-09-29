@@ -48,7 +48,7 @@ class ChatPresenter {
     private var repliedMessageKey: String?
     private var listIsLoading: Bool = false
 
-    weak var delegate: ChatPresenting?
+    private weak var delegate: ChatPresenting?
 
     var numberOfRows: Int {
         filteredCards.count

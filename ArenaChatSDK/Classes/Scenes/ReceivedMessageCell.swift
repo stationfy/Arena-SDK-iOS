@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-public final class ReceivedMessageCell: UITableViewCell {
+final class ReceivedMessageCell: UITableViewCell {
     // MARK: - TopView
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -129,7 +129,7 @@ public final class ReceivedMessageCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }

@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Assets: String, ImageRepresentable {
+enum Assets: String, ImageRepresentable {
     case threeDotsMenu = "three-dots-menu"
     case persons = "person.3.fill"
     case arrowUp = "arrow.up.circle.fill"

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol ClientRequestable {
+protocol ClientRequestable {
     /// Creates a `URLSessionDataTaskCancelable` by setuping and making a request to the endpoint setted.
     ///
     /// - Parameters:
@@ -15,7 +15,7 @@ public protocol ClientRequestable {
     ) -> URLSessionDataTaskCancelable?
 }
 
-final public class HTTPClient {
+final class HTTPClient {
     private var baseUrl: String
     private let successResponse: String = "success"
     private let sessionManager: SessionClearable
@@ -29,11 +29,11 @@ final public class HTTPClient {
         return deconder
     }()
 
-    public init(baseUrl: String,
-                sessionManager: SessionClearable,
-                logger: Logging,
-                dispatchQueue: DispatchQueueAsyncable = DispatchQueue.main,
-                urlSession: URLSessionTaskable = URLSession.shared) {
+    init(baseUrl: String,
+         sessionManager: SessionClearable,
+         logger: Logging,
+         dispatchQueue: DispatchQueueAsyncable = DispatchQueue.main,
+         urlSession: URLSessionTaskable = URLSession.shared) {
         self.baseUrl = baseUrl
         self.sessionManager = sessionManager
         self.logger = logger
@@ -114,7 +114,7 @@ final public class HTTPClient {
 extension HTTPClient: ClientRequestable {
 
     @discardableResult
-    public func request<T: Decodable>(setup: EndpointSetuping,
+    func request<T: Decodable>(setup: EndpointSetuping,
                                       completion: @escaping (Result<T, ServiceError>) -> Void
     ) -> URLSessionDataTaskCancelable? {
         let request: URLRequest

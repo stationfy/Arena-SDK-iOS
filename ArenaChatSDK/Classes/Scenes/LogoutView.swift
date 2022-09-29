@@ -31,7 +31,7 @@ final class LogoutView: UIView {
         return view
     }()
 
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
         buildViewHierarchy()

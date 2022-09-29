@@ -1,6 +1,6 @@
 import UIKit
 
-public final class LoginView: UIView {
+final class LoginView: UIView {
     var loginAction: (() -> Void)?
     var startChatAction: (() -> Void)?
 
@@ -73,7 +73,7 @@ public final class LoginView: UIView {
         return stackView
     }()
 
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
     }

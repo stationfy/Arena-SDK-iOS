@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ProviderError: Error {
+enum ProviderError: Error {
     case emptyResponse
     case invalidUrlFormat
     case parsingError
@@ -11,4 +11,4 @@ public enum ProviderError: Error {
     case firebaseNotConfigured
 }
 
-public typealias ProviderResult<T> = Result<T, ProviderError>
+typealias ProviderResult<T> = Result<T, ProviderError>
