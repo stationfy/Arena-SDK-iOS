@@ -9,7 +9,7 @@ final class NickNameView: UIView {
         let label = UILabel()
         label.textColor = Color.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Choose a Nickname"
+        label.text = ChooseNameText.nickname.localized
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -50,7 +50,7 @@ final class NickNameView: UIView {
 
     private lazy var nickNameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Choose a nickname"
+        textField.placeholder = ChooseNameText.nickname.localized
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textField.keyboardType = .asciiCapable
