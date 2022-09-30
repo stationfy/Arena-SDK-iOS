@@ -211,12 +211,12 @@ extension ReceivedMessageCell: CardCellSetuping {
         let isReceived = card.type == .received
         let sender = card.chatMessage.sender?.displayName ?? ""
         let replied = card.chatMessage.replyMessage?.sender?.displayName ?? ""
-        nameLabel.text = isReceived ? sender : "\(sender) replied \(replied))"
+        nameLabel.text = isReceived ? sender : "\(sender) \(ReplyCellText.replied.localized) \(replied))"
         timeLabel.text = card.createdAt?.toString()
 
         if card.chatMessage.content?.media?.url != nil || card.chatMessage.content?.media?.providerName != nil {
             messageLabel.font = UIFont.italicSystemFont(ofSize: 9)
-            messageLabel.text = "Version does not support this presentation"
+            messageLabel.text = ReplyCellText.unsuported.localized
         } else {
             messageLabel.font = UIFont.systemFont(ofSize: 14)
             messageLabel.text = card.chatMessage.content?.text

@@ -1,0 +1,28 @@
+// MARK: - Account Popup
+"ChatPopup.Account.logged" = "Logar com";
+"ChatPopup.Account.singleSignOn" = "Logar com serviço único";
+"ChatPopup.Account.anonymousSignIn" = "Ou comece o chat sem fazer login";
+
+// MARK: - Choose Name Popup
+"ChatPopup.ChooseName.nickname" = "Escolha um apelido";
+
+// MARK: - Online Users Popup
+"ChatPopup.UsersOnline.one" = "Usuário online";
+"ChatPopup.UsersOnline.many" = "Usuários online";
+
+// MARK: - Profile Popup
+"ChatPopup.Profile.logged" = "Logado com";
+"ChatPopup.Profile.logout" = "Sair";
+
+// MARK: - Sender Cell
+"Cell.Sender.yourAnswered" = "Você respondeu";
+
+// MARK: - Reply Cell
+"Cell.Reply.answered" = "respondeu";
+"Cell.Reply.unsupported" = "Versão não suporta essa apresentação";
+
+// MARK: - Reply Bottom
+"Bottom.Reply.replyingTo" = "Respondendo para";
+
+// MARK: - TextField Message
+"TextField.Placeholder.message" = "Mensagem";

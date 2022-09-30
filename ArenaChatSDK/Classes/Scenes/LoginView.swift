@@ -36,7 +36,7 @@ final class LoginView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = Color.darkGray
-        label.text = "Login With"
+        label.text = AccountText.logged.localized
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -44,7 +44,7 @@ final class LoginView: UIView {
 
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Single Sign On Service", for: .normal)
+        button.setTitle(AccountText.singleSignOn.localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.backgroundColor = Color.darkGray
@@ -57,7 +57,7 @@ final class LoginView: UIView {
 
     private lazy var startChatButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Or start chatting without login", for: .normal)
+        button.setTitle(AccountText.anonymousSignIn.localized, for: .normal)
         button.setTitleColor(Color.blue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.addTarget(self, action: #selector(startChat), for: .touchUpInside)

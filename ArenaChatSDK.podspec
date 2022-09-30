@@ -33,7 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'ArenaChatSDK/Classes/**/*'
   s.ios.vendored_frameworks = 'Configuration.xcframework'
   s.resource_bundles = {
-    'ArenaChatSDK' => ['ArenaChatSDK/**/*.png', 'ArenaChatSDK/**/*.pdf', '**/*.xcframework']
+    'ArenaChatSDK' => ['ArenaChatSDK/**/*.png', 'ArenaChatSDK/**/*.pdf', 'ArenaChatSDK/**/*.lproj/*.strings', '**/*.xcframework']
   }
 
   s.resources = 'ArenaChatSDK/**/*.{storyboard,xib,xcassets,json,png}'

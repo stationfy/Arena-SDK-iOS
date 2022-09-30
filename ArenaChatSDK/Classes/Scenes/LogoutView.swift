@@ -14,9 +14,9 @@ final class LogoutView: UIView {
         return label
     }()
 
-    private let logoutButton: UIButton = {
+    private lazy var logoutButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Logout", for: .normal)
+        button.setTitle(ProfileText.logout.localized, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.addTarget(self, action: #selector(logout), for: .touchUpInside)
@@ -81,6 +81,6 @@ private extension LogoutView {
 
 extension LogoutView {
     func setup(with userName: String) {
-        loggedUserLabel.text = "Logged as \(userName)"
+        loggedUserLabel.text = "\(ProfileText.logged.localized) \(userName)"
     }
 }

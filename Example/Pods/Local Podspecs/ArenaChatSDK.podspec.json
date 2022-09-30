@@ -27,6 +27,7 @@
     "ArenaChatSDK": [
       "ArenaChatSDK/**/*.png",
       "ArenaChatSDK/**/*.pdf",
+      "ArenaChatSDK/**/*.lproj/*.strings",
       "**/*.xcframework"
     ]
   },

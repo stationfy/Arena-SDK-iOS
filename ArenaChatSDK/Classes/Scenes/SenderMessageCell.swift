@@ -168,7 +168,7 @@ extension SenderMessageCell: CardCellSetuping {
         let isSender = card.type == .sender
         nameLabel.isHidden = isSender
         let replied = card.chatMessage.replyMessage?.sender?.displayName ?? ""
-        nameLabel.text = "You replied \(replied)"
+        nameLabel.text = "\(SenderCellText.yourAnswered.localized) \(replied)"
         timeLabel.text = card.createdAt?.toString()
         ownMessageLabel.textAlignment = isSender ? .right : .left
         ownMessageLabel.text = card.chatMessage.content?.text
