@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ArenaChatSDK'
   s.version          = '0.0.1'
-  s.summary          = 'Arena provides a ready-to-use live group chat activity that does not require any development effort and it can power many of the common scenarios'
+  s.summary          = 'Arena provides a ready-to-use live group chat activity.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
