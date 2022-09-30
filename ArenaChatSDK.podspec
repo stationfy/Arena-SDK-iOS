@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ArenaChatSDK'
   s.version          = '0.0.1'
-  s.summary          = 'A short description of ArenaChatSDK.'
+  s.summary          = 'Arena provides a ready-to-use live group chat activity that does not require any development effort and it can power many of the common scenarios'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -24,7 +24,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://arena.im'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'vicenteerick' => 'vicente.erick@gmail.com' }
-  s.source           = { :git => 'https://github.com/stationfy/Arena-SDK-iOS', :tag => '0.0.1' }
+  s.source           = { :git => 'https://github.com/stationfy/Arena-SDK-iOS.git', :tag => '0.0.1' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '13.0'
