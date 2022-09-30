@@ -20,6 +20,21 @@ public final class ChatView: UIView {
         return view
     }()
 
+    private lazy var nickNameView: NickNameView = {
+        let view = NickNameView()
+        view.isHidden = true
+        view.alpha = 0.0
+        view.closeAction = { [weak self] in
+            self?.loginAnonymously()
+        }
+
+        view.confirmNickNameAction = { [weak self] name in
+            self?.register(with: name)
+        }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var loginView: LoginView = {
         let view = LoginView()
         view.isHidden = true
@@ -29,7 +44,7 @@ public final class ChatView: UIView {
             self?.login()
         }
         view.startChatAction = { [weak self] in
-            self?.loginAnonymously()
+            self?.showNickNameView()
         }
         return view
     }()
@@ -188,31 +203,45 @@ public final class ChatView: UIView {
 
     private func loginAnonymously() {
         presenter.registerAnonymousUser()
+        hideAnimation(view: nickNameView)
+    }
+
+    private func register(with name: String) {
+        startLoading()
+        presenter.registerUser(name: name)
+        hideAnimation(view: nickNameView)
+    }
+
+    private func showNickNameView() {
         hideLoginModal()
+        showAnimation(view: nickNameView)
     }
 
     private func hideLoginModal() {
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.loginView.alpha = 0.0
-        }) {  [weak self]  _ in
-            self?.loginView.isHidden = true
-        }
+        hideAnimation(view: loginView)
     }
 
     private func setOnlineUserVisibility(isHidden: Bool) {
         if isHidden {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.onlineUserView.alpha = 0.0
-            }) {  [weak self]  _ in
-                self?.onlineUserView.isHidden = true
-            }
+            hideAnimation(view: onlineUserView)
         } else {
-            onlineUserView.isHidden = false
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.onlineUserView.alpha = 1.0
-            }
+            showAnimation(view: onlineUserView)
         }
+    }
 
+    private func showAnimation(view: UIView) {
+        view.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            view.alpha = 1.0
+        }
+    }
+
+    private func hideAnimation(view: UIView) {
+        UIView.animate(withDuration: 0.3, animations: {
+            view.alpha = 0.0
+        }) { _ in
+            view.isHidden = true
+        }
     }
 }
 
@@ -286,6 +315,7 @@ private extension ChatView {
         containerView.addSubview(onlineUserView)
         containerView.addSubview(replyView)
         containerView.addSubview(logoutView)
+        containerView.addSubview(nickNameView)
         containerView.addSubview(loginView)
         containerView.addSubview(loadingView)
 
@@ -302,6 +332,11 @@ private extension ChatView {
             loadingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             loadingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             loadingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+
+            nickNameView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            nickNameView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            nickNameView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            nickNameView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
 
             loginView.topAnchor.constraint(equalTo: containerView.topAnchor),
             loginView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
@@ -451,43 +486,25 @@ extension ChatView: ChatPresenting {
     func hideLoadMore() { }
 
     func openLoginModal() {
-        loginView.isHidden = false
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.loginView.alpha = 1
-        }
+        showAnimation(view: loginView)
     }
 
     func showReplyModal(receiver: String, message: String) {
         replyView.setup(receiver: receiver, message: message)
-        replyView.isHidden = false
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.replyView.alpha = 1
-        }
+        showAnimation(view: replyView)
     }
 
     func hideReplyModal() {
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.replyView.alpha = 0.0
-        }) {  [weak self]  _ in
-            self?.replyView.isHidden = true
-        }
+        hideAnimation(view: replyView)
     }
 
     func openProfile(userName: String) {
         logoutView.setup(with: userName)
-        logoutView.isHidden = false
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.logoutView.alpha = 1
-        }
+        showAnimation(view: logoutView)
     }
 
     func closeProfile() {
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.logoutView.alpha = 0.0
-        }) { [weak self] _ in
-            self?.logoutView.isHidden = true
-            self?.logoutView.setup(with: "")
-        }
+        hideAnimation(view: logoutView)
     }
 }
 
