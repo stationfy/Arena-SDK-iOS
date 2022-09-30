@@ -70,6 +70,6 @@ private extension OnlineUsersView {
 
 extension OnlineUsersView {
     func setup(with onlineUsers: String) {
-        onlineUsersLabel.text = "\(onlineUsers) users online"
+        onlineUsersLabel.text = onlineUsers
     }
 }

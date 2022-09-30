@@ -98,7 +98,7 @@ private extension ReplyView {
 extension ReplyView {
     func setup(receiver: String, message: String) {
         backgroundColor = Color.darkGray
-        replyTitleLabel.text = "Replying to \(receiver)"
+        replyTitleLabel.text = "\(ReplyBottomText.replyingTo.localized) \(receiver)"
         messageLabel.text = message
     }
 }

@@ -82,7 +82,7 @@ public final class ChatView: UIView {
 
     private lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.text = "Message"
+        textView.text = BottomViewText.message.localized
         textView.textColor = Color.gray
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.delegate = self
@@ -501,7 +501,7 @@ extension ChatView: UITextViewDelegate {
 
     public func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Message"
+            textView.text = BottomViewText.message.localized
             textView.textColor = Color.gray
         }
     }

@@ -421,11 +421,13 @@ fileprivate extension ChatPresenter {
             switch result {
             case let .success(presenceInfo):
                 let onlineCount = presenceInfo.onlineCount ?? 0
-                var countString = "\(onlineCount)"
+                let text = onlineCount ==  1 ? OnlineUsersText.one.localized : OnlineUsersText.many.localized
+
+                var countString = "\(onlineCount) \(text)"
 
                 if (presenceInfo.onlineCount ?? 0) >= 1000 {
                     let formatedOnlineCount = floor(Double(onlineCount / 1000))
-                    countString = "\(formatedOnlineCount)K"
+                    countString = "\(formatedOnlineCount)K \(text)"
                 }
 
                 self?.delegate?.updateUsersOnline(count: countString)

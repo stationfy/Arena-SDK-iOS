@@ -747,7 +747,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   Apollo: 204819ea82022fbc59ad05056820df867f19bd02
-  ArenaChatSDK: cf8e6bef2640e1f96a5ac4c755f02fb294981056
+  ArenaChatSDK: 7c1810ee5552806acf543339cdc500a9cfc5e99f
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   FirebaseCore: 25c0400b670fd1e2f2104349cd3b5dcce8d9418f
   FirebaseCoreDiagnostics: 17cbf4e72b1dbd64bfdc33d4b1f07bce4f16f1d8
