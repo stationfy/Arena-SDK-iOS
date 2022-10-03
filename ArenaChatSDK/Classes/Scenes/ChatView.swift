@@ -249,6 +249,7 @@ public final class ChatView: UIView {
     func sendMessage() {
         presenter.sendMessage(text: textView.text, mediaUrl: nil, isGif: false)
         textView.text = ""
+        sendButton.isEnabled = false
     }
 
     func setupProfile() {
@@ -532,5 +533,12 @@ extension ChatView: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         true
+    }
+
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if ((touch.view as? UIButton) != nil) {
+            return false
+        }
+        return true
     }
 }
